@@ -32,7 +32,7 @@ function openStudentSetup(){
 function renderStudentProfile(){const p=studentProfile(),el=$("#studentCodeStatus");if(!el)return;if(TEACHER_PRACTICE){el.textContent=`先生のおためしモード（学校：${currentSchoolCode()}）`;return}el.textContent=p?`児童コード：${p.code} ／ 学校：${p.schoolCode||currentSchoolCode()}`:currentSchoolCode()?`児童コード：未登録 ／ 学校：${currentSchoolCode()}`:"学校用URLから開いてください"}
 
 function safeJSON(key,fallback){try{const raw=localStorage.getItem(key);return raw==null?fallback:JSON.parse(raw)}catch(e){console.warn("保存データを安全に初期化しました:",key);return fallback}}
-const state={master:null,bank:null,grade:3,volume:"三上",questions:[],index:0,points:+storage.getItem("kq.points")||0,totalEarned:+storage.getItem("kq.totalEarned")||(+storage.getItem("kq.points")||0),experience:+storage.getItem("kq.exp")||0,discovered:new Set(safeJSON("kq.discovered",[])),sessions:+storage.getItem("kq.sessions")||0,boxes:[],activeBox:0,answerRevealed:false,sessionResults:[],questionRetries:0,petId:storage.getItem("kq.petId")||"fox",petFriendships:safeJSON("kq.petFriendships",{}),petCare:safeJSON("kq.petCare",{}),careTickets:Number(storage.getItem("kq.careTickets")||0),daily:safeJSON("kq.daily",{}),records:safeJSON("kq.records",{totalQuestions:0,totalCorrect:0,streak:0,lastStudy:""}),weak:safeJSON("kq.weak",{}),room:safeJSON("kq.room",{studyQuestions:0,missionsClaimed:{},owned:["bed_basic"],equipped:["bed_basic"],positions:{},album:[],readLetters:{},surprises:{}}),weakMode:false,checking:false,questionCompleted:false};
+const state={master:null,bank:null,grade:3,volume:"三上",questions:[],index:0,points:+storage.getItem("kq.points")||0,totalEarned:+storage.getItem("kq.totalEarned")||(+storage.getItem("kq.points")||0),experience:+storage.getItem("kq.exp")||0,discovered:new Set(safeJSON("kq.discovered",[])),sessions:+storage.getItem("kq.sessions")||0,boxes:[],activeBox:0,answerRevealed:false,sessionResults:[],questionRetries:0,petId:storage.getItem("kq.petId")||"fox",petFriendships:safeJSON("kq.petFriendships",{}),petCare:safeJSON("kq.petCare",{}),careTickets:Number(storage.getItem("kq.careTickets")||0),daily:safeJSON("kq.daily",{}),records:safeJSON("kq.records",{totalQuestions:0,totalCorrect:0,streak:0,lastStudy:""}),weak:safeJSON("kq.weak",{}),weakDetail:safeJSON("kq.weakDetail",{}),room:safeJSON("kq.room",{studyQuestions:0,missionsClaimed:{},owned:["bed_basic"],equipped:["bed_basic"],positions:{},album:[],readLetters:{},surprises:{}}),weakMode:false,checking:false,questionCompleted:false};
 const pets=[{id:'fox',name:'きつね',emoji:'🦊',unlock:0},{id:'cat',name:'ねこ',emoji:'🐱',unlock:20},{id:'rabbit',name:'うさぎ',emoji:'🐰',unlock:40},{id:'dog',name:'いぬ',emoji:'🐶',unlock:60},{id:'hamster',name:'ハムスター',emoji:'🐹',unlock:80},{id:'mouse',name:'ねずみ',emoji:'🐭',unlock:100},{id:'squirrel',name:'りす',emoji:'🐿️',unlock:125},{id:'hedgehog',name:'ハリネズミ',emoji:'🦔',unlock:150},{id:'otter',name:'カワウソ',emoji:'🦦',unlock:175},{id:'raccoon',name:'アライグマ',emoji:'🦝',unlock:200},{id:'panda',name:'パンダ',emoji:'🐼',unlock:230},{id:'koala',name:'コアラ',emoji:'🐨',unlock:260},{id:'bear',name:'くま',emoji:'🐻',unlock:290},{id:'polar',name:'しろくま',emoji:'🐻\u200d❄️',unlock:320},{id:'monkey',name:'さる',emoji:'🐵',unlock:350},{id:'gorilla',name:'ゴリラ',emoji:'🦍',unlock:380},{id:'sloth',name:'ナマケモノ',emoji:'🦥',unlock:410},{id:'deer',name:'しか',emoji:'🦌',unlock:440},{id:'boar',name:'いのしし',emoji:'🐗',unlock:470},{id:'pig',name:'ぶた',emoji:'🐷',unlock:500},{id:'cow',name:'うし',emoji:'🐮',unlock:540},{id:'horse',name:'うま',emoji:'🐴',unlock:580},{id:'goat',name:'やぎ',emoji:'🐐',unlock:620},{id:'sheep',name:'ひつじ',emoji:'🐑',unlock:660},{id:'alpaca',name:'アルパカ',emoji:'🦙',unlock:700},{id:'camel',name:'ラクダ',emoji:'🐫',unlock:740},{id:'elephant',name:'ぞう',emoji:'🐘',unlock:780},{id:'giraffe',name:'キリン',emoji:'🦒',unlock:820},{id:'zebra',name:'しまうま',emoji:'🦓',unlock:860},{id:'hippo',name:'カバ',emoji:'🦛',unlock:900},{id:'rhino',name:'サイ',emoji:'🦏',unlock:950},{id:'kangaroo',name:'カンガルー',emoji:'🦘',unlock:1000},{id:'lion',name:'ライオン',emoji:'🦁',unlock:1050},{id:'tiger',name:'トラ',emoji:'🐯',unlock:1100},{id:'leopard',name:'ヒョウ',emoji:'🐆',unlock:1150},{id:'wolf',name:'オオカミ',emoji:'🐺',unlock:1200},{id:'eagle',name:'ワシ',emoji:'🦅',unlock:1250},{id:'owl',name:'ふくろう',emoji:'🦉',unlock:1300},{id:'penguin',name:'ペンギン',emoji:'🐧',unlock:1350},{id:'flamingo',name:'フラミンゴ',emoji:'🦩',unlock:1400},{id:'duck',name:'あひる',emoji:'🦆',unlock:1450},{id:'chick',name:'ひよこ',emoji:'🐥',unlock:1500},{id:'parrot',name:'オウム',emoji:'🦜',unlock:1550},{id:'turtle',name:'かめ',emoji:'🐢',unlock:1600},{id:'frog',name:'かえる',emoji:'🐸',unlock:1650},{id:'crocodile',name:'ワニ',emoji:'🐊',unlock:1700},{id:'dolphin',name:'イルカ',emoji:'🐬',unlock:1750},{id:'whale',name:'くじら',emoji:'🐳',unlock:1800},{id:'seal',name:'アザラシ',emoji:'🦭',unlock:1850},{id:'octopus',name:'たこ',emoji:'🐙',unlock:1900},
 {id:'rooster',name:'にわとり',emoji:'🐔',unlock:1950},{id:'turkey',name:'しちめんちょう',emoji:'🦃',unlock:2000},
 {id:'peacock',name:'くじゃく',emoji:'🦚',unlock:2050},{id:'swan',name:'はくちょう',emoji:'🦢',unlock:2100},
@@ -66,28 +66,68 @@ function ensureDaily(){const k=dayKey();if(state.daily.date!==k)state.daily={dat
 function badgeDefs(){return [{icon:"🌱",name:"はじめの一歩",ok:state.sessions>=1},{icon:"🔥",name:"3日れんぞく",ok:(state.records.streak||0)>=3},{icon:"💯",name:"100問チャレンジ",ok:(state.records.totalQuestions||0)>=100},{icon:"✍️",name:"漢字50字発見",ok:state.discovered.size>=50},{icon:"🐾",name:"どうぶつ10匹",ok:unlockedPets().length>=10},{icon:"🦁",name:"どうぶつ25匹",ok:unlockedPets().length>=25},{icon:"🏆",name:"どうぶつ博士",ok:unlockedPets().length>=50},{icon:"🌟",name:"どうぶつ大博士",ok:unlockedPets().length>=75},{icon:"👑",name:"さいこうの相棒",ok:Object.values(state.petFriendships).some(v=>+v>=85)}]}
 function renderMotivation(){ensureDaily();const d=$("#dailyChallenge");if(d){d.className=`dailyChallenge ${state.daily.bonus?"done":""}`;d.innerHTML=state.daily.bonus?"✅ 今日のチャレンジ達成！ また明日も会おう！":`🎯 今日10問クリアで <b>+5 PT</b> ボーナス　（今日 ${state.daily.questions||0}問）`;}const tq=$("#todayQuestions"),aq=$("#totalQuestions"),tc=$("#totalCorrect"),sd=$("#streakDays");if(tq)tq.textContent=state.daily.questions||0;if(aq)aq.textContent=state.records.totalQuestions||0;if(tc)tc.textContent=state.records.totalCorrect||0;if(sd)sd.textContent=state.records.streak||0;const weakN=Object.values(state.weak).filter(v=>v>0).length;const wt=$("#weakCountText"),wb=$("#weakRetryBtn");if(wt)wt.textContent=weakN?`いま ${weakN}字を復習できます。`:"にがて漢字はまだありません。";if(wb)wb.disabled=!weakN;const bl=$("#badgeList");if(bl)bl.innerHTML=badgeDefs().map(b=>`<span class="badgeChip ${b.ok?"earned":""}">${b.ok?b.icon:"🔒"} ${b.name}</span>`).join("")}
 function completeDailySet(){ensureDaily();state.daily.sets=(state.daily.sets||0)+1;let bonus=0;if(!state.daily.bonus){state.daily.bonus=true;bonus=5;state.points+=bonus;state.totalEarned+=bonus}const today=dayKey();if(state.records.lastStudy!==today){state.records.streak=state.records.lastStudy===yesterdayKey()?(state.records.streak||0)+1:1;state.records.lastStudy=today}return bonus}
-function startWeakSet(){const keys=Object.keys(state.weak).filter(k=>state.weak[k]>0);if(!keys.length)return;const pool=shuffle(state.bank.questions.filter(q=>keys.includes(q.targetKanji)&&q.reviewStatus==="reviewed"&&questionIntegrityValid(q)));const used=new Set(),out=[];for(const q of pool){if(used.has(q.targetKanji))continue;used.add(q.targetKanji);out.push(q);if(out.length===10)break}if(!out.length)return;state.weakMode=true;state.questions=out;state.index=0;state.sessionResults=[];$("#homeView").classList.add("hidden");$("#resultView").classList.add("hidden");$("#practiceView").classList.remove("hidden");renderQuestion()}
 
-const volumeByGrade={1:["一上","一下","上下ミックス"],2:["二上","二下","上下ミックス"],3:["三上","三下","上下ミックス"],4:["四上","四下","上下ミックス"],5:["五"],6:["六"]};
-function updateAIConnectionUI(){const p=$("#aiConnPill");if(p){p.textContent="無料・端末内判定";p.style.background="#e9f8ef"}}
-async function init(){try{[state.master,state.bank]=await Promise.all([fetch("./data/kanji_master.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("kanji master load failed");return r.json()}),fetch("./data/reviewed_problem_bank.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("problem bank load failed");return r.json()})]);buildGradeButtons();renderVolumes();renderHomeStats();renderMotivation();updateReady();updateAIConnectionUI();updateUnlockBaseline()}catch(e){console.error(e);const t=$("#readyText");if(t){t.textContent="教材の読み込みに失敗しました。画面を更新してください。";t.className="status-warn"}const b=$("#startBtn");if(b)b.disabled=true}if("serviceWorker" in navigator){try{const regs=await navigator.serviceWorker.getRegistrations();for(const r of regs)await r.update();await navigator.serviceWorker.register("./service-worker.js")}catch(e){console.warn(e)}}}
-function buildGradeButtons(){const row=$("#gradeRow");row.innerHTML="";for(let g=1;g<=6;g++){const b=document.createElement("button");b.textContent=`${g}年`;b.className="gradeBtn";if(g===state.grade)b.classList.add("active");b.onclick=()=>{state.grade=g;state.volume=volumeByGrade[g][0];buildGradeButtons();renderVolumes();updateReady()};row.appendChild(b)}}
-function renderVolumes(){const row=$("#volumeRow");row.innerHTML="";for(const v of volumeByGrade[state.grade]){const b=document.createElement("button");b.textContent=v;b.className="volBtn";if(v===state.volume)b.classList.add("active");b.onclick=()=>{state.volume=v;renderVolumes();updateReady()};row.appendChild(b)}}
-function questionIntegrityValid(q){
-  try{
-    const target=q.targetKanji||"",answer=q.handwritingAnswer||q.expectedAnswer||target;
-    const matches=(q.displaySentence||"").match(/【([^】]+)】/g)||[];
-    if(matches.length!==1||!target||!answer)return false;
-    if(q.questionType==="compound"||q.answerScope==="compound"){
-      if(answer!==target||!/^[\p{Script=Han}]{2,4}$/u.test(answer))return false;
-      return q.quality?.answerScopeValidated!==false;
+function classifyMistake(results){
+  const rs=(results||[]).filter(r=>!r.ok);
+  if(rs.some(r=>r?.referenceAudit?.reason==="missing-strokes"))return "missing";
+  if(rs.some(r=>r?.referenceAudit?.reason==="extra-strokes"))return "extra";
+  if(rs.some(r=>r?.referenceAudit?.reason==="shape-mismatch"))return "shape";
+  if(rs.some(r=>String(r?.mode||"").startsWith("kana-")))return "kana";
+  return "recognition";
+}
+function recordWeakDetail(kanji,results){
+  if(!kanji)return;
+  const type=classifyMistake(results),now=Date.now();
+  const d=state.weakDetail[kanji]||{attempts:0,errors:0,correct:0,types:{missing:0,extra:0,shape:0,kana:0,recognition:0},lastError:0,lastCorrect:0};
+  d.attempts++;d.errors++;d.types[type]=(d.types[type]||0)+1;d.lastError=now;
+  state.weakDetail[kanji]=d;
+}
+function recordWeakCorrect(kanji,retries){
+  if(!kanji)return;
+  const d=state.weakDetail[kanji]||{attempts:0,errors:0,correct:0,types:{missing:0,extra:0,shape:0,kana:0,recognition:0},lastError:0,lastCorrect:0};
+  d.attempts++;d.correct++;d.lastCorrect=Date.now();
+  if((retries||0)===0){
+    for(const k of Object.keys(d.types||{}))d.types[k]=Math.max(0,(d.types[k]||0)-1);
+  }
+  state.weakDetail[kanji]=d;
+}
+function weakPriority(kanji){
+  const base=Number(state.weak[kanji]||0),d=state.weakDetail[kanji]||{};
+  const t=d.types||{};
+  const severity=(t.missing||0)*3+(t.extra||0)*2.5+(t.shape||0)*2+(t.kana||0)*1.5+(t.recognition||0);
+  const recent=d.lastError?Math.max(0,7-(Date.now()-d.lastError)/86400000):0;
+  return base*5+severity+recent;
+}
+
+function startWeakSet(){
+  const keys=Object.keys(state.weak).filter(k=>state.weak[k]>0);
+  if(!keys.length)return;
+  const ranked=[...keys].sort((a,b)=>weakPriority(b)-weakPriority(a));
+  const byKanji=new Map();
+  for(const q of state.bank.questions){
+    if(!ranked.includes(q.targetKanji)||q.reviewStatus!=="reviewed"||!questionIntegrityValid(q))continue;
+    if(!byKanji.has(q.targetKanji))byKanji.set(q.targetKanji,[]);
+    byKanji.get(q.targetKanji).push(q);
+  }
+  const out=[];
+  for(const k of ranked){
+    const pool=shuffle(byKanji.get(k)||[]);
+    if(pool.length)out.push(pool[0]);
+    if(out.length===10)break;
+  }
+  // 苦手が10字未満なら、優先度の高い漢字から別問題を追加。
+  let guard=0;
+  while(out.length<10&&guard++<40){
+    for(const k of ranked){
+      const pool=shuffle(byKanji.get(k)||[]).filter(q=>!out.includes(q));
+      if(pool.length)out.push(pool[0]);
+      if(out.length===10)break;
     }
-    if(!answer.startsWith(target))return false;
-    const tail=answer.slice(target.length);
-    if(/[\p{Script=Han}]/u.test(tail))return false;
-    if(tail&&!/^[ぁ-ゖァ-ヺーゝゞヽヾ]+$/.test(tail))return false;
-    return q.quality?.answerScopeValidated!==false;
-  }catch(e){return false}
+    if(!ranked.some(k=>(byKanji.get(k)||[]).some(q=>!out.includes(q))))break;
+  }
+  if(!out.length)return;
+  state.weakMode=true;state.questions=out;state.index=0;state.sessionResults=[];state.questionRetries=0;
+  $("#homeView").classList.add("hidden");$("#resultView").classList.add("hidden");$("#practiceView").classList.remove("hidden");renderQuestion();
 }
 function selectedVolumes(){
   if(state.volume!=="上下ミックス")return[state.volume];
@@ -320,7 +360,7 @@ function markBoxResults(results){
 function clearAll(){for(const b of state.boxes){b.strokes=[];b.current=null;redrawBox(b);resetBoxRepairUI(b)}updateCheckButton()}
 $("#clearBtn").onclick=clearAll;
 $("#undoBtn").onclick=()=>{const b=state.boxes[state.activeBox]||state.boxes.findLast?.(x=>x.strokes.length)||state.boxes[0];if(b){b.strokes.pop();redrawBox(b)}updateCheckButton()};
-function persist(){storage.setItem("kq.points",state.points);storage.setItem("kq.totalEarned",state.totalEarned);storage.setItem("kq.exp",state.experience);storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));storage.setItem("kq.sessions",state.sessions);storage.setItem("kq.petId",state.petId);storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));storage.setItem("kq.petCare",JSON.stringify(state.petCare));storage.setItem("kq.careTickets",state.careTickets);storage.setItem("kq.daily",JSON.stringify(state.daily));storage.setItem("kq.records",JSON.stringify(state.records));storage.setItem("kq.weak",JSON.stringify(state.weak));storage.setItem("kq.room",JSON.stringify(state.room))}
+function persist(){storage.setItem("kq.points",state.points);storage.setItem("kq.totalEarned",state.totalEarned);storage.setItem("kq.exp",state.experience);storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));storage.setItem("kq.sessions",state.sessions);storage.setItem("kq.petId",state.petId);storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));storage.setItem("kq.petCare",JSON.stringify(state.petCare));storage.setItem("kq.careTickets",state.careTickets);storage.setItem("kq.daily",JSON.stringify(state.daily));storage.setItem("kq.records",JSON.stringify(state.records));storage.setItem("kq.weak",JSON.stringify(state.weak));storage.setItem("kq.weakDetail",JSON.stringify(state.weakDetail));storage.setItem("kq.room",JSON.stringify(state.room))}
 
 const careActions=[
 {id:"feed",icon:"🍎",label:"ごはん",cost:5,gain:5,msg:"おいしそうに食べた！"},
@@ -1284,13 +1324,13 @@ $("#checkBtn").onclick=async()=>{
       }
       state.sessionResults[state.index]={help:state.answerRevealed,retries:state.questionRetries};
       syncLearningEvent("question",{questionId:q.id||"",prompt:q.displaySentence||"",answer:answerOf(q),correct:true,retries:state.questionRetries,help:state.answerRevealed,manualConfirm:false,volume:state.volume});
-      ensureDaily();state.daily.questions=(state.daily.questions||0)+1;state.records.totalQuestions=(state.records.totalQuestions||0)+1;if(!state.answerRevealed)state.records.totalCorrect=(state.records.totalCorrect||0)+1;if(state.weak[q.targetKanji])state.weak[q.targetKanji]=Math.max(0,state.weak[q.targetKanji]-1);
+      ensureDaily();state.daily.questions=(state.daily.questions||0)+1;state.records.totalQuestions=(state.records.totalQuestions||0)+1;if(!state.answerRevealed)state.records.totalCorrect=(state.records.totalCorrect||0)+1;recordWeakCorrect(q.targetKanji,state.questionRetries);if(state.weak[q.targetKanji])state.weak[q.targetKanji]=Math.max(0,state.weak[q.targetKanji]-1);
       state.discovered.add(q.targetKanji);state.questionCompleted=true;
       state.boxes.forEach(b=>b.canvas.classList.add("lockedCanvas"));
       $("#undoBtn").disabled=true;$("#clearBtn").disabled=true;
       persist();renderMotivation();checkNewAnimalUnlocks();$("#nextBtn").classList.remove("hidden");
     }else{
-      if(state.questionRetries===0)state.weak[q.targetKanji]=(state.weak[q.targetKanji]||0)+1;state.questionRetries++;persist();renderMotivation();
+      if(state.questionRetries===0){state.weak[q.targetKanji]=(state.weak[q.targetKanji]||0)+1;recordWeakDetail(q.targetKanji,results);}state.questionRetries++;persist();renderMotivation();
       markBoxResults(results);
       state.activeBox=bad;const r=results[bad],box=state.boxes[bad];
       const badPositions=results.map((x,i)=>!x.ok?`${i+1}字目`:null).filter(Boolean).join("・");
@@ -1336,7 +1376,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v5.1 REF-PATTERN ALL-KANJI";
+  badge.textContent="v5.2 SMART WEAKNESS";
   document.body.appendChild(badge);
 });
 
@@ -1349,3 +1389,5 @@ window.addEventListener("DOMContentLoaded",()=>{
 /* v5.0: KanjiVG-backed all-kanji stroke/shape feedback + general hiragana recognition for okurigana. */
 
 /* v5.1 acceptance: wrong kanji always gets visible red-circle feedback; built-in refPatterns provide stroke counts/shape for all supported kanji; correct kana such as る accepted independently. */
+
+/* v5.2: preserves v5.1 handwriting judgement and adds error-type weakness history + adaptive weak review ordering. */
