@@ -1,0 +1,15 @@
+{
+  "version": "v4.6 IN-BOX FEEDBACK",
+  "status": "PASS",
+  "checks": {
+    "js_syntax_ok": true,
+    "hard_strict_kept": true,
+    "in_box_guides": true,
+    "max_two_guides": true,
+    "unknown_no_fake_pinpoint": true,
+    "level50_kept": true,
+    "room_drag_kept": true,
+    "answer_font_kept": true,
+    "version_bumped": true
+  }
+}

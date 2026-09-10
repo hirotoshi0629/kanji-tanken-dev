@@ -231,7 +231,7 @@ function redrawBox(box){const r=box.canvas.getBoundingClientRect(),ctx=box.ctx;c
 function updateCheckButton(){$("#checkBtn").disabled=!state.boxes.length||state.boxes.some(b=>b.strokes.length===0)}
 function resetBoxRepairUI(box){
   if(!box)return;
-  clearMistakeCircle(box);
+  clearMistakeGuides(box);
   box.cell?.classList.remove("boxWrong","boxCorrect");box.writeArea?.classList.remove("writeWrong","writeCorrect");
   if(box.status){box.status.textContent="";box.status.className="boxStatus"}
   box.clearOne?.classList.add("hidden");
@@ -242,46 +242,59 @@ function clearOneBox(i){
   state.activeBox=i;updateCheckButton();
 }
 
-function clearMistakeCircle(box){
+
+
+
+
+function clearMistakeGuides(box){
   if(!box?.writeArea)return;
-  box.writeArea.querySelectorAll(".mistakeCircle,.mistakeCircleLabel").forEach(x=>x.remove());
+  box.writeArea.querySelectorAll(".mistakeGuideDot,.mistakeGuideLabel").forEach(x=>x.remove());
 }
-function suspectPointForBox(box,result){
-  if(!box||box.type!=="kanji"||result?.unknown||!result?.got)return null;
-  const strokes=(box.strokes||[]).filter(st=>st&&st.length>1);
-  if(!strokes.length)return null;
+function strokeMetrics(st){
+  if(!st||st.length<2)return null;
+  let len=0;for(let i=1;i<st.length;i++)len+=Math.hypot(st[i].x-st[i-1].x,st[i].y-st[i-1].y);
+  const xs=st.map(p=>p.x),ys=st.map(p=>p.y);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  return{cx:(minX+maxX)/2,cy:(minY+maxY)/2,w:Math.max(1,maxX-minX),h:Math.max(1,maxY-minY),len,
+    horizontal:(maxX-minX)>(maxY-minY)*1.35,vertical:(maxY-minY)>(maxX-minX)*1.35};
+}
+function suspectGuidesForBox(box,result){
+  if(!box||box.type!=="kanji"||result?.unknown||!result?.got)return[];
+  const strokes=(box.strokes||[]).filter(st=>st&&st.length>1); if(!strokes.length)return[];
   const all=strokes.flat(),xs=all.map(p=>p.x),ys=all.map(p=>p.y);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
   const cx=(minX+maxX)/2,cy=(minY+maxY)/2,w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY);
-  let best=null,bestScore=-Infinity;
-  for(const st of strokes){
-    const sx=st.map(p=>p.x),sy=st.map(p=>p.y);
-    const scx=(Math.min(...sx)+Math.max(...sx))/2,scy=(Math.min(...sy)+Math.max(...sy))/2;
-    let len=0;for(let i=1;i<st.length;i++)len+=Math.hypot(st[i].x-st[i-1].x,st[i].y-st[i-1].y);
-    const dist=Math.hypot((scx-cx)/w,(scy-cy)/h);
-    const shortness=1-Math.min(1,len/(Math.max(w,h)*1.2));
-    const score=dist*.65+shortness*.35;
-    if(score>bestScore){bestScore=score;best={x:scx,y:scy}}
+  const scored=strokes.map(strokeMetrics).filter(Boolean).map(m=>{
+    const edge=Math.hypot((m.cx-cx)/w,(m.cy-cy)/h);
+    const rel=m.len/Math.max(w,h);
+    const score=edge*.58+Math.max(0,.24-rel)*2.2+Math.max(0,rel-1.25)*.75;
+    return{m,score};
+  }).sort((a,b)=>b.score-a.score);
+  const guides=[];
+  for(const it of scored){
+    if(guides.length>=2)break;
+    if(it.score<.33)continue;
+    if(guides.some(g=>Math.hypot(g.x-it.m.cx,g.y-it.m.cy)<Math.max(w,h)*.18))continue;
+    let msg="このあたりを、お手本とくらべてみよう";
+    if(it.m.vertical&&it.m.len<Math.max(w,h)*.42)msg="このたて線の長さを、お手本とくらべよう";
+    else if(it.m.horizontal&&it.m.len>Math.max(w,h)*.92)msg="この横線の長さを、見直してみよう";
+    guides.push({x:it.m.cx,y:it.m.cy,msg});
   }
-  return best;
+  return guides;
 }
-function showMistakeCircle(box,result){
-  clearMistakeCircle(box);
-  const p=suspectPointForBox(box,result);
-  if(!p)return false;
-  const r=box.canvas.getBoundingClientRect();
-  if(r.width<1||r.height<1)return false;
-  const circle=document.createElement("div");
-  circle.className="mistakeCircle";
-  circle.style.left=`${Math.max(7,Math.min(93,p.x/r.width*100))}%`;
-  circle.style.top=`${Math.max(7,Math.min(93,p.y/r.height*100))}%`;
-  circle.setAttribute("aria-label","AIが見直してほしいところの目安");
-  const label=document.createElement("div");
-  label.className="mistakeCircleLabel";
-  label.textContent="○ このあたりを、お手本とくらべてみよう";
-  box.writeArea.append(circle,label);
+function showMistakeGuides(box,result){
+  clearMistakeGuides(box);
+  const guides=suspectGuidesForBox(box,result); if(!guides.length)return false;
+  const r=box.canvas.getBoundingClientRect(); if(r.width<1||r.height<1)return false;
+  guides.forEach((g,i)=>{
+    const x=Math.max(7,Math.min(93,g.x/r.width*100)),y=Math.max(9,Math.min(88,g.y/r.height*100));
+    const dot=document.createElement("div"); dot.className="mistakeGuideDot"; dot.style.left=`${x}%`; dot.style.top=`${y}%`; dot.textContent="○";
+    const label=document.createElement("div"); label.className="mistakeGuideLabel"; label.style.left=`${x}%`; label.style.top=`${Math.max(12,Math.min(84,y-14))}%`; label.textContent=`${i+1} ${g.msg}`;
+    box.writeArea.append(dot,label);
+  });
   return true;
 }
+
 function markBoxResults(results){
   state.boxes.forEach((box,i)=>{
     resetBoxRepairUI(box);
@@ -292,9 +305,9 @@ function markBoxResults(results){
       if(box.status){box.status.textContent="✓ この字はOK";box.status.className="boxStatus boxStatusOk"}
     }else{
       box.cell?.classList.add("boxWrong");box.writeArea?.classList.add("writeWrong");
-      const circled=showMistakeCircle(box,r);
+      const circled=showMistakeGuides(box,r);
       if(box.status){
-        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":(circled?"○のあたりを、お手本とくらべてみよう":"↑ この字をお手本とくらべてみよう");
+        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":(circled?"○のところを、お手本とくらべて直そう":"↑ この字全体を、お手本とくらべてみよう");
         box.status.className="boxStatus boxStatusWrong";
       }
       box.clearOne?.classList.remove("hidden");
@@ -1072,6 +1085,6 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v4.5 HARD STRICT";
+  badge.textContent="v4.6 IN-BOX FEEDBACK";
   document.body.appendChild(badge);
 });

@@ -671,3 +671,10 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
   padding:5px 9px;border-radius:999px;background:#222;color:#fff;
   font-size:11px;font-weight:800;opacity:.82;pointer-events:none
 }
+
+/* v4.6: マス内に見直し箇所を直接表示 */
+.writeArea{position:relative;overflow:visible}
+.mistakeGuideDot{position:absolute;transform:translate(-50%,-50%);z-index:20;pointer-events:none;font-size:42px;line-height:1;font-weight:900;color:#e53935;text-shadow:0 0 4px #fff,0 0 8px #fff}
+.mistakeGuideLabel{position:absolute;transform:translate(-50%,-100%);z-index:21;max-width:72%;min-width:150px;padding:7px 10px;border-radius:12px;background:rgba(229,57,53,.96);color:#fff;font-size:13px;font-weight:800;line-height:1.35;text-align:left;pointer-events:none;box-shadow:0 4px 12px rgba(120,0,0,.20)}
+.mistakeGuideLabel::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(229,57,53,.96);border-bottom:0}
+@media(max-width:760px){.mistakeGuideDot{font-size:36px}.mistakeGuideLabel{font-size:12px;min-width:132px;max-width:78%;padding:6px 8px}}
