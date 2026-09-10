@@ -1,0 +1,13 @@
+{
+  "version": "v4.5 HARD STRICT",
+  "status": "PASS",
+  "checks": {
+    "js_syntax_ok": true,
+    "all_3_top1_required": true,
+    "uncertain_never_auto_correct": true,
+    "version_badge": true,
+    "pinpoint_kept": true,
+    "level50_kept": true,
+    "room_drag_kept": true
+  }
+}

@@ -916,7 +916,7 @@ function recognizeSingle(expected,strokes,canvasHint){
   for(const pass of passes)for(const ch of pass)if(!candidates.includes(ch))candidates.push(ch);
 
   const got=tops.find(Boolean)||candidates[0]||null;
-  const ok=topExactCount>=2;
+  const ok=topExactCount===3;
   const excellent=topExactCount===3;
 
   // 認識結果が割れた場合は、誤って「せいかい！」にせず確認扱いにする。
@@ -932,7 +932,7 @@ function recognizeSingle(expected,strokes,canvasHint){
     candidates,
     tops,
     topExactCount,
-    mode:ok?"strict-exact":(unknown?"uncertain":"wrong")
+    mode:ok?"hard-strict-exact":(unknown?"uncertain":"wrong")
   };
 }
 function splitStrokesForExpected(strokes,n){
@@ -992,16 +992,15 @@ $("#revealBtn").onclick=()=>{
 
 
 function acceptUncertainAnswer(q,results){
-  const perfect=false;
-  if(state.answerRevealed){showFeedback("ok","書けたね！",`${answerOf(q)} を見ながら練習できたよ。`);state.experience+=1;}
-  else{showFeedback("ok","確認できたね！",`${answerOf(q)} と自分で見比べて確認できたよ。`);state.points+=2;state.totalEarned+=2;state.experience+=2;}
-  state.sessionResults[state.index]={help:state.answerRevealed,retries:state.questionRetries,manualConfirm:true,threeTryConfirm:state.questionRetries>=3};
-  syncLearningEvent("question",{questionId:q.id||"",prompt:q.displaySentence||"",answer:answerOf(q),correct:true,retries:state.questionRetries,help:state.answerRevealed,manualConfirm:true,volume:state.volume});
-  ensureDaily();state.daily.questions=(state.daily.questions||0)+1;state.records.totalQuestions=(state.records.totalQuestions||0)+1;
-  if(!state.answerRevealed)state.records.totalCorrect=(state.records.totalCorrect||0)+1;
-  state.discovered.add(q.targetKanji);state.questionCompleted=true;
-  state.boxes.forEach(b=>b.canvas.classList.add("lockedCanvas"));$("#undoBtn").disabled=true;$("#clearBtn").disabled=true;
-  persist();renderMotivation();checkNewAnimalUnlocks();$("#nextBtn").classList.remove("hidden");
+  showFeedback("bad","まだ正解にはしていません。","AIの判定に自信がありません。お手本とくらべて、もう一度書き直してみよう。");
+  state.questionCompleted=false;
+  state.boxes.forEach(b=>{
+    b.canvas.classList.remove("lockedCanvas");
+    b.clearOne?.classList.remove("hidden");
+  });
+  $("#undoBtn").disabled=false;
+  $("#clearBtn").disabled=false;
+  $("#nextBtn").classList.add("hidden");
 }
 function showThreeTryConfirmation(q,results,bad){
   const f=$("#feedback");f.className="feedback unknown";
@@ -1069,3 +1068,10 @@ function initTeacherPracticeUI(){
   renderStudentProfile();
 }
 window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
+
+window.addEventListener("DOMContentLoaded",()=>{
+  const badge=document.createElement("div");
+  badge.id="strictVersionBadge";
+  badge.textContent="v4.5 HARD STRICT";
+  document.body.appendChild(badge);
+});
