@@ -867,7 +867,7 @@ function showResults(){
   const dr=$("#dailyResult");if(dr)dr.textContent=bonus?`🌞 今日のチャレンジ達成！ ボーナス +${bonus} PT`:`今日のチャレンジは達成ずみ！`;
   const cr=$("#careRewardResult");if(cr)cr.innerHTML=`🐾 10問クリアのごほうび！ <b>${careTicketLabel(careBonus)}</b> をもらったよ。<br><small>「どうぶつのおへや」で、PTを使わず特別なおせわができるよ。</small>`;
   $("#resultMessage").textContent=noHelp===10?"全問、自分の力で書けたね！":noHelp>=7?"よくできたね！ 書き直した字も力になっているよ。":"答えを見た字も、もう一度書けばどんどん身につくよ。";
-  $("#practiceView").classList.add("hidden");$("#resultView").classList.remove("hidden");renderHomeStats();renderMotivation();
+  $("#practiceView").classList.add("hidden");$("#resultView").classList.remove("hidden");sendLearningSummary();renderHomeStats();renderMotivation();
 }
 $("#nextBtn").onclick=()=>{if(!state.questionCompleted)return;if(state.index===9){showResults();return}state.index++;renderQuestion()};
 $("#retrySetBtn").onclick=startSet;
@@ -1338,7 +1338,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v6.1 DEV TEACHER";
+  badge.textContent="v7.0 SCHOOL CLOUD";
   document.body.appendChild(badge);
 });
 
@@ -1353,72 +1353,49 @@ window.addEventListener("DOMContentLoaded",()=>{
 /* v5.1 acceptance: wrong kanji always gets visible red-circle feedback; built-in refPatterns provide stroke counts/shape for all supported kanji; correct kana such as る accepted independently. */
 
 
-// v6.1 DEV — teacher dashboard (local-device learning records only)
-function teacherRecordData(){
-  const weak=state.weak||{};
-  const weakDetail=state.weakDetail||{};
-  const rows=Object.keys(weak).filter(k=>Number(weak[k]||0)>0).map(k=>{
-    const d=weakDetail[k]||{},t=d.types||{};
-    const attempts=Number(d.attempts||0),correct=Number(d.correct||0),errors=Number(d.errors||0);
-    const rate=attempts?Math.round(correct/attempts*100):null;
-    const types=[
-      ["画の不足",t.missing||0],["余分な画",t.extra||0],["字形",t.shape||0],
-      ["送り仮名",t.kana||0],["認識",t.recognition||0]
-    ].sort((a,b)=>b[1]-a[1]);
-    return {kanji:k,weak:Number(weak[k]||0),attempts,correct,errors,rate,main:types[0][1]?types[0][0]:"未分類"};
-  }).sort((a,b)=>b.weak-a.weak||b.errors-a.errors);
-
-  const totalAttempts=rows.reduce((s,r)=>s+r.attempts,0);
-  const totalCorrect=rows.reduce((s,r)=>s+r.correct,0);
-  return {
-    points:Number(state.points||0),
-    sessions:Number(state.sessions||0),
-    discovered:state.discovered?.size||0,
-    totalAttempts,totalCorrect,
-    rate:totalAttempts?Math.round(totalCorrect/totalAttempts*100):null,
-    rows
-  };
+const SCHOOL_CLOUD={url:"https://arbcsdlypbtwiyrupaod.supabase.co",key:"sb_publishable_6HXWKALvbxqd5HnxWv4VhQ_C3IOu-_T"};
+function cloudHeaders(extra={}){return {apikey:SCHOOL_CLOUD.key,"Content-Type":"application/json",...extra}}
+async function cloudAnon(){
+  let token=localStorage.getItem("kq.cloudToken");
+  if(token)return token;
+  const r=await fetch(SCHOOL_CLOUD.url+"/auth/v1/signup",{method:"POST",headers:cloudHeaders(),body:JSON.stringify({})});
+  if(!r.ok)throw new Error("匿名接続に失敗");
+  const j=await r.json();token=j.access_token||j.session?.access_token;
+  if(!token)throw new Error("認証情報がありません");
+  localStorage.setItem("kq.cloudToken",token);return token;
 }
-function closeTeacherDashboard(){
-  document.querySelector("#teacherDashboard")?.remove();
+async function cloudFetch(path,options={}){
+  const token=await cloudAnon();
+  const r=await fetch(SCHOOL_CLOUD.url+"/rest/v1/"+path,{...options,headers:cloudHeaders({Authorization:"Bearer "+token,...(options.headers||{})})});
+  if(!r.ok)throw new Error(await r.text());return r;
 }
-function openTeacherDashboard(){
-  closeTeacherDashboard();
-  const d=teacherRecordData(),wrap=document.createElement("div");
-  wrap.id="teacherDashboard";wrap.className="teacherOverlay";
-  const weakRows=d.rows.slice(0,20).map(r=>`
-    <tr><td class="teacherKanji">${r.kanji}</td><td>${r.weak}</td><td>${r.errors}</td>
-    <td>${r.rate===null?"—":r.rate+"%"}</td><td>${r.main}</td></tr>`).join("");
-  wrap.innerHTML=`
-    <section class="teacherPanel" role="dialog" aria-modal="true" aria-label="先生用 学習状況">
-      <div class="teacherHead"><div><div class="teacherEyebrow">先生用</div><h2>学習状況</h2></div>
-      <button type="button" id="teacherCloseBtn">閉じる</button></div>
-      <div class="teacherNotice">この画面は、今開いている端末に保存された学習記録を表示します。</div>
-      <div class="teacherStats">
-        <div><b>${d.sessions}</b><span>学習回数</span></div>
-        <div><b>${d.points}</b><span>ポイント</span></div>
-        <div><b>${d.discovered}</b><span>発見した漢字</span></div>
-        <div><b>${d.rate===null?"—":d.rate+"%"}</b><span>苦手記録内の正答率</span></div>
-      </div>
-      <h3>苦手な漢字</h3>
-      ${weakRows?`<div class="teacherTableWrap"><table><thead><tr><th>漢字</th><th>苦手度</th><th>誤答</th><th>正答率</th><th>主なつまずき</th></tr></thead><tbody>${weakRows}</tbody></table></div>`:
-      `<div class="teacherEmpty">まだ苦手記録はありません。</div>`}
-      <div class="teacherFoot">※ クラス全員の自動集約は、クラウド連携を追加する次段階で対応します。</div>
-    </section>`;
-  document.body.appendChild(wrap);
-  $("#teacherCloseBtn").onclick=closeTeacherDashboard;
-  wrap.addEventListener("click",e=>{if(e.target===wrap)closeTeacherDashboard()});
+function schoolProfile(){
+  return {class_code:localStorage.getItem("kq.classCode")||"",student_no:localStorage.getItem("kq.studentNo")||""};
 }
-(function installTeacherButton(){
-  const timer=setInterval(()=>{
-    const home=$("#homeView");if(!home)return;
-    if(!$("#teacherBtn")){
-      const b=document.createElement("button");b.id="teacherBtn";b.type="button";
-      b.className="teacherOpenBtn";b.textContent="先生用";
-      b.onclick=openTeacherDashboard;
-      home.prepend(b);
-    }
-    clearInterval(timer);
-  },200);
-})();
+function saveSchoolProfile(c,n){localStorage.setItem("kq.classCode",c.trim());localStorage.setItem("kq.studentNo",n.trim())}
+async function syncStudentProfile(){
+  const p=schoolProfile();if(!p.class_code||!p.student_no)return;
+  await cloudFetch("student_profiles",{method:"POST",headers:{Prefer:"resolution=merge-duplicates"},body:JSON.stringify(p)});
+}
+async function sendLearningSummary(){
+  const p=schoolProfile();if(!p.class_code||!p.student_no)return;
+  try{
+    await syncStudentProfile();
+    await cloudFetch("learning_events",{method:"POST",body:JSON.stringify({
+      class_code:p.class_code,student_no:p.student_no,
+      sessions:Number(state.sessions||0),points:Number(state.points||0),
+      weak:state.weak||{},weak_detail:state.weakDetail||{}
+    })});
+  }catch(e){console.warn("クラウド保存失敗",e)}
+}
+function installSchoolSetup(){
+ const t=setInterval(()=>{const home=document.querySelector("#homeView");if(!home)return;
+ if(!document.querySelector("#schoolSetup")){
+  const p=schoolProfile(),d=document.createElement("div");d.id="schoolSetup";d.className="schoolSetup";
+  d.innerHTML=`<b>学校用</b><label>クラス<input id="classCode" maxlength="20" value="${p.class_code}" placeholder="例 3-1"></label><label>出席番号<input id="studentNo" inputmode="numeric" maxlength="4" value="${p.student_no}" placeholder="例 12"></label><button id="schoolSave" type="button">登録</button><span id="schoolStatus"></span>`;
+  home.prepend(d);
+  document.querySelector("#schoolSave").onclick=async()=>{saveSchoolProfile(document.querySelector("#classCode").value,document.querySelector("#studentNo").value);const s=document.querySelector("#schoolStatus");s.textContent="保存中…";try{await syncStudentProfile();s.textContent="登録済み"}catch(e){s.textContent="接続を確認"}};
+ }clearInterval(t)},200)
+}
+installSchoolSetup();
 
