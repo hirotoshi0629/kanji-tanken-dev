@@ -732,3 +732,5 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
   white-space:normal;
   font-weight:900 !important;
 }
+
+.dataCredit{position:fixed;left:12px;bottom:6px;font-size:10px;color:#8a938c;opacity:.8;z-index:5}
