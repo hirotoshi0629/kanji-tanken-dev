@@ -748,3 +748,15 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
   pointer-events:none!important;
   box-shadow:0 4px 16px rgba(140,0,0,.20)!important;
 }
+
+.adaptiveNote{
+  margin:14px auto 0;
+  max-width:760px;
+  padding:10px 14px;
+  border-radius:14px;
+  background:rgba(255,255,255,.82);
+  border:1px solid rgba(51,120,75,.18);
+  font-size:12px;
+  color:#41614b;
+  text-align:center;
+}

@@ -32,7 +32,7 @@ function openStudentSetup(){
 function renderStudentProfile(){const p=studentProfile(),el=$("#studentCodeStatus");if(!el)return;if(TEACHER_PRACTICE){el.textContent=`先生のおためしモード（学校：${currentSchoolCode()}）`;return}el.textContent=p?`児童コード：${p.code} ／ 学校：${p.schoolCode||currentSchoolCode()}`:currentSchoolCode()?`児童コード：未登録 ／ 学校：${currentSchoolCode()}`:"学校用URLから開いてください"}
 
 function safeJSON(key,fallback){try{const raw=localStorage.getItem(key);return raw==null?fallback:JSON.parse(raw)}catch(e){console.warn("保存データを安全に初期化しました:",key);return fallback}}
-const state={master:null,bank:null,grade:3,volume:"三上",questions:[],index:0,points:+storage.getItem("kq.points")||0,totalEarned:+storage.getItem("kq.totalEarned")||(+storage.getItem("kq.points")||0),experience:+storage.getItem("kq.exp")||0,discovered:new Set(safeJSON("kq.discovered",[])),sessions:+storage.getItem("kq.sessions")||0,boxes:[],activeBox:0,answerRevealed:false,sessionResults:[],questionRetries:0,petId:storage.getItem("kq.petId")||"fox",petFriendships:safeJSON("kq.petFriendships",{}),petCare:safeJSON("kq.petCare",{}),careTickets:Number(storage.getItem("kq.careTickets")||0),daily:safeJSON("kq.daily",{}),records:safeJSON("kq.records",{totalQuestions:0,totalCorrect:0,streak:0,lastStudy:""}),weak:safeJSON("kq.weak",{}),weakDetail:safeJSON("kq.weakDetail",{}),room:safeJSON("kq.room",{studyQuestions:0,missionsClaimed:{},owned:["bed_basic"],equipped:["bed_basic"],positions:{},album:[],readLetters:{},surprises:{}}),weakMode:false,checking:false,questionCompleted:false};
+const state={master:null,bank:null,grade:3,volume:"三上",questions:[],index:0,points:+storage.getItem("kq.points")||0,totalEarned:+storage.getItem("kq.totalEarned")||(+storage.getItem("kq.points")||0),experience:+storage.getItem("kq.exp")||0,discovered:new Set(safeJSON("kq.discovered",[])),sessions:+storage.getItem("kq.sessions")||0,boxes:[],activeBox:0,answerRevealed:false,sessionResults:[],questionRetries:0,petId:storage.getItem("kq.petId")||"fox",petFriendships:safeJSON("kq.petFriendships",{}),petCare:safeJSON("kq.petCare",{}),careTickets:Number(storage.getItem("kq.careTickets")||0),daily:safeJSON("kq.daily",{}),records:safeJSON("kq.records",{totalQuestions:0,totalCorrect:0,streak:0,lastStudy:""}),weak:safeJSON("kq.weak",{}),weakDetail:safeJSON("kq.weakDetail",{}),recentKanji:safeJSON("kq.recentKanji",[]),room:safeJSON("kq.room",{studyQuestions:0,missionsClaimed:{},owned:["bed_basic"],equipped:["bed_basic"],positions:{},album:[],readLetters:{},surprises:{}}),weakMode:false,checking:false,questionCompleted:false};
 const pets=[{id:'fox',name:'きつね',emoji:'🦊',unlock:0},{id:'cat',name:'ねこ',emoji:'🐱',unlock:20},{id:'rabbit',name:'うさぎ',emoji:'🐰',unlock:40},{id:'dog',name:'いぬ',emoji:'🐶',unlock:60},{id:'hamster',name:'ハムスター',emoji:'🐹',unlock:80},{id:'mouse',name:'ねずみ',emoji:'🐭',unlock:100},{id:'squirrel',name:'りす',emoji:'🐿️',unlock:125},{id:'hedgehog',name:'ハリネズミ',emoji:'🦔',unlock:150},{id:'otter',name:'カワウソ',emoji:'🦦',unlock:175},{id:'raccoon',name:'アライグマ',emoji:'🦝',unlock:200},{id:'panda',name:'パンダ',emoji:'🐼',unlock:230},{id:'koala',name:'コアラ',emoji:'🐨',unlock:260},{id:'bear',name:'くま',emoji:'🐻',unlock:290},{id:'polar',name:'しろくま',emoji:'🐻\u200d❄️',unlock:320},{id:'monkey',name:'さる',emoji:'🐵',unlock:350},{id:'gorilla',name:'ゴリラ',emoji:'🦍',unlock:380},{id:'sloth',name:'ナマケモノ',emoji:'🦥',unlock:410},{id:'deer',name:'しか',emoji:'🦌',unlock:440},{id:'boar',name:'いのしし',emoji:'🐗',unlock:470},{id:'pig',name:'ぶた',emoji:'🐷',unlock:500},{id:'cow',name:'うし',emoji:'🐮',unlock:540},{id:'horse',name:'うま',emoji:'🐴',unlock:580},{id:'goat',name:'やぎ',emoji:'🐐',unlock:620},{id:'sheep',name:'ひつじ',emoji:'🐑',unlock:660},{id:'alpaca',name:'アルパカ',emoji:'🦙',unlock:700},{id:'camel',name:'ラクダ',emoji:'🐫',unlock:740},{id:'elephant',name:'ぞう',emoji:'🐘',unlock:780},{id:'giraffe',name:'キリン',emoji:'🦒',unlock:820},{id:'zebra',name:'しまうま',emoji:'🦓',unlock:860},{id:'hippo',name:'カバ',emoji:'🦛',unlock:900},{id:'rhino',name:'サイ',emoji:'🦏',unlock:950},{id:'kangaroo',name:'カンガルー',emoji:'🦘',unlock:1000},{id:'lion',name:'ライオン',emoji:'🦁',unlock:1050},{id:'tiger',name:'トラ',emoji:'🐯',unlock:1100},{id:'leopard',name:'ヒョウ',emoji:'🐆',unlock:1150},{id:'wolf',name:'オオカミ',emoji:'🐺',unlock:1200},{id:'eagle',name:'ワシ',emoji:'🦅',unlock:1250},{id:'owl',name:'ふくろう',emoji:'🦉',unlock:1300},{id:'penguin',name:'ペンギン',emoji:'🐧',unlock:1350},{id:'flamingo',name:'フラミンゴ',emoji:'🦩',unlock:1400},{id:'duck',name:'あひる',emoji:'🦆',unlock:1450},{id:'chick',name:'ひよこ',emoji:'🐥',unlock:1500},{id:'parrot',name:'オウム',emoji:'🦜',unlock:1550},{id:'turtle',name:'かめ',emoji:'🐢',unlock:1600},{id:'frog',name:'かえる',emoji:'🐸',unlock:1650},{id:'crocodile',name:'ワニ',emoji:'🐊',unlock:1700},{id:'dolphin',name:'イルカ',emoji:'🐬',unlock:1750},{id:'whale',name:'くじら',emoji:'🐳',unlock:1800},{id:'seal',name:'アザラシ',emoji:'🦭',unlock:1850},{id:'octopus',name:'たこ',emoji:'🐙',unlock:1900},
 {id:'rooster',name:'にわとり',emoji:'🐔',unlock:1950},{id:'turkey',name:'しちめんちょう',emoji:'🦃',unlock:2000},
 {id:'peacock',name:'くじゃく',emoji:'🦚',unlock:2050},{id:'swan',name:'はくちょう',emoji:'🦢',unlock:2100},
@@ -97,6 +97,115 @@ function weakPriority(kanji){
   const severity=(t.missing||0)*3+(t.extra||0)*2.5+(t.shape||0)*2+(t.kana||0)*1.5+(t.recognition||0);
   const recent=d.lastError?Math.max(0,7-(Date.now()-d.lastError)/86400000):0;
   return base*5+severity+recent;
+}
+
+
+function daysSince(ts){
+  if(!ts)return 999;
+  return Math.max(0,(Date.now()-ts)/86400000);
+}
+function recentPenalty(kanji){
+  const hist=Array.isArray(state.recentKanji)?state.recentKanji:[];
+  const idx=hist.lastIndexOf(kanji);
+  if(idx<0)return 0;
+  const distance=hist.length-1-idx;
+  return Math.max(0,9-distance)*1.8;
+}
+function masteryScore(kanji){
+  const d=state.weakDetail[kanji]||{};
+  const a=Math.max(1,d.attempts||0);
+  return (d.correct||0)/a;
+}
+function questionAdaptiveScore(q){
+  const k=q.targetKanji;
+  const d=state.weakDetail[k]||{};
+  const weak=weakPriority(k);
+  const mastery=masteryScore(k);
+  const recency=recentPenalty(k);
+
+  // recently-correct kanji wait longer; recent mistakes return sooner
+  const sinceErr=daysSince(d.lastError),sinceOk=daysSince(d.lastCorrect);
+  const retryBoost=sinceErr<1?7:sinceErr<3?4:sinceErr<7?2:0;
+  const spacingBoost=sinceOk>7?3:sinceOk>3?1.5:0;
+
+  // keep difficulty moderate; reward mid-range difficulty, avoid long runs of hard items
+  const diff=Number(q.difficulty||2);
+  const difficultyFit = diff===2?2.2:diff===1?1.3:0.7;
+
+  return weak*1.9 + (1-mastery)*7 + retryBoost + spacingBoost + difficultyFit - recency;
+}
+function samePatternKey(q){
+  return `${q.targetKanji}|${q.readingKind||""}|${q.mode||""}`;
+}
+function optimizeNext10(pool){
+  const usable=pool.filter(q=>q&&q.reviewStatus==="reviewed"&&questionIntegrityValid(q));
+  const ranked=[...usable].sort((a,b)=>questionAdaptiveScore(b)-questionAdaptiveScore(a));
+  const selected=[],kanjiCount={},patternCount={};
+
+  for(const q of ranked){
+    if(selected.length>=10)break;
+    const k=q.targetKanji,key=samePatternKey(q);
+    if((kanjiCount[k]||0)>=2)continue;
+    if((patternCount[key]||0)>=1)continue;
+
+    // don't stack high difficulty too many times
+    const prevHard=selected.slice(-2).filter(x=>Number(x.difficulty||2)>=3).length;
+    if(Number(q.difficulty||2)>=3 && prevHard>=2)continue;
+
+    selected.push(q);
+    kanjiCount[k]=(kanjiCount[k]||0)+1;
+    patternCount[key]=(patternCount[key]||0)+1;
+  }
+
+  // Fill if filters were too strict.
+  if(selected.length<10){
+    for(const q of ranked){
+      if(selected.length>=10)break;
+      if(selected.includes(q))continue;
+      const k=q.targetKanji;
+      if((kanjiCount[k]||0)>=2)continue;
+      selected.push(q);
+      kanjiCount[k]=(kanjiCount[k]||0)+1;
+    }
+  }
+
+  // Final order: alternate harder/easier where possible, and avoid same kanji consecutively.
+  const remaining=[...selected],ordered=[];
+  while(remaining.length){
+    let bestIdx=0,best=-1e9;
+    for(let i=0;i<remaining.length;i++){
+      const q=remaining[i];
+      let s=questionAdaptiveScore(q);
+      const prev=ordered[ordered.length-1];
+      if(prev?.targetKanji===q.targetKanji)s-=50;
+      if(prev && Number(prev.difficulty||2)>=3 && Number(q.difficulty||2)>=3)s-=8;
+      if(ordered.length>=2 && ordered.slice(-2).some(x=>x.targetKanji===q.targetKanji))s-=10;
+      if(s>best){best=s;bestIdx=i;}
+    }
+    ordered.push(remaining.splice(bestIdx,1)[0]);
+  }
+  return ordered.slice(0,10);
+}
+function rememberQuestionExposure(q){
+  if(!q?.targetKanji)return;
+  if(!Array.isArray(state.recentKanji))state.recentKanji=[];
+  state.recentKanji.push(q.targetKanji);
+  if(state.recentKanji.length>40)state.recentKanji=state.recentKanji.slice(-40);
+}
+function startAdaptive10(){
+  const pool=state.bank.questions.filter(q=>q.reviewStatus==="reviewed"&&questionIntegrityValid(q));
+  const next=optimizeNext10(pool);
+  if(!next.length)return false;
+  state.weakMode=false;
+  state.questions=next;
+  state.index=0;
+  state.sessionResults=[];
+  state.questionRetries=0;
+  $("#homeView").classList.add("hidden");
+  $("#resultView").classList.add("hidden");
+  $("#practiceView").classList.remove("hidden");
+  renderQuestion();
+  return true;
 }
 
 function startWeakSet(){
@@ -226,6 +335,7 @@ function renderSentence(q,answer){
   return `${before}<span class="target">${inside}${extra}</span>${after.slice(extra.length)}`;
 }
 function renderQuestion(){
+  const __qExposure=state.questions?.[state.index]; if(__qExposure) rememberQuestionExposure(__qExposure);
   hideFeedback();
   state.checking=false;state.questionCompleted=false;
   state.answerRevealed=false;
@@ -360,7 +470,7 @@ function markBoxResults(results){
 function clearAll(){for(const b of state.boxes){b.strokes=[];b.current=null;redrawBox(b);resetBoxRepairUI(b)}updateCheckButton()}
 $("#clearBtn").onclick=clearAll;
 $("#undoBtn").onclick=()=>{const b=state.boxes[state.activeBox]||state.boxes.findLast?.(x=>x.strokes.length)||state.boxes[0];if(b){b.strokes.pop();redrawBox(b)}updateCheckButton()};
-function persist(){storage.setItem("kq.points",state.points);storage.setItem("kq.totalEarned",state.totalEarned);storage.setItem("kq.exp",state.experience);storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));storage.setItem("kq.sessions",state.sessions);storage.setItem("kq.petId",state.petId);storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));storage.setItem("kq.petCare",JSON.stringify(state.petCare));storage.setItem("kq.careTickets",state.careTickets);storage.setItem("kq.daily",JSON.stringify(state.daily));storage.setItem("kq.records",JSON.stringify(state.records));storage.setItem("kq.weak",JSON.stringify(state.weak));storage.setItem("kq.weakDetail",JSON.stringify(state.weakDetail));storage.setItem("kq.room",JSON.stringify(state.room))}
+function persist(){storage.setItem("kq.points",state.points);storage.setItem("kq.totalEarned",state.totalEarned);storage.setItem("kq.exp",state.experience);storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));storage.setItem("kq.sessions",state.sessions);storage.setItem("kq.petId",state.petId);storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));storage.setItem("kq.petCare",JSON.stringify(state.petCare));storage.setItem("kq.careTickets",state.careTickets);storage.setItem("kq.daily",JSON.stringify(state.daily));storage.setItem("kq.records",JSON.stringify(state.records));storage.setItem("kq.weak",JSON.stringify(state.weak));storage.setItem("kq.weakDetail",JSON.stringify(state.weakDetail));storage.setItem("kq.recentKanji",JSON.stringify(state.recentKanji));storage.setItem("kq.room",JSON.stringify(state.room))}
 
 const careActions=[
 {id:"feed",icon:"🍎",label:"ごはん",cost:5,gain:5,msg:"おいしそうに食べた！"},
@@ -1376,7 +1486,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v5.2 SMART WEAKNESS";
+  badge.textContent="v5.3 ADAPTIVE 10Q";
   document.body.appendChild(badge);
 });
 
@@ -1391,3 +1501,20 @@ window.addEventListener("DOMContentLoaded",()=>{
 /* v5.1 acceptance: wrong kanji always gets visible red-circle feedback; built-in refPatterns provide stroke counts/shape for all supported kanji; correct kana such as る accepted independently. */
 
 /* v5.2: preserves v5.1 handwriting judgement and adds error-type weakness history + adaptive weak review ordering. */
+
+// v5.3 home note helper
+(function(){
+  const t=setInterval(()=>{
+    const home=document.querySelector("#homeView");
+    if(!home)return;
+    if(!home.querySelector(".adaptiveNote")){
+      const el=document.createElement("div");
+      el.className="adaptiveNote";
+      el.textContent="次の10問は、苦手・最近の正誤・難しさ・出題間隔から自動調整します。";
+      home.appendChild(el);
+    }
+    clearInterval(t);
+  },300);
+})();
+
+/* v5.3: adaptive 10-question selection using weakness, recent mistakes/corrections, spacing, difficulty, and anti-repetition rules. */
