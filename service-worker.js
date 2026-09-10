@@ -1,4 +1,4 @@
-const CACHE="kanjiquest-v50-all-kanji-smart-feedback";
+const CACHE="kanjiquest-v51-refpattern-allkanji";
 const ASSETS=["./","./index.html","./styles.css?v=4.6","./app.js?v=4.6","./manifest.webmanifest","./setup-check.html","./data/kanji_master.json","./data/reviewed_problem_bank.json"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener("activate",e=>e.waitUntil((async()=>{

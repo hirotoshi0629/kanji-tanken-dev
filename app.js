@@ -274,19 +274,16 @@ function strokeAngleInfo(st){
 function suspectGuidesForBox(box,result){
   if(!box||box.type!=="kanji")return[];
 
-  // 正字参照から得た「不足画」「形が違う画」を最優先。全漢字で共通。
-  if(Array.isArray(result?.feedbackGuides) && result.feedbackGuides.length){
-    const r=box.canvas.getBoundingClientRect();
-    return result.feedbackGuides.map(g=>({
-      x:g.normalized ? g.x*r.width : g.x,
-      y:g.normalized ? g.y*r.height : g.y,
-      msg:g.msg,
-      strokeNo:g.strokeNo
-    }));
-  }
+  let guides=Array.isArray(result?.feedbackGuides)?result.feedbackGuides:[];
+  if(!guides.length)guides=fallbackGuidesFromUserInk(box.strokes);
 
-  // 根拠がない場所を無理に指摘しない。
-  return [];
+  const r=box.canvas.getBoundingClientRect();
+  return guides.map(g=>({
+    x:g.normalized ? g.x*r.width : g.x,
+    y:g.normalized ? g.y*r.height : g.y,
+    msg:g.msg||"赤い○の線を、お手本とくらべて直そう。",
+    strokeNo:g.strokeNo
+  }));
 }
 function showMistakeGuides(box,result){
   clearMistakeGuides(box);
@@ -313,7 +310,7 @@ function markBoxResults(results){
       box.cell?.classList.add("boxWrong");box.writeArea?.classList.add("writeWrong");
       const circled=showMistakeGuides(box,r);
       if(box.status){
-        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":(circled?"赤い○と説明のところを直そう":"赤く示した線を、お手本とくらべて直そう");
+        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":"赤い○と説明のところを直そう";
         box.status.className="boxStatus boxStatusWrong";
       }
       box.clearOne?.classList.remove("hidden");
@@ -918,193 +915,222 @@ function recognizeWithNormalization(expected,strokes,size,boxSize,preserveAspect
 
 
 
-// v5.0 — 全漢字対応の字形フィードバック基盤
-// KanjiVG の各漢字SVGを必要時に取得し、正しい画数・各画の位置・長さ・向きを参照する。
-// 個別漢字の手書きルールをハードコードせず、学習対象の漢字すべてに同じ仕組みを適用する。
-const KANJIVG_CACHE = new Map();
 
-function kanjiVGUrl(ch){
-  const hex = ch.codePointAt(0).toString(16).toLowerCase().padStart(5,"0");
-  return `https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg@master/kanji/${hex}.svg`;
-}
+// v5.1 — 全漢字共通・オフライン字形参照エンジン
+// すでに読み込まれている KanjiCanvas.refPatterns を直接利用する。
+// refPatterns の各要素は [文字, 正しい画数, 正字の参照ストローク]。
+// 外部SVG取得に依存しないため、通信失敗で「赤い○が出ない」問題を防ぐ。
 
-async function loadKanjiVG(ch){
-  if(KANJIVG_CACHE.has(ch)) return KANJIVG_CACHE.get(ch);
-  const promise = (async()=>{
-    try{
-      const res = await fetch(kanjiVGUrl(ch), {cache:"force-cache"});
-      if(!res.ok) throw new Error(`KanjiVG ${res.status}`);
-      const text = await res.text();
-      const doc = new DOMParser().parseFromString(text,"image/svg+xml");
-      const paths = [...doc.querySelectorAll('g[id*="StrokePaths"] path, path[id*="-s"]')];
-      if(!paths.length) throw new Error("No stroke paths");
-      const strokes = [];
-      for(const src of paths){
-        const d = src.getAttribute("d");
-        if(!d) continue;
-        const svg = document.createElementNS("http://www.w3.org/2000/svg","svg");
-        svg.setAttribute("width","109"); svg.setAttribute("height","109");
-        svg.style.position="fixed"; svg.style.left="-9999px"; svg.style.top="-9999px";
-        const p = document.createElementNS("http://www.w3.org/2000/svg","path");
-        p.setAttribute("d",d); svg.appendChild(p); document.body.appendChild(svg);
-        let len=0, pts=[];
-        try{
-          len = p.getTotalLength();
-          const n = Math.max(12, Math.min(42, Math.ceil(len/3)));
-          for(let i=0;i<=n;i++){
-            const q=p.getPointAtLength(len*i/n);
-            pts.push({x:q.x,y:q.y});
-          }
-        }catch(e){}
-        svg.remove();
-        if(pts.length>1) strokes.push(pts);
-      }
-      if(!strokes.length) throw new Error("No sampled strokes");
-      return {ok:true, strokeCount:strokes.length, strokes};
-    }catch(e){
-      console.warn("KanjiVG load failed", ch, e);
-      return {ok:false, strokeCount:null, strokes:[]};
-    }
-  })();
-  KANJIVG_CACHE.set(ch,promise);
-  return promise;
+function getRefPattern(ch){
+  if(!window.KanjiCanvas || !Array.isArray(KanjiCanvas.refPatterns)) return null;
+  return KanjiCanvas.refPatterns.find(p=>Array.isArray(p) && p[0]===ch) || null;
 }
 
 function normalizeStrokeSet(strokes){
   const clean=(strokes||[]).filter(st=>st&&st.length>1);
   const pts=clean.flat();
   if(!pts.length)return {strokes:[],box:null};
-  const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+  const xs=pts.map(p=>Number(p.x ?? p[0])), ys=pts.map(p=>Number(p.y ?? p[1]));
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
   const w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY);
-  return {
-    strokes:clean.map(st=>st.map(p=>({x:(p.x-minX)/w,y:(p.y-minY)/h}))),
-    box:{minX,minY,w,h}
-  };
+  const norm=clean.map(st=>st.map(p=>{
+    const x=Number(p.x ?? p[0]),y=Number(p.y ?? p[1]);
+    return {x:(x-minX)/w,y:(y-minY)/h};
+  }));
+  return {strokes:norm,box:{minX,minY,w,h}};
 }
-function resampleStroke(st,n=18){
+
+function resampleStroke(st,n=20){
   if(!st||st.length<2)return[];
-  const seg=[],cum=[0]; let total=0;
-  for(let i=1;i<st.length;i++){
-    const d=Math.hypot(st[i].x-st[i-1].x,st[i].y-st[i-1].y);
-    seg.push(d); total+=d; cum.push(total);
+  const pts=st.map(p=>({x:Number(p.x ?? p[0]),y:Number(p.y ?? p[1])}));
+  const cum=[0]; let total=0;
+  for(let i=1;i<pts.length;i++){
+    total+=Math.hypot(pts[i].x-pts[i-1].x,pts[i].y-pts[i-1].y);
+    cum.push(total);
   }
-  if(total<=0)return Array.from({length:n},()=>({...st[0]}));
+  if(total<=0)return Array.from({length:n},()=>({...pts[0]}));
   const out=[];
   for(let k=0;k<n;k++){
     const t=total*(k/(n-1));
     let i=1; while(i<cum.length&&cum[i]<t)i++;
     i=Math.min(i,cum.length-1);
-    const a=st[i-1],b=st[i],d=Math.max(1e-6,cum[i]-cum[i-1]);
-    const u=(t-cum[i-1])/d;
+    const a=pts[i-1],b=pts[i],den=Math.max(1e-8,cum[i]-cum[i-1]);
+    const u=(t-cum[i-1])/den;
     out.push({x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u});
   }
   return out;
 }
+
 function strokeDescriptor(st){
-  const rs=resampleStroke(st,18);
+  const rs=resampleStroke(st,20);
   if(!rs.length)return null;
   const xs=rs.map(p=>p.x),ys=rs.map(p=>p.y);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  let len=0;for(let i=1;i<rs.length;i++)len+=Math.hypot(rs[i].x-rs[i-1].x,rs[i].y-rs[i-1].y);
   const a=rs[0],b=rs[rs.length-1];
-  let len=0; for(let i=1;i<rs.length;i++)len+=Math.hypot(rs[i].x-rs[i-1].x,rs[i].y-rs[i-1].y);
-  return {
-    rs, cx:(minX+maxX)/2, cy:(minY+maxY)/2,
-    w:maxX-minX,h:maxY-minY,len,
+  return{
+    rs,cx:(minX+maxX)/2,cy:(minY+maxY)/2,w:maxX-minX,h:maxY-minY,len,
     dx:b.x-a.x,dy:b.y-a.y
   };
 }
+
 function strokeDistance(a,b){
   if(!a||!b)return 999;
   const direct=a.rs.reduce((s,p,i)=>s+Math.hypot(p.x-b.rs[i].x,p.y-b.rs[i].y),0)/a.rs.length;
-  const rev=a.rs.reduce((s,p,i)=>s+Math.hypot(p.x-b.rs[b.rs.length-1-i].x,p.y-b.rs[b.rs.length-1-i].y),0)/a.rs.length;
-  const shape=Math.min(direct,rev);
+  const reverse=a.rs.reduce((s,p,i)=>s+Math.hypot(p.x-b.rs[b.rs.length-1-i].x,p.y-b.rs[b.rs.length-1-i].y),0)/a.rs.length;
+  const shape=Math.min(direct,reverse);
   const center=Math.hypot(a.cx-b.cx,a.cy-b.cy);
   const len=Math.abs(a.len-b.len);
-  return shape*.58 + center*.28 + len*.14;
+  return shape*.55+center*.30+len*.15;
 }
-function bestStrokeAssignment(userStrokes, refStrokes){
-  const u=userStrokes.map(strokeDescriptor), r=refStrokes.map(strokeDescriptor);
+
+function bestStrokeAssignment(userStrokes,refStrokes){
+  const u=userStrokes.map(strokeDescriptor),r=refStrokes.map(strokeDescriptor);
   const pairs=[];
   for(let i=0;i<u.length;i++)for(let j=0;j<r.length;j++)pairs.push({i,j,d:strokeDistance(u[i],r[j])});
   pairs.sort((a,b)=>a.d-b.d);
   const usedU=new Set(),usedR=new Set(),matches=[];
   for(const p of pairs){
     if(usedU.has(p.i)||usedR.has(p.j))continue;
-    usedU.add(p.i); usedR.add(p.j); matches.push(p);
+    usedU.add(p.i);usedR.add(p.j);matches.push(p);
   }
-  return {matches,unmatchedUser:u.map((_,i)=>i).filter(i=>!usedU.has(i)),unmatchedRef:r.map((_,i)=>i).filter(i=>!usedR.has(i)),u,r};
-}
-function refStrokeGuide(refStroke, strokeNo){
-  const d=strokeDescriptor(refStroke);
-  return {
-    x:d?.cx ?? .5, y:d?.cy ?? .5, normalized:true, strokeNo,
-    msg:`${strokeNo}画目がありません。この赤い○の位置に、お手本どおりの線を書こう。`
+  return{
+    matches,u,r,
+    unmatchedUser:u.map((_,i)=>i).filter(i=>!usedU.has(i)),
+    unmatchedRef:r.map((_,i)=>i).filter(i=>!usedR.has(i))
   };
 }
-async function inspectKanjiAgainstReference(expected,strokes){
-  const vg=await loadKanjiVG(expected);
-  if(!vg.ok)return {available:false};
-  const userNorm=normalizeStrokeSet(strokes).strokes;
-  const refNorm=normalizeStrokeSet(vg.strokes).strokes;
-  const actual=userNorm.length, expectedCount=refNorm.length;
 
-  if(actual<expectedCount){
-    const assign=bestStrokeAssignment(userNorm,refNorm);
-    const missing=assign.unmatchedRef;
-    return {
-      available:true, pass:false, reason:"missing-strokes",
-      expectedCount,actualCount:actual,missingCount:expectedCount-actual,
-      extraCount:0,
-      feedbackGuides:missing.slice(0,3).map(j=>refStrokeGuide(refNorm[j],j+1))
-    };
+function referenceGuide(refStroke,strokeNo,kind="missing"){
+  const d=strokeDescriptor(refStroke);
+  const pos={x:d?.cx??.5,y:d?.cy??.5,normalized:true,strokeNo};
+  if(kind==="missing"){
+    return{...pos,msg:`${strokeNo}画目がありません。赤い○の位置に、お手本どおりの線を書こう。`};
   }
-  if(actual>expectedCount){
-    return {
-      available:true,pass:false,reason:"extra-strokes",
-      expectedCount,actualCount:actual,missingCount:0,extraCount:actual-expectedCount,
-      feedbackGuides:[{x:.50,y:.50,normalized:true,msg:`線が${actual-expectedCount}画多いです。お手本とくらべて、余分な線を消そう。`}]
-    };
-  }
-
-  const assign=bestStrokeAssignment(userNorm,refNorm);
-  const bad=assign.matches.filter(m=>m.d>.22).sort((a,b)=>b.d-a.d);
-  if(bad.length){
-    const guides=bad.slice(0,2).map(m=>{
-      const rd=assign.r[m.j];
-      return {
-        x:rd.cx,y:rd.cy,normalized:true,strokeNo:m.j+1,
-        msg:`${m.j+1}画目の位置・向き・長さがお手本と大きくちがいます。赤い○の線を見直そう。`
-      };
-    });
-    return {
-      available:true,pass:false,reason:"shape-mismatch",
-      expectedCount,actualCount:actual,missingCount:0,extraCount:0,
-      feedbackGuides:guides,
-      worstDistance:bad[0].d
-    };
-  }
-  return {available:true,pass:true,reason:"reference-ok",expectedCount,actualCount:actual,missingCount:0,extraCount:0,feedbackGuides:[]};
+  return{...pos,msg:`${strokeNo}画目の位置・向き・長さがお手本と大きくちがいます。赤い○の線を見直そう。`};
 }
 
-async function kanaRecognizeExact(expected, strokes){
-  if(!strokes?.flat().length)return {ok:false,excellent:false,unknown:true,got:null,mode:"kana-empty"};
+function inspectAgainstBuiltInReference(expected,strokes){
+  const ref=getRefPattern(expected);
+  if(!ref || !Array.isArray(ref[2]) || !ref[2].length){
+    return{available:false,feedbackGuides:[]};
+  }
+
+  const expectedCount=Number(ref[1])||ref[2].length;
+  const userClean=(strokes||[]).filter(s=>s&&s.length>1);
+  const actualCount=userClean.length;
+  const userNorm=normalizeStrokeSet(userClean).strokes;
+  const refNorm=normalizeStrokeSet(ref[2]).strokes;
+
+  const assignment=bestStrokeAssignment(userNorm,refNorm);
+
+  if(actualCount<expectedCount){
+    let missing=assignment.unmatchedRef.slice();
+    // ref[1] と参照ストローク数がずれるデータでも、足りない個数は保証する。
+    const need=expectedCount-actualCount;
+    if(missing.length<need){
+      const used=new Set(missing);
+      for(let j=refNorm.length-1;j>=0&&missing.length<need;j--)if(!used.has(j))missing.push(j);
+    }
+    const guides=missing.slice(0,3).map(j=>referenceGuide(refNorm[j],j+1,"missing"));
+    return{
+      available:true,pass:false,reason:"missing-strokes",
+      expectedCount,actualCount,missingCount:need,extraCount:0,
+      feedbackGuides:guides
+    };
+  }
+
+  if(actualCount>expectedCount){
+    const extra=actualCount-expectedCount;
+    const guides=assignment.unmatchedUser.slice(0,2).map(i=>{
+      const d=assignment.u[i];
+      return{
+        x:d?.cx??.5,y:d?.cy??.5,normalized:true,
+        msg:`この線は余分な可能性があります。お手本の${expectedCount}画とくらべよう。`
+      };
+    });
+    if(!guides.length)guides.push({x:.5,y:.5,normalized:true,msg:`線が${extra}画多いです。余分な線を見直そう。`});
+    return{
+      available:true,pass:false,reason:"extra-strokes",
+      expectedCount,actualCount,missingCount:0,extraCount:extra,
+      feedbackGuides:guides
+    };
+  }
+
+  // 画数が同じでも、参照字形から大きく外れる画を具体的に示す。
+  const bad=assignment.matches.filter(m=>m.d>.23).sort((a,b)=>b.d-a.d);
+  if(bad.length){
+    const guides=bad.slice(0,2).map(m=>referenceGuide(refNorm[m.j],m.j+1,"shape"));
+    return{
+      available:true,pass:false,reason:"shape-mismatch",
+      expectedCount,actualCount,missingCount:0,extraCount:0,
+      feedbackGuides:guides,worstDistance:bad[0].d
+    };
+  }
+
+  return{
+    available:true,pass:true,reason:"reference-ok",
+    expectedCount,actualCount,missingCount:0,extraCount:0,feedbackGuides:[]
+  };
+}
+
+function fallbackGuidesFromUserInk(strokes){
+  const clean=(strokes||[]).filter(s=>s&&s.length>1);
+  if(!clean.length)return[];
+  const norm=normalizeStrokeSet(clean).strokes;
+  const ds=norm.map((st,i)=>({...strokeDescriptor(st),i})).filter(Boolean);
+  if(!ds.length)return[];
+  const suspicious=ds.sort((a,b)=>{
+    const sa=Math.abs(a.cx-.5)+Math.abs(a.cy-.5)+Math.max(0,.10-a.len)*2;
+    const sb=Math.abs(b.cx-.5)+Math.abs(b.cy-.5)+Math.max(0,.10-b.len)*2;
+    return sb-sa;
+  })[0];
+  return[{
+    x:suspicious.cx,y:suspicious.cy,normalized:true,
+    msg:"この線の位置・向き・長さを、お手本とくらべて見直そう。"
+  }];
+}
+
+function kanaReferenceAudit(expected,strokes){
+  const ref=getRefPattern(expected);
+  const clean=(strokes||[]).filter(s=>s&&s.length>1);
+  if(!clean.length)return{available:!!ref,pass:false,score:999};
+
+  // ひらがなも参照パターンがあれば、文字認識と字形距離の両方で確認する。
+  if(ref&&Array.isArray(ref[2])&&ref[2].length){
+    const u=normalizeStrokeSet(clean).strokes;
+    const r=normalizeStrokeSet(ref[2]).strokes;
+    const a=bestStrokeAssignment(u,r);
+    const mean=a.matches.length?a.matches.reduce((s,m)=>s+m.d,0)/a.matches.length:999;
+    const countDiff=Math.abs(clean.length-(Number(ref[1])||r.length));
+    return{available:true,pass:countDiff<=1&&mean<.34,score:mean,countDiff};
+  }
+  return{available:false,pass:false,score:999};
+}
+
+async function kanaRecognizeExact(expected,strokes){
+  if(!strokes?.flat().length)return{ok:false,excellent:false,unknown:true,got:null,mode:"kana-empty"};
   const passes=[
-    recognizeWithNormalization(expected,strokes,320,220,false),
-    recognizeWithNormalization(expected,strokes,320,245,false),
-    recognizeWithNormalization(expected,strokes,320,270,false),
-    recognizeWithNormalization(expected,strokes,320,295,false),
+    recognizeWithNormalization(expected,strokes,320,205,false),
+    recognizeWithNormalization(expected,strokes,320,230,false),
+    recognizeWithNormalization(expected,strokes,320,250,false),
+    recognizeWithNormalization(expected,strokes,320,275,false),
+    recognizeWithNormalization(expected,strokes,320,300,false),
     recognizeWithNormalization(expected,strokes,320,250,true)
   ];
   const tops=passes.map(p=>p[0]||null);
   const topExact=tops.filter(x=>x===expected).length;
-  const contains=passes.filter(p=>p.slice(0,4).includes(expected)).length;
-  // 送り仮名は「読める自然な手書き」を重視。漢字ほど厳しくしない。
-  const ok = topExact>=2 || contains>=4;
-  return {
+  const top5=passes.filter(p=>p.slice(0,5).includes(expected)).length;
+  const top10=passes.filter(p=>p.slice(0,10).includes(expected)).length;
+  const refAudit=kanaReferenceAudit(expected,strokes);
+
+  // 送り仮名は漢字より自然な手書きの幅を許容する。
+  // 参照字形に近ければ、認識器の第1候補が毎回一致しなくても正解にする。
+  const ok = topExact>=1 || top5>=2 || top10>=4 || refAudit.pass;
+  return{
     ok,excellent:ok,unknown:!ok,got:ok?expected:(tops.find(Boolean)||null),
-    tops,topExactCount:topExact,containsCount:contains,
-    mode:ok?"kana-recognized":"kana-review"
+    tops,topExactCount:topExact,top5Count:top5,top10Count:top10,refAudit,
+    mode:ok?"kana-flexible-correct":"kana-review"
   };
 }
 
@@ -1134,8 +1160,9 @@ async function recognizeSingle(expected,strokes,canvasHint){
   if(!window.KanjiCanvas||!Array.isArray(KanjiCanvas.refPatterns)||!KanjiCanvas.refPatterns.length)return{ok:false,unknown:true,got:null};
   if(!strokes.flat().length)return{ok:false,unknown:true,got:null};
 
-  // 先に正字の画数・各画の位置を確認。ここで不足画が見つかったら必ずそれを指摘する。
-  const refAudit=await inspectKanjiAgainstReference(expected,strokes);
+  const refAudit=inspectAgainstBuiltInReference(expected,strokes);
+
+  // 不足画・余分な画・大きな字形崩れは、認識結果より優先して不正解＋赤丸指摘。
   if(refAudit.available && !refAudit.pass){
     return{
       ok:false,excellent:false,unknown:false,got:null,
@@ -1146,32 +1173,29 @@ async function recognizeSingle(expected,strokes,canvasHint){
     };
   }
 
-  // そのうえで文字認識も厳格に確認する。
   const passes=[
-    recognizeWithNormalization(expected,strokes,320,230,false),
+    recognizeWithNormalization(expected,strokes,320,225,false),
     recognizeWithNormalization(expected,strokes,320,250,false),
     recognizeWithNormalization(expected,strokes,320,275,false),
-    recognizeWithNormalization(expected,strokes,320,295,false),
+    recognizeWithNormalization(expected,strokes,320,300,false),
     recognizeWithNormalization(expected,strokes,320,250,true)
   ];
   const tops=passes.map(p=>p[0]||null);
   const topExactCount=tops.filter(ch=>ch===expected).length;
-  const shapeAudit=schoolStrictShapeAudit(strokes);
   const candidates=[];
   for(const pass of passes)for(const ch of pass)if(!candidates.includes(ch))candidates.push(ch);
-
+  const shapeAudit=schoolStrictShapeAudit(strokes);
   const got=tops.find(Boolean)||candidates[0]||null;
-  const refOk = !refAudit.available || refAudit.pass;
-  const ok=topExactCount>=4 && shapeAudit.pass && refOk;
-  const excellent=ok;
+
+  const ok=topExactCount>=4 && shapeAudit.pass && (!refAudit.available||refAudit.pass);
   const unknown=!ok && candidates.includes(expected);
 
   return{
-    ok,excellent,unknown,got,
-    rank:candidates.indexOf(expected),
-    fallback:false,candidates,tops,topExactCount,shapeAudit,
-    referenceAudit:refAudit,
-    mode:ok?"v50-all-kanji-strict":(unknown?"uncertain":"wrong")
+    ok,excellent:ok,unknown,got,
+    rank:candidates.indexOf(expected),fallback:false,candidates,tops,topExactCount,
+    shapeAudit,referenceAudit:refAudit,
+    feedbackGuides:(!ok ? fallbackGuidesFromUserInk(strokes) : []),
+    mode:ok?"v51-ref-strict":(unknown?"uncertain":"wrong")
   };
 }
 function splitStrokesForExpected(strokes,n){
@@ -1312,7 +1336,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v5.0 ALL-KANJI SMART FEEDBACK";
+  badge.textContent="v5.1 REF-PATTERN ALL-KANJI";
   document.body.appendChild(badge);
 });
 
@@ -1323,3 +1347,5 @@ window.addEventListener("DOMContentLoaded",()=>{
 /* v4.9 acceptance: 負 with only 7 strokes => specifically flag missing 8th/9th strokes; handwritten う geometry => correct. */
 
 /* v5.0: KanjiVG-backed all-kanji stroke/shape feedback + general hiragana recognition for okurigana. */
+
+/* v5.1 acceptance: wrong kanji always gets visible red-circle feedback; built-in refPatterns provide stroke counts/shape for all supported kanji; correct kana such as る accepted independently. */
