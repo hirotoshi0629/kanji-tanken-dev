@@ -899,17 +899,41 @@ function recognizeWithNormalization(expected,strokes,size,boxSize,preserveAspect
 function recognizeSingle(expected,strokes,canvasHint){
   if(!window.KanjiCanvas||!Array.isArray(KanjiCanvas.refPatterns)||!KanjiCanvas.refPatterns.length)return{ok:false,unknown:true,got:null};
   if(!strokes.flat().length)return{ok:false,unknown:true,got:null};
-  // 1回だけの正規化に依存せず、iPadの縦長/横長・小さめ筆跡を吸収する3パス認識。
+
+  // v4.4 STRICT:
+  // 「候補のどこかに正解字が入った」だけでは正解にしない。
+  // 3通りの正規化のうち、正解字が1位になった回数を数え、
+  // 2回以上一致したときだけ自動正解にする。
   const passes=[
     recognizeWithNormalization(expected,strokes,320,250,false),
     recognizeWithNormalization(expected,strokes,320,275,false),
     recognizeWithNormalization(expected,strokes,320,250,true)
   ];
+  const tops=passes.map(p=>p[0]||null);
+  const topExactCount=tops.filter(ch=>ch===expected).length;
+
   const candidates=[];
   for(const pass of passes)for(const ch of pass)if(!candidates.includes(ch))candidates.push(ch);
-  const rank=candidates.indexOf(expected);
-  const fake={expected,strokes};const fallback=rank<0&&expectedAwareFallback(fake,candidates);
-  return{ok:rank>=0||fallback,excellent:rank===0,unknown:candidates.length===0&&!fallback,got:candidates[0]||null,rank,fallback,candidates};
+
+  const got=tops.find(Boolean)||candidates[0]||null;
+  const ok=topExactCount===3;
+  const excellent=topExactCount===3;
+
+  // 認識結果が割れた場合は、誤って「せいかい！」にせず確認扱いにする。
+  const unknown=!ok && (candidates.length===0 || new Set(tops.filter(Boolean)).size>1 || candidates.includes(expected));
+
+  return{
+    ok,
+    excellent,
+    unknown,
+    got,
+    rank:candidates.indexOf(expected),
+    fallback:false,
+    candidates,
+    tops,
+    topExactCount,
+    mode:ok?"hard-strict-exact":(unknown?"uncertain":"wrong")
+  };
 }
 function splitStrokesForExpected(strokes,n){
   if(n<=1)return[strokes];
@@ -951,7 +975,9 @@ function recognizeBox(box){
     ? st.clusters>=1
     : st.clusters>=Math.max(1,chars.length-1)&&st.clusters<=chars.length+1;
   const plausible=enoughInk&&wideEnough&&groupCountOK;
-  return{ok:plausible,excellent:false,unknown:!plausible,got:parts.map(r=>r.got||"?").join(""),parts,bad,mode:plausible?"kana-structural":"unknown"};
+  // 形がそれらしくても、文字認識が一致していないものは自動正解にしない。
+  // plausible は「書いてあることは分かるが判定に自信がない」という確認扱い。
+  return{ok:false,excellent:false,unknown:plausible||parts.some(r=>r.unknown),got:parts.map(r=>r.got||"?").join(""),parts,bad,mode:plausible?"kana-uncertain":"wrong"};
 }
 
 $("#revealBtn").onclick=()=>{
@@ -966,16 +992,15 @@ $("#revealBtn").onclick=()=>{
 
 
 function acceptUncertainAnswer(q,results){
-  const perfect=false;
-  if(state.answerRevealed){showFeedback("ok","書けたね！",`${answerOf(q)} を見ながら練習できたよ。`);state.experience+=1;}
-  else{showFeedback("ok","確認できたね！",`${answerOf(q)} と自分で見比べて確認できたよ。`);state.points+=2;state.totalEarned+=2;state.experience+=2;}
-  state.sessionResults[state.index]={help:state.answerRevealed,retries:state.questionRetries,manualConfirm:true,threeTryConfirm:state.questionRetries>=3};
-  syncLearningEvent("question",{questionId:q.id||"",prompt:q.displaySentence||"",answer:answerOf(q),correct:true,retries:state.questionRetries,help:state.answerRevealed,manualConfirm:true,volume:state.volume});
-  ensureDaily();state.daily.questions=(state.daily.questions||0)+1;state.records.totalQuestions=(state.records.totalQuestions||0)+1;
-  if(!state.answerRevealed)state.records.totalCorrect=(state.records.totalCorrect||0)+1;
-  state.discovered.add(q.targetKanji);state.questionCompleted=true;
-  state.boxes.forEach(b=>b.canvas.classList.add("lockedCanvas"));$("#undoBtn").disabled=true;$("#clearBtn").disabled=true;
-  persist();renderMotivation();checkNewAnimalUnlocks();$("#nextBtn").classList.remove("hidden");
+  showFeedback("bad","まだ正解にはしていません。","AIの判定に自信がありません。お手本とくらべて、もう一度書き直してみよう。");
+  state.questionCompleted=false;
+  state.boxes.forEach(b=>{
+    b.canvas.classList.remove("lockedCanvas");
+    b.clearOne?.classList.remove("hidden");
+  });
+  $("#undoBtn").disabled=false;
+  $("#clearBtn").disabled=false;
+  $("#nextBtn").classList.add("hidden");
 }
 function showThreeTryConfirmation(q,results,bad){
   const f=$("#feedback");f.className="feedback unknown";
@@ -1016,7 +1041,7 @@ $("#checkBtn").onclick=async()=>{
       }else if(box.type==="okuri"){
         showFeedback(r.unknown?"unknown":"retry",`${state.questionRetries}回目：${badPositions}を直そう`,"赤く光っているマスを直そう。「この送りがなだけ消す」も使えるよ。");
       }else if(r.unknown){
-        showFeedback("unknown",`${state.questionRetries}回目：${badPositions}を見てみよう`,"AIが場所をしっかり決められなかったよ。赤く光っている漢字全体を、お手本とくらべてみよう。");
+        showFeedback("unknown",`${state.questionRetries}回目：${badPositions}を見てみよう`,"AIの判定に自信がないので、正解にはしていません。赤く光っている漢字全体を、お手本とくらべてみよう。");
       }else{
         showFeedback("retry",`${state.questionRetries}回目：${badPositions}を直そう`,`赤く光っているマスを直そう。○が出たら、そこはAIの「見直しポイント」のめやすだよ。お手本とくらべてみよう。`);
       }
@@ -1043,3 +1068,10 @@ function initTeacherPracticeUI(){
   renderStudentProfile();
 }
 window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
+
+window.addEventListener("DOMContentLoaded",()=>{
+  const badge=document.createElement("div");
+  badge.id="strictVersionBadge";
+  badge.textContent="v4.5 HARD STRICT";
+  document.body.appendChild(badge);
+});
