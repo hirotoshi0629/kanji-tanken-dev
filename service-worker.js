@@ -1,5 +1,5 @@
-const CACHE="kanjiquest-v43-dev-pinpoint-feedback";
-const ASSETS=["./","./index.html","./styles.css?v=4.3","./app.js?v=4.3","./manifest.webmanifest","./setup-check.html","./data/kanji_master.json","./data/reviewed_problem_bank.json"];
+const CACHE="kanjiquest-v44-dev-strict-judgement";
+const ASSETS=["./","./index.html","./styles.css?v=4.4","./app.js?v=4.4","./manifest.webmanifest","./setup-check.html","./data/kanji_master.json","./data/reviewed_problem_bank.json"];
 self.addEventListener("install",e=>{self.skipWaiting();e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS)))});
 self.addEventListener("activate",e=>e.waitUntil((async()=>{
   for(const k of await caches.keys()) if(k!==CACHE) await caches.delete(k);

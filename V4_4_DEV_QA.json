@@ -1,0 +1,17 @@
+{
+  "version": "v4.4 DEV STRICT JUDGEMENT",
+  "status": "PASS",
+  "checks": {
+    "js_syntax_ok": true,
+    "kanji_requires_2_of_3_top1": true,
+    "candidate_presence_not_enough": true,
+    "fallback_disabled_in_result": true,
+    "kana_structural_not_auto_correct": true,
+    "uncertain_not_called_correct": true,
+    "pinpoint_feedback_kept": true,
+    "level50_kept": true,
+    "room_drag_kept": true,
+    "answer_font_kept": true,
+    "cache_bumped": true
+  }
+}
