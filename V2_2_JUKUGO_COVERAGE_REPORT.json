@@ -1,0 +1,53 @@
+{
+  "version": "2.2 JUKUGO COVERAGE WAVE 3",
+  "status": "PASS",
+  "added": 242,
+  "removedLowQuality": [
+    "俵物",
+    "像形",
+    "則例",
+    "務所",
+    "引算",
+    "績業",
+    "足算"
+  ],
+  "totalJukugo": 821,
+  "coveredKanji": 868,
+  "coveragePct": 84.6,
+  "gradeCoverage": {
+    "1": {
+      "total": 80,
+      "covered": 68,
+      "pct": 85.0
+    },
+    "2": {
+      "total": 160,
+      "covered": 122,
+      "pct": 76.2
+    },
+    "3": {
+      "total": 200,
+      "covered": 129,
+      "pct": 64.5
+    },
+    "4": {
+      "total": 202,
+      "covered": 183,
+      "pct": 90.6
+    },
+    "5": {
+      "total": 193,
+      "covered": 180,
+      "pct": 93.3
+    },
+    "6": {
+      "total": 191,
+      "covered": 186,
+      "pct": 97.4
+    }
+  },
+  "remainingCount": 158,
+  "remainingKanji": "円千右左早犬玉王耳貝赤雨万丸何回声多夜妹思才毛組絵走雪黄売姉寺帰弓引戸曜汽矢細羽茶谷買里雲首馬鳴麦黒丁仕使区受君央始客寒屋島州打持暑柱様橋次氷泳申皮皿相終苦血豆起身速遊配両乗他具坂宮宿帳幸息悲拾暗歯油波深湯炭畑礼神福秒笛第箱羊美薬軽追階飲駅鼻浅覚飯井埼奈媛岐岡崎栃梨滋潟熊茨阜阪鹿停喜営堂得救殺毒紀績脈航賞俵届暖暮訳",
+  "scopeViolations": [],
+  "jsSyntaxOK": true
+}

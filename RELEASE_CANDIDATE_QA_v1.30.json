@@ -1,0 +1,98 @@
+{
+  "version": "1.30",
+  "phase": "Release Candidate 1",
+  "duplicateGroupsResolved": 11,
+  "sentencePatchesApplied": 12,
+  "remainingDuplicateDisplayGroups": 0,
+  "reviewedProblems": 2136,
+  "readingTargets": 2066,
+  "volumeReadiness": {
+    "一上": {
+      "questions": 32,
+      "uniqueKanji": 17,
+      "ready": true
+    },
+    "一下": {
+      "questions": 119,
+      "uniqueKanji": 73,
+      "ready": true
+    },
+    "二上": {
+      "questions": 186,
+      "uniqueKanji": 109,
+      "ready": true
+    },
+    "二下": {
+      "questions": 184,
+      "uniqueKanji": 113,
+      "ready": true
+    },
+    "三上": {
+      "questions": 305,
+      "uniqueKanji": 149,
+      "ready": true
+    },
+    "三下": {
+      "questions": 201,
+      "uniqueKanji": 106,
+      "ready": true
+    },
+    "四上": {
+      "questions": 265,
+      "uniqueKanji": 143,
+      "ready": true
+    },
+    "四下": {
+      "questions": 179,
+      "uniqueKanji": 110,
+      "ready": true
+    },
+    "五": {
+      "questions": 340,
+      "uniqueKanji": 206,
+      "ready": true
+    },
+    "六": {
+      "questions": 325,
+      "uniqueKanji": 202,
+      "ready": true
+    }
+  },
+  "mixReadiness": {
+    "1": {
+      "upper": 17,
+      "lower": 73,
+      "ready": true
+    },
+    "2": {
+      "upper": 109,
+      "lower": 113,
+      "ready": true
+    },
+    "3": {
+      "upper": 149,
+      "lower": 106,
+      "ready": true
+    },
+    "4": {
+      "upper": 143,
+      "lower": 110,
+      "ready": true
+    }
+  },
+  "featureChecks": {
+    "2066_readings_complete": true,
+    "2136_reviewed": true,
+    "all_volumes_ready": true,
+    "mix_ready": true,
+    "answer_reveal": true,
+    "ten_question_finish": true,
+    "points_persist": true,
+    "animal_unlock": true,
+    "completed_canvas_lock": true,
+    "okurigana_wide_box": true
+  },
+  "javascriptSyntaxCheck": "PASS",
+  "qaErrors": 0,
+  "next": "実機/iPad相当の最終受け入れ確認 → 問題がなければ完成版"
+}

@@ -1,0 +1,28 @@
+{
+  "version": "1.4 STUDY + CARE LINK",
+  "status": "PASS",
+  "newFeatures": [
+    "10問を最後まで学習すると、おせわチケットを必ず1枚以上獲得",
+    "自力正解7問以上・10問全問自力・やり直しなし等で最大4枚まで増加",
+    "答えを見るを使った子も育成ごほうびを受け取れる設計",
+    "おせわチケット使用時はPT不要",
+    "チケットのおせわは、なかよし度に追加+2ボーナス",
+    "結果画面に学習→育成のごほうびを明示",
+    "どうぶつのおへやにチケット残数を表示"
+  ],
+  "checks": {
+    "ticket persistence": true,
+    "10-question reward": true,
+    "all completers rewarded": true,
+    "self-reliance bonus": true,
+    "ticket care no PT": true,
+    "ticket friendship bonus": true,
+    "results UI": true,
+    "care UI ticket count": true,
+    "v1.3 collection retained": true,
+    "v1.2 growth retained": true,
+    "8 care retained": true,
+    "js syntax": true
+  },
+  "qaErrors": 0
+}

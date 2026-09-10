@@ -1,0 +1,86 @@
+{
+  "version": "1.29",
+  "phase": "child-language final polish",
+  "auditedProblems": 2136,
+  "readingTargets": 2066,
+  "childFriendlySentenceImprovements": 29,
+  "longSentenceWarnings": 0,
+  "duplicateSentenceGroups": 11,
+  "volume10QuestionReadiness": {
+    "一上": {
+      "pool": 32,
+      "uniqueKanji": 17,
+      "tenQuestionSetSafe": true
+    },
+    "一下": {
+      "pool": 119,
+      "uniqueKanji": 73,
+      "tenQuestionSetSafe": true
+    },
+    "二上": {
+      "pool": 186,
+      "uniqueKanji": 109,
+      "tenQuestionSetSafe": true
+    },
+    "二下": {
+      "pool": 184,
+      "uniqueKanji": 113,
+      "tenQuestionSetSafe": true
+    },
+    "三上": {
+      "pool": 305,
+      "uniqueKanji": 149,
+      "tenQuestionSetSafe": true
+    },
+    "三下": {
+      "pool": 201,
+      "uniqueKanji": 106,
+      "tenQuestionSetSafe": true
+    },
+    "四上": {
+      "pool": 265,
+      "uniqueKanji": 143,
+      "tenQuestionSetSafe": true
+    },
+    "四下": {
+      "pool": 179,
+      "uniqueKanji": 110,
+      "tenQuestionSetSafe": true
+    },
+    "五": {
+      "pool": 340,
+      "uniqueKanji": 206,
+      "tenQuestionSetSafe": true
+    },
+    "六": {
+      "pool": 325,
+      "uniqueKanji": 202,
+      "tenQuestionSetSafe": true
+    }
+  },
+  "mixReadiness": {
+    "1": {
+      "upperUnique": 17,
+      "lowerUnique": 73,
+      "fivePlusFiveSafe": true
+    },
+    "2": {
+      "upperUnique": 109,
+      "lowerUnique": 113,
+      "fivePlusFiveSafe": true
+    },
+    "3": {
+      "upperUnique": 149,
+      "lowerUnique": 106,
+      "fivePlusFiveSafe": true
+    },
+    "4": {
+      "upperUnique": 143,
+      "lowerUnique": 110,
+      "fivePlusFiveSafe": true
+    }
+  },
+  "structuralErrors": 0,
+  "qaErrors": 0,
+  "note": "明確に自然化できる例文だけを修正。対象読みを変える一括置換は行っていない。"
+}

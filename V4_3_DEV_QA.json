@@ -1,0 +1,16 @@
+{
+  "version": "v4.3 DEV PINPOINT FEEDBACK",
+  "status": "PASS",
+  "checks": {
+    "js_syntax_ok": true,
+    "circle_overlay_added": true,
+    "circle_not_shown_when_unknown": true,
+    "unknown_does_not_guess": true,
+    "guide_wording": true,
+    "answer_textbook_font_kept": true,
+    "room_drag_kept": true,
+    "level50_kept": true,
+    "teacher_sandbox_kept": true,
+    "cache_bumped": true
+  }
+}

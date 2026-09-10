@@ -1,0 +1,192 @@
+<!doctype html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>かん字たんけん！先生用</title><link rel="stylesheet" href="./styles.css"><style>
+body{background:#f4f7f5}.T{max-width:1180px;margin:auto;padding:20px}.card{background:#fff;border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 3px 16px #0001}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(155px,1fr));gap:10px}.stat{padding:14px;border-radius:14px;background:#f0f7f3}.big{font-size:27px;font-weight:900}
+.controls{display:flex;gap:9px;flex-wrap:wrap;align-items:center}select,button,input{min-height:44px;font-size:16px;padding:8px 12px}table{width:100%;border-collapse:collapse}th,td{padding:10px;border-bottom:1px solid #ddd;text-align:left}
+.click{cursor:pointer}.click:hover{background:#f5faf7}.hidden{display:none!important}.warn{background:#fff8e5}.calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{border:1px solid #d8e4dc;border-radius:12px;padding:9px;min-height:82px;background:white}.day.has{background:#eff9f2;cursor:pointer}.muted{color:#68756d;font-size:13px}
+@media(max-width:700px){.calendar{grid-template-columns:repeat(2,1fr)}.T{padding:10px}.scroll{overflow:auto}}
+</style></head><body><main class="T">
+<section id="schoolYearPanel" class="card hidden" style="margin-bottom:14px">
+<h2>🌸 年度管理</h2>
+<p id="schoolYearNotice">年度情報を読み込みます…</p>
+<button id="exportPreviousYear" type="button">📥 前年度の集計をCSVで保存</button>
+<small style="display:block;margin-top:8px">前年度のクラウド記録は4月末まで一時保管し、5月1日以降に自動整理します。</small>
+</section>
+<h1>👩‍🏫 かん字たんけん！ 先生用</h1>
+<section id="loginCard" class="card"><h2>先生ログイン</h2>
+<p>この端末で一度ログインした学校コードは次回から自動表示します。異動や端末の引き継ぎ時だけ変更してください。</p>
+<div class="controls"><input id="schoolCode" placeholder="学校コード" autocomplete="organization"><button id="changeSchool" type="button" class="secondary">勤務校を変更</button></div>
+<input id="teacherId" placeholder="教師ID" autocomplete="username"><input id="pw" type="password" placeholder="パスワード" autocomplete="current-password"><button id="login">ログイン</button><p id="msg"></p></section>
+<div id="dash" class="hidden">
+<section class="card controls"><label>期間 <select id="period"><option value="7">過去7日</option><option value="30">過去30日</option></select></label><label>学年 <select id="g"><option value="">すべて</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select></label><label>組 <select id="c"><option value="">すべて</option></select></label><button id="reload">更新</button><button id="teacherPractice">✏️ 問題をためす</button><button id="logout">ログアウト</button><b id="schoolBadge" class="muted"></b><span class="muted">実名は保存しません。</span></section>
+<section id="adminTeachers" class="card hidden"><h2>🔐 教師アカウント管理</h2><p class="muted">児童用URL：<code id="childSchoolUrl"></code></p><p class="muted">管理者だけが表示できます。先生ごとに別のID・パスワードを作成します。</p><div class="controls"><input id="newTid" placeholder="教師ID"><input id="newTpw" type="password" placeholder="初期パスワード（10文字以上）"><select id="newRole"><option value="teacher">担任</option><option value="admin">管理者</option></select><select id="newGrade"><option value="">学年</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option></select><select id="newClass"><option value="">組</option><option>1</option><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option><option>10</option></select><button id="addTeacher">教師を追加</button></div><div id="teacherList" class="muted"></div></section>
+<section class="card"><h2>クラスの今</h2><div id="summary" class="grid"></div></section>
+<section class="card"><h2>気になる記録</h2><div id="attention" class="grid"></div></section>
+<section class="card"><h2>よくつまずいた漢字 TOP10</h2><div id="trend" class="grid"></div></section>
+<section class="card"><h2>AI判定を確認したい漢字 TOP10</h2><p class="muted">3回後の自己確認が多い漢字です。児童の苦手ではなく、AI認識側の問題の可能性もあります。</p><div id="ai" class="grid"></div></section>
+<section class="card scroll"><h2>児童一覧</h2><table><thead><tr><th>児童コード</th><th>最終利用</th><th>学習日数</th><th>問題数</th><th>書き直し等</th><th>答えを見る</th><th>3回後確認</th></tr></thead><tbody id="rows"></tbody></table></section>
+<section id="detail" class="card hidden"></section><section id="dayDetail" class="card hidden"></section>
+<section id="deviceHandoff" class="card warn">
+<h2>🔐 異動・端末引き継ぎ</h2>
+<p>この端末を別の先生が使うときに使います。Neon上の学校・児童の学習履歴は消さず、この端末内だけを初期化します。</p>
+<div class="controls">
+<button id="clearTeacherDevice" type="button">教師情報だけ消す</button>
+<button id="clearStudentDevice" type="button">児童用の端末データだけ消す</button>
+<button id="clearAllDevice" type="button">この端末を全部初期化</button>
+</div>
+<p class="muted">「全部初期化」は、教師ログイン情報・記憶した学校コード・児童コード・PT・どうぶつ・苦手情報など、このブラウザ内の「かん字たんけん！」データを消します。クラウドの年度内学習履歴は残ります。</p>
+</section>
+</div></main><script>
+let token=sessionStorage.getItem("kq.teacherToken")||"",data=null;const $=s=>document.querySelector(s),fmt=s=>s?new Date(s).toLocaleString("ja-JP",{timeZone:"Asia/Tokyo"}):"記録なし";
+const savedSchoolCode=()=>localStorage.getItem("kq.teacherSchoolCode")||"";
+function fillRememberedSchool(){const v=savedSchoolCode();$("#schoolCode").value=v;$("#msg").textContent=v?"この端末に記憶された勤務校を表示しています。":"学校コードを入力してください。";}
+
+function W(){return data.windows[$("#period").value]}function filtered(){let g=$("#g").value,c=$("#c").value;return W().students.filter(x=>(!g||String(x.grade)===g)&&(!c||String(x.class_no)===c))}
+function stat(label,n,note=""){return `<div class="stat"><div>${label}</div><div class="big">${n}</div><div class="muted">${note}</div></div>`}
+async function load(){
+  let r=await fetch("/api/teacher-dashboard",{headers:{Authorization:"Bearer "+token}});
+  if(!r.ok){logout();return}
+
+  // 前の先生の画面内容を必ず消してから、新しい先生のデータを読み込む
+  clearTeacherView();
+
+  data=await r.json();
+  $("#schoolBadge").textContent=`学校：${data.teacher?.schoolCode||"main"}`;
+
+  $("#g").disabled=false;
+  $("#c").disabled=false;
+
+  if(data.teacher?.role==="admin"){
+    $("#adminTeachers").classList.remove("hidden");
+    $("#childSchoolUrl").textContent=`${location.origin}/?school=${encodeURIComponent(data.teacher.schoolCode||"main")}`;
+    $("#schoolYearPanel").classList.remove("hidden");
+    loadTeachers();
+  }else{
+    $("#adminTeachers").classList.add("hidden");
+    $("#schoolYearPanel").classList.add("hidden");
+    $("#g").value=String(data.teacher?.grade||"");
+    $("#c").value=String(data.teacher?.classNo||"");
+    $("#g").disabled=true;
+    $("#c").disabled=true;
+  }
+
+  $("#loginCard").classList.add("hidden");
+  $("#dash").classList.remove("hidden");
+  render();
+}
+function render(){const ss=filtered(),days=+$("#period").value,active=ss.filter(x=>x.activeDays>0).length,totalQ=ss.reduce((a,x)=>a+x.questions,0),mist=ss.reduce((a,x)=>a+x.mistakes,0),manual=ss.reduce((a,x)=>a+x.manual,0);
+$("#summary").innerHTML=stat("利用児童",`${active} / ${ss.length}人`,`${days}日間`)+stat("総学習問題",`${totalQ}問`)+stat("書き直し等",`${mist}問`)+stat("3回後自己確認",`${manual}問`);
+const idle=ss.filter(x=>x.activeDays===0),repeat=ss.filter(x=>x.mistakes>=5).sort((a,b)=>b.mistakes-a.mistakes).slice(0,8);
+$("#attention").innerHTML=stat(`${days}日間利用なし`,`${idle.length}人`,idle.map(x=>x.student_code).join("・")||"なし")+stat("書き直し等が多い",`${repeat.length}人`,repeat.map(x=>x.student_code).join("・")||"なし");
+$("#trend").innerHTML=W().trend.map(([a,n])=>stat(a,`${n}回`)).join("")||"まだ記録がありません";
+$("#ai").innerHTML=W().aiReview.map(([a,n])=>stat(a,`${n}回`)).join("")||"まだ記録がありません";
+$("#rows").innerHTML=ss.map(x=>`<tr class="click" data-code="${x.student_code}"><td><b>${x.student_code}</b></td><td>${fmt(x.last_seen)}</td><td>${x.activeDays}日</td><td>${x.questions}</td><td>${x.mistakes}</td><td>${x.helpCount}</td><td>${x.manual}</td></tr>`).join("");
+document.querySelectorAll("[data-code]").forEach(x=>x.onclick=()=>detail(x.dataset.code))}
+function last7(){let a=[];for(let i=6;i>=0;i--){let d=new Date();d.setDate(d.getDate()-i);a.push(d.toLocaleDateString("ja-JP",{timeZone:"Asia/Tokyo"}))}return a}
+function detail(code){let x=W().students.find(s=>s.student_code===code);$("#detail").classList.remove("hidden");let cal=last7().map(k=>{let d=x.daily[k];return `<div class="day ${d?"has":""}" ${d?`data-day="${k}" data-student="${code}"`:""}><b>${k}</b><br>${d?`${d.questions}問<br>書き直し等 ${d.mistakes}問`:"学習なし"}</div>`}).join("");
+$("#detail").innerHTML=`<h2>${code} の学習履歴</h2><p>最終利用：${fmt(x.last_seen)}　／　期間内 ${x.questions}問　／　書き直し等 ${x.mistakes}問　／　3回後確認 ${x.manual}問</p><h3>直近7日間</h3><div class="calendar">${cal}</div>`;
+document.querySelectorAll("[data-day]").forEach(e=>e.onclick=()=>showDay(e.dataset.student,e.dataset.day));$("#detail").scrollIntoView({behavior:"smooth"})}
+function showDay(code,key){let x=W().students.find(s=>s.student_code===code),d=x.daily[key];$("#dayDetail").classList.remove("hidden");$("#dayDetail").innerHTML=`<h2>${code}　${key}</h2><p>${d.questions}問 ／ 書き直し等 ${d.mistakes}問 ／ 答えを見る ${d.help}問 ／ 3回後確認 ${d.manual}問</p><div class="scroll"><table><tr><th>時刻</th><th>問題</th><th>正解</th><th>書き直し</th><th>答え</th><th>自己確認</th></tr>${d.events.map(e=>`<tr><td>${new Date(e.created_at).toLocaleTimeString("ja-JP",{timeZone:"Asia/Tokyo",hour:"2-digit",minute:"2-digit"})}</td><td>${e.prompt||e.question_id}</td><td>${e.answer||""}</td><td>${e.retries||0}回</td><td>${e.help?"見た":"-"}</td><td>${e.manual_confirm?"あり":"-"}</td></tr>`).join("")}</table></div>`;$("#dayDetail").scrollIntoView({behavior:"smooth"})}
+function clearTeacherView(){
+  data=null;
+  $("#adminTeachers").classList.add("hidden");
+  $("#schoolYearPanel").classList.add("hidden");
+  $("#teacherList").innerHTML="";
+  $("#summary").innerHTML="";
+  $("#attention").innerHTML="";
+  $("#trend").innerHTML="";
+  $("#ai").innerHTML="";
+  $("#rows").innerHTML="";
+  $("#detail").innerHTML="";
+  $("#dayDetail").innerHTML="";
+  $("#detail").classList.add("hidden");
+  $("#dayDetail").classList.add("hidden");
+}
+function logout(){
+  token="";
+  sessionStorage.removeItem("kq.teacherToken");
+  clearTeacherView();
+  $("#dash").classList.add("hidden");
+  $("#g").disabled=false;
+  $("#c").disabled=false;
+  $("#g").value="";
+  $("#c").value="";
+  $("#loginCard").classList.remove("hidden");
+}
+$("#login").onclick=async()=>{let r=await fetch("/api/teacher-login",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({schoolCode:$("#schoolCode").value.trim(),teacherId:$("#teacherId").value,password:$("#pw").value})});if(!r.ok){$("#msg").textContent="パスワードが違います。";return}let ld=await r.json();token=ld.token;sessionStorage.setItem("kq.teacherToken",token);localStorage.setItem("kq.teacherSchoolCode",ld.teacher?.schoolCode||$("#schoolCode").value.trim());load()};
+async function loadTeachers(){let r=await fetch("/api/teachers",{headers:{Authorization:"Bearer "+token}});if(!r.ok)return;let d=await r.json();$("#teacherList").innerHTML=d.teachers.map(t=>`${t.teacher_id} ／ ${t.role==="admin"?"管理者":`${t.grade}年${t.class_no}組`} ／ 最終ログイン ${fmt(t.last_login)}`).join("<br>")||"まだ登録がありません"}
+$("#teacherPractice").onclick=()=>{const sc=data?.teacher?.schoolCode||localStorage.getItem("kq.teacherSchoolCode");if(!sc){alert("勤務校が設定されていません。");return;}location.href=`./index.html?teacherPractice=1&school=${encodeURIComponent(sc)}&v=382`};
+
+$("#changeSchool").onclick=()=>{
+  sessionStorage.removeItem("kq.teacherToken");
+  token="";
+  localStorage.removeItem("kq.teacherSchoolCode");
+  $("#schoolCode").value="";
+  $("#teacherId").value="";
+  $("#pw").value="";
+  $("#msg").textContent="新しい勤務先の学校コードを入力してください。次回からこの端末に記憶します。";
+};
+
+async function clearKanjiCaches(){
+  if("serviceWorker" in navigator){
+    try{for(const r of await navigator.serviceWorker.getRegistrations())await r.unregister()}catch{}
+  }
+  if("caches" in window){
+    try{for(const k of await caches.keys())await caches.delete(k)}catch{}
+  }
+}
+function removeKeys(store,pred){
+  const keys=[];for(let i=0;i<store.length;i++){const k=store.key(i);if(k&&pred(k))keys.push(k)}
+  keys.forEach(k=>store.removeItem(k));
+}
+$("#clearTeacherDevice").onclick=async()=>{
+  if(!confirm("この端末の教師ログイン情報と記憶した勤務校を消します。クラウドの学習履歴は消えません。よろしいですか？"))return;
+  sessionStorage.removeItem("kq.teacherToken");
+  removeKeys(sessionStorage,k=>k.startsWith("kq.teacher"));
+  localStorage.removeItem("kq.teacherSchoolCode");
+  await clearKanjiCaches();
+  location.href="./teacher.html";
+};
+$("#clearStudentDevice").onclick=async()=>{
+  if(!confirm("この端末の児童コード・PT・どうぶつ・苦手情報など児童用の端末データを消します。クラウドの学習履歴は消えません。よろしいですか？"))return;
+  removeKeys(localStorage,k=>k.startsWith("kq.")&&!k.startsWith("kq.teacher"));
+  removeKeys(sessionStorage,k=>k.startsWith("kq.teacherSandbox."));
+  await clearKanjiCaches();
+  alert("児童用の端末データを初期化しました。");
+};
+$("#clearAllDevice").onclick=async()=>{
+  if(!confirm("この端末の「かん字たんけん！」の教師用・児童用データをすべて初期化します。Neon上の年度内学習履歴は消えません。よろしいですか？"))return;
+  removeKeys(localStorage,k=>k.startsWith("kq."));
+  removeKeys(sessionStorage,k=>k.startsWith("kq."));
+  token="";data=null;
+  await clearKanjiCaches();
+  location.href="./teacher.html";
+};
+fillRememberedSchool();
+
+$("#addTeacher").onclick=async()=>{let role=$("#newRole").value,r=await fetch("/api/teachers",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({teacherId:$("#newTid").value,password:$("#newTpw").value,role,grade:$("#newGrade").value,classNo:$("#newClass").value})});let d=await r.json();if(!r.ok){alert(d.error||"追加できませんでした");return}$("#newTid").value="";$("#newTpw").value="";loadTeachers()};$("#reload").onclick=load;$("#logout").onclick=logout;$("#period").onchange=render;$("#g").onchange=render;$("#c").onchange=render;for(let i=1;i<=10;i++)$("#c").insertAdjacentHTML("beforeend",`<option>${i}</option>`);if(token)load();
+</script>
+<script>
+(function(){
+ const panel=document.getElementById("schoolYearPanel"),notice=document.getElementById("schoolYearNotice"),btn=document.getElementById("exportPreviousYear");
+ async function refreshYearInfo(){
+   const token=sessionStorage.getItem("kq.teacherToken"); if(!token||!panel)return;
+   try{
+     const r=await fetch("/api/teacher-dashboard",{headers:{Authorization:"Bearer "+token}});
+     if(!r.ok)return;
+     const d=await r.json();
+     notice.textContent=`現在は ${d.schoolYear}年度。${d.previousSchoolYear}年度の記録は4月末まで保存され、その後自動整理されます。`;
+     btn.onclick=async()=>{
+       const x=await fetch(`/api/teacher-export?year=${d.previousSchoolYear}`,{headers:{Authorization:"Bearer "+token}});
+       if(!x.ok){alert("CSVを作れませんでした。");return}
+       const blob=await x.blob(),a=document.createElement("a");
+       a.href=URL.createObjectURL(blob);a.download=`kanji-tanken-${d.previousSchoolYear}.csv`;a.click();
+       setTimeout(()=>URL.revokeObjectURL(a.href),1000);
+     };
+   }catch{}
+ }
+ window.addEventListener("load",()=>setTimeout(refreshYearInfo,500));
+})();
+</script>
+
+</body></html>

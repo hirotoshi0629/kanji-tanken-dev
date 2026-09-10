@@ -1,0 +1,527 @@
+{
+  "version": "2.5 EDUCATIONAL QA",
+  "status": "PASS",
+  "totalQuestions": 3085,
+  "reviewedAvailable": 3006,
+  "auditPass": 3013,
+  "flaggedNonSevere": 0,
+  "quarantinedStructural": 72,
+  "issueTypes": {
+    "answer_mismatch": 72
+  },
+  "issues": [
+    {
+      "id": "v04-二上-会-25",
+      "answer": "会い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-作-28",
+      "answer": "作った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-明-36",
+      "answer": "明るく",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-書-37",
+      "answer": "書いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-楽-38",
+      "answer": "楽しかった",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-歩-39",
+      "answer": "歩いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-知-40",
+      "answer": "知った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-答-41",
+      "answer": "答えた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二上-聞-42",
+      "answer": "聞いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-帰-46",
+      "answer": "帰った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-新-48",
+      "answer": "新しい",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-晴-50",
+      "answer": "晴れた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-近-55",
+      "answer": "近く",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-遠-56",
+      "answer": "遠く",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-黒-59",
+      "answer": "黒い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-二下-強-60",
+      "answer": "強く",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-住-63",
+      "answer": "住んで",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-動-64",
+      "answer": "動いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-勝-65",
+      "answer": "勝った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-向-66",
+      "answer": "向いて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-問-69",
+      "answer": "問う",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-始-70",
+      "answer": "始まった",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-守-71",
+      "answer": "守った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-寒-72",
+      "answer": "寒かった",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-急-73",
+      "answer": "急いだ",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-投-74",
+      "answer": "投げた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-持-75",
+      "answer": "持って",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-暑-76",
+      "answer": "暑い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-泳-78",
+      "answer": "泳いだ",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三上-決-79",
+      "answer": "決めた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-幸-83",
+      "answer": "幸せ",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-待-84",
+      "answer": "待った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-悲-85",
+      "answer": "悲しく",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-整-86",
+      "answer": "整えた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-植-87",
+      "answer": "植えた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-流-89",
+      "answer": "流れて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-深-90",
+      "answer": "深さ",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-温-91",
+      "answer": "温かい",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-軽-94",
+      "answer": "軽い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-三下-重-95",
+      "answer": "重かった",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-伝-97",
+      "answer": "伝えた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-働-98",
+      "answer": "働いて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-変-99",
+      "answer": "変わった",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-失-100",
+      "answer": "失わない",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-戦-101",
+      "answer": "戦った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-散-102",
+      "answer": "散った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-求-104",
+      "answer": "求めて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-泣-105",
+      "answer": "泣いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-浅-106",
+      "answer": "浅い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-清-107",
+      "answer": "清い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-焼-108",
+      "answer": "焼いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四上-熱-109",
+      "answer": "熱い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四下-建-110",
+      "answer": "建てた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四下-改-111",
+      "answer": "改めた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四下-残-114",
+      "answer": "残った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四下-祝-115",
+      "answer": "祝った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-四下-静-116",
+      "answer": "静か",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-備-117",
+      "answer": "備えて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-厚-118",
+      "answer": "厚い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-喜-119",
+      "answer": "喜んだ",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-増-120",
+      "answer": "増えた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-導-122",
+      "answer": "導いた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-慣-123",
+      "answer": "慣れた",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-救-124",
+      "answer": "救った",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-五-豊-125",
+      "answer": "豊かな",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-六-従-126",
+      "answer": "従って",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-六-探-127",
+      "answer": "探した",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-六-認-128",
+      "answer": "認めて",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-六-暮-129",
+      "answer": "暮らした",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-六-厳-130",
+      "answer": "厳しい",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-extra-六-善",
+      "answer": "善い",
+      "issues": [
+        "answer_mismatch"
+      ]
+    },
+    {
+      "id": "v04-extra-六-難",
+      "answer": "難しい",
+      "issues": [
+        "answer_mismatch"
+      ]
+    }
+  ],
+  "selectionImprovement": "Avoids answers seen in the previous 30 questions when alternatives exist; keeps grade-aware compound-length balance.",
+  "qaPrinciples": [
+    "学習前漢字を含む熟語を通常出題しない",
+    "答えと手書き判定対象の不一致を通常出題しない",
+    "一つの問題に一つの明確な書き取り対象",
+    "長すぎる問題文は要確認として記録",
+    "直近30問と同じ答えを可能な限り避ける"
+  ],
+  "jsSyntaxOK": true
+}

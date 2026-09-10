@@ -1,0 +1,40 @@
+{
+  "version": "3.4.1 SECOND CHAPTER AUDIT",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "apiSyntax": true,
+    "noDuplicateIds": true,
+    "secondChapterLockedUntil80": true,
+    "bondRank5Visible": true,
+    "legacyLevelRelabeled": true,
+    "collectionStatsAligned": true,
+    "tripFirstVisitOnly": true,
+    "eggAfter80": true,
+    "teacherRetained": true,
+    "privacyRetained": true,
+    "threeAcrossRetained": true,
+    "pinpointRepairRetained": true,
+    "threeTryRetained": true
+  },
+  "fixed": [
+    "80匹コンプリート前から第二章の全機能が見えてしまう複雑さを解消。80匹まではシンプルな予告だけ表示",
+    "既存の1〜10段階と新しい1〜5段階が両方『Lv.』表示になる混乱を解消。既存側を『おせわLv.』、第二章側を『きずなLv.』に整理",
+    "コレクション統計を新しい5段階きずな基準に統一",
+    "おでかけを何度押しても同じ初回ごほうびが記録される状態を修正。初回だけ発見記録、2回目以降は再訪扱い",
+    "長いどうぶつ画面に『まずどこを楽しめばよいか』の短い案内を追加"
+  ],
+  "balance_review": [
+    "80匹収集までは『集める・部屋・お世話』が主役",
+    "80匹達成後に『MASTER・称号・おでかけ・たまご』を解禁する二段構成に整理",
+    "休んでもMASTER・卵・家具・称号が後退しない設計を維持",
+    "教師クラウドにはゲーム内育成情報を送らない"
+  ],
+  "manual_iPad_checks_needed": [
+    "80匹未満の端末で第二章がシンプルな予告表示になること",
+    "80匹達成状態のテストデータで第二章全体が開くこと",
+    "iPad縦向きで第二章・称号・おでかけカードが詰まりすぎないこと",
+    "3文字問題255px正方形が横一列のまま維持されること",
+    "手書きAI判定と3回後自己確認が以前どおり動くこと"
+  ]
+}

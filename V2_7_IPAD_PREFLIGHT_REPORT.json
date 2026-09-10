@@ -1,0 +1,115 @@
+{
+  "version": "2.7 IPAD PREFLIGHT",
+  "status": "PASS",
+  "reviewedQuestions": 3078,
+  "reviewedCompoundQuestions": 942,
+  "compoundAnswerLengthDistribution": {
+    "2": 857,
+    "3": 52,
+    "4": 31,
+    "5": 2
+  },
+  "volumePools": {
+    "一上": {
+      "total": 45,
+      "compound": 13,
+      "other": 32,
+      "tenReady": true
+    },
+    "一下": {
+      "total": 154,
+      "compound": 35,
+      "other": 119,
+      "tenReady": true
+    },
+    "二上": {
+      "total": 247,
+      "compound": 61,
+      "other": 186,
+      "tenReady": true
+    },
+    "二下": {
+      "total": 255,
+      "compound": 71,
+      "other": 184,
+      "tenReady": true
+    },
+    "三上": {
+      "total": 414,
+      "compound": 109,
+      "other": 305,
+      "tenReady": true
+    },
+    "三下": {
+      "total": 285,
+      "compound": 84,
+      "other": 201,
+      "tenReady": true
+    },
+    "四上": {
+      "total": 369,
+      "compound": 104,
+      "other": 265,
+      "tenReady": true
+    },
+    "四下": {
+      "total": 252,
+      "compound": 73,
+      "other": 179,
+      "tenReady": true
+    },
+    "五": {
+      "total": 538,
+      "compound": 198,
+      "other": 340,
+      "tenReady": true
+    },
+    "六": {
+      "total": 519,
+      "compound": 194,
+      "other": 325,
+      "tenReady": true
+    }
+  },
+  "mixPools": {
+    "1": {
+      "upper": 45,
+      "lower": 154,
+      "ready": true
+    },
+    "2": {
+      "upper": 247,
+      "lower": 255,
+      "ready": true
+    },
+    "3": {
+      "upper": 414,
+      "lower": 285,
+      "ready": true
+    },
+    "4": {
+      "upper": 369,
+      "lower": 252,
+      "ready": true
+    }
+  },
+  "checks": {
+    "javascriptSyntax": true,
+    "duplicateHtmlIds": true,
+    "missingDirectSelectorIds": true,
+    "reviewedQuestionsAtLeast3000": true,
+    "allVolumesTenReady": true,
+    "allMixedReady": true,
+    "compoundQuestionsPresent": true,
+    "longCompoundBoxScaling": true,
+    "safeAreaSupport": true,
+    "ipadPortraitRule": true,
+    "ipadLandscapeRule": true,
+    "touchCanvas": true,
+    "flowCheckBundled": true
+  },
+  "duplicateIds": [],
+  "missingDirectSelectorIds": [],
+  "qaErrors": 0,
+  "next": "公開→iPadで短時間実機テスト。問題があればv2.8修正、なければ正式候補へ。"
+}

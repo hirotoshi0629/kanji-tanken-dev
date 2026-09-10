@@ -1,0 +1,106 @@
+{
+  "version": "1.26",
+  "phase": "child UX + regression QA",
+  "fixes": [
+    "送り仮名の横長マス判定に内部文字グループ数チェックを追加",
+    "正解確定後のキャンバス・消去・一画戻しをロックし、誤操作を防止",
+    "Service Workerキャッシュをv1.26へ更新し、古いJS残留を防止",
+    "画面下のバージョン表示を実際の版と一致"
+  ],
+  "reviewedProblems": 2136,
+  "readingTargets": 2066,
+  "answerShapes": {
+    "('kanji',)": 1411,
+    "('kanji', 'okuri')": 725
+  },
+  "volumeReady": {
+    "一上": {
+      "questions": 32,
+      "uniqueKanji": 17,
+      "canMake10": true
+    },
+    "一下": {
+      "questions": 119,
+      "uniqueKanji": 73,
+      "canMake10": true
+    },
+    "二上": {
+      "questions": 186,
+      "uniqueKanji": 109,
+      "canMake10": true
+    },
+    "二下": {
+      "questions": 184,
+      "uniqueKanji": 113,
+      "canMake10": true
+    },
+    "三上": {
+      "questions": 305,
+      "uniqueKanji": 149,
+      "canMake10": true
+    },
+    "三下": {
+      "questions": 201,
+      "uniqueKanji": 106,
+      "canMake10": true
+    },
+    "四上": {
+      "questions": 265,
+      "uniqueKanji": 143,
+      "canMake10": true
+    },
+    "四下": {
+      "questions": 179,
+      "uniqueKanji": 110,
+      "canMake10": true
+    },
+    "五": {
+      "questions": 340,
+      "uniqueKanji": 206,
+      "canMake10": true
+    },
+    "六": {
+      "questions": 325,
+      "uniqueKanji": 202,
+      "canMake10": true
+    }
+  },
+  "mixReady": {
+    "1": {
+      "upper": 17,
+      "lower": 73,
+      "canMake5Plus5": true
+    },
+    "2": {
+      "upper": 109,
+      "lower": 113,
+      "canMake5Plus5": true
+    },
+    "3": {
+      "upper": 149,
+      "lower": 106,
+      "canMake5Plus5": true
+    },
+    "4": {
+      "upper": 143,
+      "lower": 110,
+      "canMake5Plus5": true
+    }
+  },
+  "animalCount": 50,
+  "checks": {
+    "2066TargetsComplete": true,
+    "2136ReviewedAllRuntimeValid": true,
+    "answerShapeAllValid": true,
+    "readingTargetLinksValid": true,
+    "allVolumesCanMake10": true,
+    "mix1to4CanMake5Plus5": true,
+    "fiftyAnimalsAndUnlockOrder": true,
+    "answerRevealStillPresent": true,
+    "doubleCheckGuardPresent": true,
+    "completedCanvasLockPresent": true,
+    "okuriganaHiddenLengthAreaPresent": true,
+    "serviceWorkerCacheBumped": true
+  },
+  "qaErrors": 0
+}

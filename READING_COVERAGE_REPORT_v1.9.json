@@ -1,0 +1,13 @@
+{
+  "version": "1.9",
+  "batch": "一下・高信頼語句 第1群",
+  "newReviewedQuestions": 48,
+  "totalReviewedProblems": 212,
+  "coveredReadingTargets": 142,
+  "totalReadingTargets": 2066,
+  "remainingReadingTargets": 1924,
+  "ichigeCovered": 62,
+  "ichigeTotal": 119,
+  "qaErrors": 0,
+  "note": "曖昧な読み・活用・特殊語はこのバッチでは無理にレビュー済みにせず、後続の精査対象として残した。"
+}

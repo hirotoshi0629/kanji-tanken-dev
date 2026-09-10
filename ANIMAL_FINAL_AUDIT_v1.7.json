@@ -1,0 +1,21 @@
+{
+  "version": "1.7 ANIMAL FINAL CANDIDATE",
+  "status": "STATIC FINAL AUDIT PASS",
+  "checks": {
+    "JavaScript syntax": true,
+    "duplicate HTML IDs": true,
+    "missing direct-selector IDs": true,
+    "critical flow IDs": true,
+    "2136 reviewed problems": true,
+    "2066 reading targets": true,
+    "8 unique care actions": true,
+    "50-animal care/personality maps agree": true,
+    "ticket reward flow": true,
+    "result-to-care flow": true,
+    "growth system": true,
+    "collection system": true
+  },
+  "animalMapCount": 50,
+  "qaErrors": 0,
+  "remainingGate": "iPad実機で上記10項目を確認。通過後に公開版へ反映。"
+}

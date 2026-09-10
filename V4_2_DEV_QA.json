@@ -1,0 +1,24 @@
+{
+  "version": "v4.2 DEV ROOM+LEVEL50+ANSWER",
+  "status": "PASS",
+  "checks": {
+    "syntax:yearly-cleanup.js": true,
+    "syntax:_schoolyear.js": true,
+    "syntax:_common.js": true,
+    "syntax:teacher-login.js": true,
+    "syntax:teacher-dashboard.js": true,
+    "syntax:teachers.js": true,
+    "syntax:teacher-setup.js": true,
+    "syntax:activity.js": true,
+    "syntax:teacher-export.js": true,
+    "syntax:app.js": true,
+    "answer_font_textbook_family": true,
+    "answer_size_52px": true,
+    "answer_not_heavy_gothic": true,
+    "answer_reveal_uses_revealedWord": true,
+    "room_drag_kept": true,
+    "level50_kept": true,
+    "teacher_sandbox_kept": true,
+    "cache_bumped": true
+  }
+}

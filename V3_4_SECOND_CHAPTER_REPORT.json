@@ -1,0 +1,32 @@
+{
+  "version": "3.4 SECOND CHAPTER",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "collectionBugFixed": true,
+    "bondLv1to5": true,
+    "masterAccessories": true,
+    "sixTitles": true,
+    "sixTrips": true,
+    "animalStories": true,
+    "threeEggs": true,
+    "eggOnlyAfter80": true,
+    "noLossMechanic": true,
+    "teacherRetained": true,
+    "privacyRetained": true,
+    "rewardBalanceRetained": true,
+    "threeAcrossRetained": true
+  },
+  "added": [
+    "なかよしLv.1〜5とMASTER",
+    "MASTER専用アクセサリー",
+    "MASTER数による6段階の称号",
+    "相棒ごとの5段階ストーリー",
+    "MASTER数で6つのおでかけ先を解放",
+    "80種類コンプリート後の3つのふしぎなたまご",
+    "たまごは学習問題数で成長・休んでも後退なし"
+  ],
+  "also_fixed": [
+    "どうぶつコレクション集計が存在しないstate.unlockedAnimalsを参照していた潜在バグを修正"
+  ]
+}

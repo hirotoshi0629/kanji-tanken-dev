@@ -1,0 +1,2600 @@
+{
+  "version": "v1.5",
+  "auditedQuestions": 142,
+  "passed": 142,
+  "failed": 0,
+  "issues": [],
+  "byVolume": {
+    "一上": 10,
+    "一下": 14,
+    "二上": 19,
+    "二下": 18,
+    "三上": 19,
+    "三下": 17,
+    "四上": 13,
+    "四下": 10,
+    "五": 11,
+    "六": 11
+  },
+  "specificRegressionTests": [
+    {
+      "case": "六・簡",
+      "display": "要点を【かん】単にまとめた。",
+      "expectedHandwriting": "簡",
+      "actual": "簡",
+      "pass": true
+    },
+    {
+      "case": "三上・主",
+      "display": "池の【ぬし】のような大きな魚がいた。",
+      "expectedHandwriting": "主",
+      "actual": "主",
+      "pass": true
+    },
+    {
+      "case": "三上・守",
+      "display": "交通ルールを【まも】った。",
+      "expectedHandwriting": "守った",
+      "actual": "守った",
+      "pass": true
+    }
+  ],
+  "results": [
+    {
+      "id": "v04-一上-七-1",
+      "grade": 1,
+      "volume": "一上",
+      "target": "七",
+      "handwritingAnswer": "七",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-上-2",
+      "grade": 1,
+      "volume": "一上",
+      "target": "上",
+      "handwritingAnswer": "上",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-下-3",
+      "grade": 1,
+      "volume": "一上",
+      "target": "下",
+      "handwritingAnswer": "下",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-四-4",
+      "grade": 1,
+      "volume": "一上",
+      "target": "四",
+      "handwritingAnswer": "四",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-山-5",
+      "grade": 1,
+      "volume": "一上",
+      "target": "山",
+      "handwritingAnswer": "山",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-川-6",
+      "grade": 1,
+      "volume": "一上",
+      "target": "川",
+      "handwritingAnswer": "川",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-月-7",
+      "grade": 1,
+      "volume": "一上",
+      "target": "月",
+      "handwritingAnswer": "月",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-木-8",
+      "grade": 1,
+      "volume": "一上",
+      "target": "木",
+      "handwritingAnswer": "木",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一上-目-9",
+      "grade": 1,
+      "volume": "一上",
+      "target": "目",
+      "handwritingAnswer": "目",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-人-10",
+      "grade": 1,
+      "volume": "一下",
+      "target": "人",
+      "handwritingAnswer": "人",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-口-11",
+      "grade": 1,
+      "volume": "一下",
+      "target": "口",
+      "handwritingAnswer": "口",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-右-12",
+      "grade": 1,
+      "volume": "一下",
+      "target": "右",
+      "handwritingAnswer": "右",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-左-13",
+      "grade": 1,
+      "volume": "一下",
+      "target": "左",
+      "handwritingAnswer": "左",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-手-14",
+      "grade": 1,
+      "volume": "一下",
+      "target": "手",
+      "handwritingAnswer": "手",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-日-15",
+      "grade": 1,
+      "volume": "一下",
+      "target": "日",
+      "handwritingAnswer": "日",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-水-16",
+      "grade": 1,
+      "volume": "一下",
+      "target": "水",
+      "handwritingAnswer": "水",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-火-17",
+      "grade": 1,
+      "volume": "一下",
+      "target": "火",
+      "handwritingAnswer": "火",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-犬-18",
+      "grade": 1,
+      "volume": "一下",
+      "target": "犬",
+      "handwritingAnswer": "犬",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-空-19",
+      "grade": 1,
+      "volume": "一下",
+      "target": "空",
+      "handwritingAnswer": "空",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-花-20",
+      "grade": 1,
+      "volume": "一下",
+      "target": "花",
+      "handwritingAnswer": "花",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-雨-21",
+      "grade": 1,
+      "volume": "一下",
+      "target": "雨",
+      "handwritingAnswer": "雨",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-足-22",
+      "grade": 1,
+      "volume": "一下",
+      "target": "足",
+      "handwritingAnswer": "足",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-一下-車-23",
+      "grade": 1,
+      "volume": "一下",
+      "target": "車",
+      "handwritingAnswer": "車",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-今-24",
+      "grade": 2,
+      "volume": "二上",
+      "target": "今",
+      "handwritingAnswer": "今",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-会-25",
+      "grade": 2,
+      "volume": "二上",
+      "target": "会",
+      "handwritingAnswer": "会い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-体-26",
+      "grade": 2,
+      "volume": "二上",
+      "target": "体",
+      "handwritingAnswer": "体",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-何-27",
+      "grade": 2,
+      "volume": "二上",
+      "target": "何",
+      "handwritingAnswer": "何",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-作-28",
+      "grade": 2,
+      "volume": "二上",
+      "target": "作",
+      "handwritingAnswer": "作った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-光-29",
+      "grade": 2,
+      "volume": "二上",
+      "target": "光",
+      "handwritingAnswer": "光",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-友-30",
+      "grade": 2,
+      "volume": "二上",
+      "target": "友",
+      "handwritingAnswer": "友",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-国-31",
+      "grade": 2,
+      "volume": "二上",
+      "target": "国",
+      "handwritingAnswer": "国",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-声-32",
+      "grade": 2,
+      "volume": "二上",
+      "target": "声",
+      "handwritingAnswer": "声",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-夜-33",
+      "grade": 2,
+      "volume": "二上",
+      "target": "夜",
+      "handwritingAnswer": "夜",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-家-34",
+      "grade": 2,
+      "volume": "二上",
+      "target": "家",
+      "handwritingAnswer": "家",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-心-35",
+      "grade": 2,
+      "volume": "二上",
+      "target": "心",
+      "handwritingAnswer": "心",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-明-36",
+      "grade": 2,
+      "volume": "二上",
+      "target": "明",
+      "handwritingAnswer": "明るく",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-書-37",
+      "grade": 2,
+      "volume": "二上",
+      "target": "書",
+      "handwritingAnswer": "書いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-楽-38",
+      "grade": 2,
+      "volume": "二上",
+      "target": "楽",
+      "handwritingAnswer": "楽しかった",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-歩-39",
+      "grade": 2,
+      "volume": "二上",
+      "target": "歩",
+      "handwritingAnswer": "歩いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-知-40",
+      "grade": 2,
+      "volume": "二上",
+      "target": "知",
+      "handwritingAnswer": "知った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-答-41",
+      "grade": 2,
+      "volume": "二上",
+      "target": "答",
+      "handwritingAnswer": "答えた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二上-聞-42",
+      "grade": 2,
+      "volume": "二上",
+      "target": "聞",
+      "handwritingAnswer": "聞いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-冬-43",
+      "grade": 2,
+      "volume": "二下",
+      "target": "冬",
+      "handwritingAnswer": "冬",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-南-44",
+      "grade": 2,
+      "volume": "二下",
+      "target": "南",
+      "handwritingAnswer": "南",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-夏-45",
+      "grade": 2,
+      "volume": "二下",
+      "target": "夏",
+      "handwritingAnswer": "夏",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-帰-46",
+      "grade": 2,
+      "volume": "二下",
+      "target": "帰",
+      "handwritingAnswer": "帰った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-店-47",
+      "grade": 2,
+      "volume": "二下",
+      "target": "店",
+      "handwritingAnswer": "店",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-新-48",
+      "grade": 2,
+      "volume": "二下",
+      "target": "新",
+      "handwritingAnswer": "新しい",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-春-49",
+      "grade": 2,
+      "volume": "二下",
+      "target": "春",
+      "handwritingAnswer": "春",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-晴-50",
+      "grade": 2,
+      "volume": "二下",
+      "target": "晴",
+      "handwritingAnswer": "晴れた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-朝-51",
+      "grade": 2,
+      "volume": "二下",
+      "target": "朝",
+      "handwritingAnswer": "朝",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-歌-52",
+      "grade": 2,
+      "volume": "二下",
+      "target": "歌",
+      "handwritingAnswer": "歌",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-海-53",
+      "grade": 2,
+      "volume": "二下",
+      "target": "海",
+      "handwritingAnswer": "海",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-船-54",
+      "grade": 2,
+      "volume": "二下",
+      "target": "船",
+      "handwritingAnswer": "船",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-近-55",
+      "grade": 2,
+      "volume": "二下",
+      "target": "近",
+      "handwritingAnswer": "近く",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-遠-56",
+      "grade": 2,
+      "volume": "二下",
+      "target": "遠",
+      "handwritingAnswer": "遠く",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-魚-57",
+      "grade": 2,
+      "volume": "二下",
+      "target": "魚",
+      "handwritingAnswer": "魚",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-鳥-58",
+      "grade": 2,
+      "volume": "二下",
+      "target": "鳥",
+      "handwritingAnswer": "鳥",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-黒-59",
+      "grade": 2,
+      "volume": "二下",
+      "target": "黒",
+      "handwritingAnswer": "黒い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-二下-強-60",
+      "grade": 2,
+      "volume": "二下",
+      "target": "強",
+      "handwritingAnswer": "強く",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-主-61",
+      "grade": 3,
+      "volume": "三上",
+      "target": "主",
+      "handwritingAnswer": "主",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-事-62",
+      "grade": 3,
+      "volume": "三上",
+      "target": "事",
+      "handwritingAnswer": "事",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-住-63",
+      "grade": 3,
+      "volume": "三上",
+      "target": "住",
+      "handwritingAnswer": "住んで",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-動-64",
+      "grade": 3,
+      "volume": "三上",
+      "target": "動",
+      "handwritingAnswer": "動いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-勝-65",
+      "grade": 3,
+      "volume": "三上",
+      "target": "勝",
+      "handwritingAnswer": "勝った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-向-66",
+      "grade": 3,
+      "volume": "三上",
+      "target": "向",
+      "handwritingAnswer": "向いて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-味-67",
+      "grade": 3,
+      "volume": "三上",
+      "target": "味",
+      "handwritingAnswer": "味",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-品-68",
+      "grade": 3,
+      "volume": "三上",
+      "target": "品",
+      "handwritingAnswer": "品",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-問-69",
+      "grade": 3,
+      "volume": "三上",
+      "target": "問",
+      "handwritingAnswer": "問う",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-始-70",
+      "grade": 3,
+      "volume": "三上",
+      "target": "始",
+      "handwritingAnswer": "始まった",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-守-71",
+      "grade": 3,
+      "volume": "三上",
+      "target": "守",
+      "handwritingAnswer": "守った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-寒-72",
+      "grade": 3,
+      "volume": "三上",
+      "target": "寒",
+      "handwritingAnswer": "寒かった",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-急-73",
+      "grade": 3,
+      "volume": "三上",
+      "target": "急",
+      "handwritingAnswer": "急いだ",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-投-74",
+      "grade": 3,
+      "volume": "三上",
+      "target": "投",
+      "handwritingAnswer": "投げた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-持-75",
+      "grade": 3,
+      "volume": "三上",
+      "target": "持",
+      "handwritingAnswer": "持って",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-暑-76",
+      "grade": 3,
+      "volume": "三上",
+      "target": "暑",
+      "handwritingAnswer": "暑い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-橋-77",
+      "grade": 3,
+      "volume": "三上",
+      "target": "橋",
+      "handwritingAnswer": "橋",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-泳-78",
+      "grade": 3,
+      "volume": "三上",
+      "target": "泳",
+      "handwritingAnswer": "泳いだ",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三上-決-79",
+      "grade": 3,
+      "volume": "三上",
+      "target": "決",
+      "handwritingAnswer": "決めた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-旅-80",
+      "grade": 3,
+      "volume": "三下",
+      "target": "旅",
+      "handwritingAnswer": "旅",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-宿-81",
+      "grade": 3,
+      "volume": "三下",
+      "target": "宿",
+      "handwritingAnswer": "宿",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-岸-82",
+      "grade": 3,
+      "volume": "三下",
+      "target": "岸",
+      "handwritingAnswer": "岸",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-幸-83",
+      "grade": 3,
+      "volume": "三下",
+      "target": "幸",
+      "handwritingAnswer": "幸せ",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-待-84",
+      "grade": 3,
+      "volume": "三下",
+      "target": "待",
+      "handwritingAnswer": "待った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-悲-85",
+      "grade": 3,
+      "volume": "三下",
+      "target": "悲",
+      "handwritingAnswer": "悲しく",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-整-86",
+      "grade": 3,
+      "volume": "三下",
+      "target": "整",
+      "handwritingAnswer": "整えた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-植-87",
+      "grade": 3,
+      "volume": "三下",
+      "target": "植",
+      "handwritingAnswer": "植えた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-歯-88",
+      "grade": 3,
+      "volume": "三下",
+      "target": "歯",
+      "handwritingAnswer": "歯",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-流-89",
+      "grade": 3,
+      "volume": "三下",
+      "target": "流",
+      "handwritingAnswer": "流れて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-深-90",
+      "grade": 3,
+      "volume": "三下",
+      "target": "深",
+      "handwritingAnswer": "深さ",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-温-91",
+      "grade": 3,
+      "volume": "三下",
+      "target": "温",
+      "handwritingAnswer": "温かい",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-港-92",
+      "grade": 3,
+      "volume": "三下",
+      "target": "港",
+      "handwritingAnswer": "港",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-湖-93",
+      "grade": 3,
+      "volume": "三下",
+      "target": "湖",
+      "handwritingAnswer": "湖",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-軽-94",
+      "grade": 3,
+      "volume": "三下",
+      "target": "軽",
+      "handwritingAnswer": "軽い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-重-95",
+      "grade": 3,
+      "volume": "三下",
+      "target": "重",
+      "handwritingAnswer": "重かった",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-三下-薬-96",
+      "grade": 3,
+      "volume": "三下",
+      "target": "薬",
+      "handwritingAnswer": "薬",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-伝-97",
+      "grade": 4,
+      "volume": "四上",
+      "target": "伝",
+      "handwritingAnswer": "伝えた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-働-98",
+      "grade": 4,
+      "volume": "四上",
+      "target": "働",
+      "handwritingAnswer": "働いて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-変-99",
+      "grade": 4,
+      "volume": "四上",
+      "target": "変",
+      "handwritingAnswer": "変わった",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-失-100",
+      "grade": 4,
+      "volume": "四上",
+      "target": "失",
+      "handwritingAnswer": "失わない",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-戦-101",
+      "grade": 4,
+      "volume": "四上",
+      "target": "戦",
+      "handwritingAnswer": "戦った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-散-102",
+      "grade": 4,
+      "volume": "四上",
+      "target": "散",
+      "handwritingAnswer": "散った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-末-103",
+      "grade": 4,
+      "volume": "四上",
+      "target": "末",
+      "handwritingAnswer": "末",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-求-104",
+      "grade": 4,
+      "volume": "四上",
+      "target": "求",
+      "handwritingAnswer": "求めて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-泣-105",
+      "grade": 4,
+      "volume": "四上",
+      "target": "泣",
+      "handwritingAnswer": "泣いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-浅-106",
+      "grade": 4,
+      "volume": "四上",
+      "target": "浅",
+      "handwritingAnswer": "浅い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-清-107",
+      "grade": 4,
+      "volume": "四上",
+      "target": "清",
+      "handwritingAnswer": "清い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-焼-108",
+      "grade": 4,
+      "volume": "四上",
+      "target": "焼",
+      "handwritingAnswer": "焼いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四上-熱-109",
+      "grade": 4,
+      "volume": "四上",
+      "target": "熱",
+      "handwritingAnswer": "熱い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-建-110",
+      "grade": 4,
+      "volume": "四下",
+      "target": "建",
+      "handwritingAnswer": "建てた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-改-111",
+      "grade": 4,
+      "volume": "四下",
+      "target": "改",
+      "handwritingAnswer": "改めた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-松-112",
+      "grade": 4,
+      "volume": "四下",
+      "target": "松",
+      "handwritingAnswer": "松",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-梅-113",
+      "grade": 4,
+      "volume": "四下",
+      "target": "梅",
+      "handwritingAnswer": "梅",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-残-114",
+      "grade": 4,
+      "volume": "四下",
+      "target": "残",
+      "handwritingAnswer": "残った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-祝-115",
+      "grade": 4,
+      "volume": "四下",
+      "target": "祝",
+      "handwritingAnswer": "祝った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-四下-静-116",
+      "grade": 4,
+      "volume": "四下",
+      "target": "静",
+      "handwritingAnswer": "静か",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-備-117",
+      "grade": 5,
+      "volume": "五",
+      "target": "備",
+      "handwritingAnswer": "備えて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-厚-118",
+      "grade": 5,
+      "volume": "五",
+      "target": "厚",
+      "handwritingAnswer": "厚い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-喜-119",
+      "grade": 5,
+      "volume": "五",
+      "target": "喜",
+      "handwritingAnswer": "喜んだ",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-増-120",
+      "grade": 5,
+      "volume": "五",
+      "target": "増",
+      "handwritingAnswer": "増えた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-夢-121",
+      "grade": 5,
+      "volume": "五",
+      "target": "夢",
+      "handwritingAnswer": "夢",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-導-122",
+      "grade": 5,
+      "volume": "五",
+      "target": "導",
+      "handwritingAnswer": "導いた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-慣-123",
+      "grade": 5,
+      "volume": "五",
+      "target": "慣",
+      "handwritingAnswer": "慣れた",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-救-124",
+      "grade": 5,
+      "volume": "五",
+      "target": "救",
+      "handwritingAnswer": "救った",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-五-豊-125",
+      "grade": 5,
+      "volume": "五",
+      "target": "豊",
+      "handwritingAnswer": "豊かな",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-六-従-126",
+      "grade": 6,
+      "volume": "六",
+      "target": "従",
+      "handwritingAnswer": "従って",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-六-探-127",
+      "grade": 6,
+      "volume": "六",
+      "target": "探",
+      "handwritingAnswer": "探した",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-六-認-128",
+      "grade": 6,
+      "volume": "六",
+      "target": "認",
+      "handwritingAnswer": "認めて",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-六-暮-129",
+      "grade": 6,
+      "volume": "六",
+      "target": "暮",
+      "handwritingAnswer": "暮らした",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-六-厳-130",
+      "grade": 6,
+      "volume": "六",
+      "target": "厳",
+      "handwritingAnswer": "厳しい",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-一上-一",
+      "grade": 1,
+      "volume": "一上",
+      "target": "一",
+      "handwritingAnswer": "一",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-四下-勇",
+      "grade": 4,
+      "volume": "四下",
+      "target": "勇",
+      "handwritingAnswer": "勇",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-四下-未",
+      "grade": 4,
+      "volume": "四下",
+      "target": "未",
+      "handwritingAnswer": "未",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-四下-照",
+      "grade": 4,
+      "volume": "四下",
+      "target": "照",
+      "handwritingAnswer": "照",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-五-確",
+      "grade": 5,
+      "volume": "五",
+      "target": "確",
+      "handwritingAnswer": "確",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-五-責",
+      "grade": 5,
+      "volume": "五",
+      "target": "責",
+      "handwritingAnswer": "責",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-優",
+      "grade": 6,
+      "volume": "六",
+      "target": "優",
+      "handwritingAnswer": "優",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-創",
+      "grade": 6,
+      "volume": "六",
+      "target": "創",
+      "handwritingAnswer": "創",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-善",
+      "grade": 6,
+      "volume": "六",
+      "target": "善",
+      "handwritingAnswer": "善い",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-尊",
+      "grade": 6,
+      "volume": "六",
+      "target": "尊",
+      "handwritingAnswer": "尊",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-難",
+      "grade": 6,
+      "volume": "六",
+      "target": "難",
+      "handwritingAnswer": "難しい",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    },
+    {
+      "id": "v04-extra-六-簡",
+      "grade": 6,
+      "volume": "六",
+      "target": "簡",
+      "handwritingAnswer": "簡",
+      "pass": true,
+      "checks": {
+        "expectedEqualsTarget": true,
+        "oneTargetMarker": true,
+        "answerStartsWithTarget": true,
+        "noNeighborKanjiInAnswer": true,
+        "okuriganaKanaOnly": true,
+        "masterKanjiExists": true,
+        "allocationGradeMatchesMaster": true,
+        "reviewed": true
+      }
+    }
+  ]
+}

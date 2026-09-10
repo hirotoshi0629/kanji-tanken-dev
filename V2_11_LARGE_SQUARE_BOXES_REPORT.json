@@ -1,0 +1,23 @@
+{
+  "version": "2.11 LARGE SQUARE WRITING BOXES",
+  "status": "PASS",
+  "checks": {
+    "javascriptSyntax": true,
+    "versionBumped": true,
+    "square300": true,
+    "aspectRatioSquare": true,
+    "multiCharNoShrink": true,
+    "wrapEnabled": true,
+    "v210SeparationRetained": true,
+    "v29PinpointRetained": true,
+    "v28ThreeTryRetained": true,
+    "cacheBumped": true
+  },
+  "changes": [
+    "漢字を書くマスを300px×300pxの正方形に統一",
+    "二字・三字・四字以上でもマス自体は小さくしない",
+    "横に入りきらない場合はマスを縮小せず、自然に次の行へ折り返す",
+    "iPad縦向き・横向きでも正方形を維持",
+    "修正ボタンと判定表示はv2.10どおりマスの外側に維持"
+  ]
+}

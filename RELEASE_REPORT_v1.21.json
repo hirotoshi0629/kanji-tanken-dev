@@ -1,0 +1,21 @@
+{
+  "version": "1.21",
+  "newReviewedQuestions": 169,
+  "totalReviewedProblems": 1492,
+  "coveredReadingTargets": 1422,
+  "remaining": 644,
+  "volumeCoverage": {
+    "一上": "32/32",
+    "一下": "119/119",
+    "二上": "176/176",
+    "二下": "179/179",
+    "三上": "291/291",
+    "三下": "190/191",
+    "四上": "253/253",
+    "四下": "175/175",
+    "五": "3/332",
+    "六": "4/318"
+  },
+  "grade4LowerRemaining": [],
+  "qaErrors": 0
+}

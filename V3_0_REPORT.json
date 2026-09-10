@@ -1,0 +1,25 @@
+{
+  "version": "3.0 TEACHER DASHBOARD",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "teacher-login.js": true,
+    "teacher-dashboard.js": true,
+    "_common.js": true,
+    "activity.js": true,
+    "teacherPage": true,
+    "schema": true,
+    "noRealNameField": true,
+    "v212Layout": true
+  },
+  "features": [
+    "児童コード",
+    "最終利用",
+    "問題別履歴",
+    "書き直し回数",
+    "3回後自己確認",
+    "クラス苦手TOP10",
+    "学年・組フィルター",
+    "先生パスワード"
+  ]
+}

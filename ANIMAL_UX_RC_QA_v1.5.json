@@ -1,0 +1,25 @@
+{
+  "version": "1.5 ANIMAL UX RELEASE CANDIDATE",
+  "status": "PASS",
+  "improvements": [
+    "10問終了画面から『チケットでおせわする』で直接どうぶつのおへやへ移動",
+    "チケットがある時は『PT不要』を明示、ない時は入手方法を案内",
+    "次の成長ごほうびまでを進捗バーで可視化",
+    "iPadでおせわボタンを押しやすいサイズに調整",
+    "学習→チケット→おせわ→成長の流れを一文で表示",
+    "50種類・8種類のおせわ・個性・コレクション・Lv1〜10を維持"
+  ],
+  "checks": {
+    "JS syntax": true,
+    "result→animal": true,
+    "ticket guide": true,
+    "growth progress": true,
+    "tickets retained": true,
+    "8 care": true,
+    "50 personalities": true,
+    "collection": true,
+    "iPad touch": true
+  },
+  "qaErrors": 0,
+  "next": "短いiPad実機テスト後、問題なければ育成強化版を公開"
+}

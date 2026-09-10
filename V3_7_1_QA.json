@@ -1,0 +1,14 @@
+{
+  "version": "3.7.1 TEACHER SCOPE FIX",
+  "status": "PASS",
+  "checks": {
+    "teacher-dashboard.js": true,
+    "teacher-login.js": true,
+    "teachers.js": true,
+    "teacher_inline_js": true,
+    "school_year_hidden": true,
+    "admin_hidden": true,
+    "clear_detail_on_logout": true,
+    "explicit_teacher_filter": true
+  }
+}

@@ -1,0 +1,3430 @@
+{
+  "metadata": {
+    "version": "0.5",
+    "policy": "未レビューの自動生成例文は児童に出さない。",
+    "reviewedCount": 142,
+    "countsByVolume": {
+      "一上": 10,
+      "一下": 14,
+      "二上": 19,
+      "二下": 18,
+      "三上": 19,
+      "三下": 17,
+      "四上": 13,
+      "四下": 10,
+      "五": 11,
+      "六": 11
+    },
+    "selectionPolicy": "reviewed問題のみ。10漢字重複なし。文末・場面・文型の偏りを避ける。"
+  },
+  "questions": [
+    {
+      "id": "v04-一上-七-1",
+      "targetKanji": "七",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "なな",
+      "sentenceTemplate": "りんごが{target}こある。",
+      "displaySentence": "りんごが【なな】こある。",
+      "expectedAnswer": "七",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "ある。",
+        "sentenceLength": 12,
+        "signature": "f77d3a38fc"
+      }
+    },
+    {
+      "id": "v04-一上-上-2",
+      "targetKanji": "上",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "うえ",
+      "sentenceTemplate": "つくえの{target}に本がある。",
+      "displaySentence": "つくえの【うえ】に本がある。",
+      "expectedAnswer": "上",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "ある。",
+        "sentenceLength": 14,
+        "signature": "4601077638"
+      }
+    },
+    {
+      "id": "v04-一上-下-3",
+      "targetKanji": "下",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "した",
+      "sentenceTemplate": "いすの{target}にかばんがある。",
+      "displaySentence": "いすの【した】にかばんがある。",
+      "expectedAnswer": "下",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "ある。",
+        "sentenceLength": 15,
+        "signature": "3c5fbb4a14"
+      }
+    },
+    {
+      "id": "v04-一上-四-4",
+      "targetKanji": "四",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "よん",
+      "sentenceTemplate": "車が{target}だいとまっている。",
+      "displaySentence": "車が【よん】だいとまっている。",
+      "expectedAnswer": "四",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いる。",
+        "sentenceLength": 15,
+        "signature": "19b0647a65"
+      }
+    },
+    {
+      "id": "v04-一上-山-5",
+      "targetKanji": "山",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "やま",
+      "sentenceTemplate": "高い{target}にのぼった。",
+      "displaySentence": "高い【やま】にのぼった。",
+      "expectedAnswer": "山",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "0dbae923e8"
+      }
+    },
+    {
+      "id": "v04-一上-川-6",
+      "targetKanji": "川",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "かわ",
+      "sentenceTemplate": "大きな{target}をわたった。",
+      "displaySentence": "大きな【かわ】をわたった。",
+      "expectedAnswer": "川",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "8105e4f2e0"
+      }
+    },
+    {
+      "id": "v04-一上-月-7",
+      "targetKanji": "月",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "つき",
+      "sentenceTemplate": "夜空に{target}が出た。",
+      "displaySentence": "夜空に【つき】が出た。",
+      "expectedAnswer": "月",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "が出た。",
+        "sentenceLength": 11,
+        "signature": "d5ce87f057"
+      }
+    },
+    {
+      "id": "v04-一上-木-8",
+      "targetKanji": "木",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "き",
+      "sentenceTemplate": "校庭に大きな{target}がある。",
+      "displaySentence": "校庭に大きな【き】がある。",
+      "expectedAnswer": "木",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "ある。",
+        "sentenceLength": 13,
+        "signature": "45604ba277"
+      }
+    },
+    {
+      "id": "v04-一上-目-9",
+      "targetKanji": "目",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "め",
+      "sentenceTemplate": "{target}を大切にしよう。",
+      "displaySentence": "【め】を大切にしよう。",
+      "expectedAnswer": "目",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "しよう。",
+        "sentenceLength": 11,
+        "signature": "5c6eb3c0f8"
+      }
+    },
+    {
+      "id": "v04-一下-人-10",
+      "targetKanji": "人",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "ひと",
+      "sentenceTemplate": "たくさんの{target}が集まった。",
+      "displaySentence": "たくさんの【ひと】が集まった。",
+      "expectedAnswer": "人",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 15,
+        "signature": "966575d05c"
+      }
+    },
+    {
+      "id": "v04-一下-口-11",
+      "targetKanji": "口",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "くち",
+      "sentenceTemplate": "大きな{target}をあけた。",
+      "displaySentence": "大きな【くち】をあけた。",
+      "expectedAnswer": "口",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "あけた。",
+        "sentenceLength": 12,
+        "signature": "5ad62bf647"
+      }
+    },
+    {
+      "id": "v04-一下-右-12",
+      "targetKanji": "右",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "みぎ",
+      "sentenceTemplate": "{target}を見てわたろう。",
+      "displaySentence": "【みぎ】を見てわたろう。",
+      "expectedAnswer": "右",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "たろう。",
+        "sentenceLength": 12,
+        "signature": "25a9c5a5c3"
+      }
+    },
+    {
+      "id": "v04-一下-左-13",
+      "targetKanji": "左",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "ひだり",
+      "sentenceTemplate": "{target}にまがった。",
+      "displaySentence": "【ひだり】にまがった。",
+      "expectedAnswer": "左",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "d5c2cc96e7"
+      }
+    },
+    {
+      "id": "v04-一下-手-14",
+      "targetKanji": "手",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "て",
+      "sentenceTemplate": "きれいに{target}をあらった。",
+      "displaySentence": "きれいに【て】をあらった。",
+      "expectedAnswer": "手",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "847bf6e7a4"
+      }
+    },
+    {
+      "id": "v04-一下-日-15",
+      "targetKanji": "日",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "ひ",
+      "sentenceTemplate": "あたたかい{target}がさした。",
+      "displaySentence": "あたたかい【ひ】がさした。",
+      "expectedAnswer": "日",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 13,
+        "signature": "0a5902a907"
+      }
+    },
+    {
+      "id": "v04-一下-水-16",
+      "targetKanji": "水",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "みず",
+      "sentenceTemplate": "コップに{target}を入れた。",
+      "displaySentence": "コップに【みず】を入れた。",
+      "expectedAnswer": "水",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "れた。",
+        "sentenceLength": 13,
+        "signature": "dac7ebfb98"
+      }
+    },
+    {
+      "id": "v04-一下-火-17",
+      "targetKanji": "火",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "ひ",
+      "sentenceTemplate": "{target}をけしてから出かけた。",
+      "displaySentence": "【ひ】をけしてから出かけた。",
+      "expectedAnswer": "火",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "かけた。",
+        "sentenceLength": 14,
+        "signature": "343b7e7e6e"
+      }
+    },
+    {
+      "id": "v04-一下-犬-18",
+      "targetKanji": "犬",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "いぬ",
+      "sentenceTemplate": "白い{target}が走ってきた。",
+      "displaySentence": "白い【いぬ】が走ってきた。",
+      "expectedAnswer": "犬",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "てきた。",
+        "sentenceLength": 13,
+        "signature": "eca5fe8b70"
+      }
+    },
+    {
+      "id": "v04-一下-空-19",
+      "targetKanji": "空",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "そら",
+      "sentenceTemplate": "青い{target}を見上げた。",
+      "displaySentence": "青い【そら】を見上げた。",
+      "expectedAnswer": "空",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "上げた。",
+        "sentenceLength": 12,
+        "signature": "42e1a2fb04"
+      }
+    },
+    {
+      "id": "v04-一下-花-20",
+      "targetKanji": "花",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "はな",
+      "sentenceTemplate": "赤い{target}がさいた。",
+      "displaySentence": "赤い【はな】がさいた。",
+      "expectedAnswer": "花",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "469fe1fc08"
+      }
+    },
+    {
+      "id": "v04-一下-雨-21",
+      "targetKanji": "雨",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "あめ",
+      "sentenceTemplate": "朝から{target}がふっている。",
+      "displaySentence": "朝から【あめ】がふっている。",
+      "expectedAnswer": "雨",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "いる。",
+        "sentenceLength": 14,
+        "signature": "66ae643793"
+      }
+    },
+    {
+      "id": "v04-一下-足-22",
+      "targetKanji": "足",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "あし",
+      "sentenceTemplate": "{target}でしっかり立つ。",
+      "displaySentence": "【あし】でしっかり立つ。",
+      "expectedAnswer": "足",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "り立つ。",
+        "sentenceLength": 12,
+        "signature": "efdb9f3dc1"
+      }
+    },
+    {
+      "id": "v04-一下-車-23",
+      "targetKanji": "車",
+      "allocationGrade": 1,
+      "introVolume": "一下",
+      "mode": "writing",
+      "reading": "くるま",
+      "sentenceTemplate": "赤い{target}が走っている。",
+      "displaySentence": "赤い【くるま】が走っている。",
+      "expectedAnswer": "車",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "いる。",
+        "sentenceLength": 14,
+        "signature": "f43866708b"
+      }
+    },
+    {
+      "id": "v04-二上-今-24",
+      "targetKanji": "今",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "いま",
+      "sentenceTemplate": "{target}からしゅくだいをする。",
+      "displaySentence": "【いま】からしゅくだいをする。",
+      "expectedAnswer": "今",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "する。",
+        "sentenceLength": 15,
+        "signature": "327682891f"
+      }
+    },
+    {
+      "id": "v04-二上-会-25",
+      "targetKanji": "会",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "あ",
+      "sentenceTemplate": "友だちに{target}いに行く。",
+      "displaySentence": "友だちに【あ】いに行く。",
+      "expectedAnswer": "会",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "に行く。",
+        "sentenceLength": 12,
+        "signature": "a7a06e999e"
+      }
+    },
+    {
+      "id": "v04-二上-体-26",
+      "targetKanji": "体",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "からだ",
+      "sentenceTemplate": "運動して{target}をきたえる。",
+      "displaySentence": "運動して【からだ】をきたえる。",
+      "expectedAnswer": "体",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "たえる。",
+        "sentenceLength": 15,
+        "signature": "003fb18798"
+      }
+    },
+    {
+      "id": "v04-二上-何-27",
+      "targetKanji": "何",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "なに",
+      "sentenceTemplate": "これは{target}に使う道具ですか。",
+      "displaySentence": "これは【なに】に使う道具ですか。",
+      "expectedAnswer": "何",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "ですか。",
+        "sentenceLength": 16,
+        "signature": "106c17b344"
+      }
+    },
+    {
+      "id": "v04-二上-作-28",
+      "targetKanji": "作",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "つく",
+      "sentenceTemplate": "紙で船を{target}った。",
+      "displaySentence": "紙で船を【つく】った。",
+      "expectedAnswer": "作",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "f3720fdd69"
+      }
+    },
+    {
+      "id": "v04-二上-光-29",
+      "targetKanji": "光",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "ひかり",
+      "sentenceTemplate": "朝の{target}がさしこんだ。",
+      "displaySentence": "朝の【ひかり】がさしこんだ。",
+      "expectedAnswer": "光",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "んだ。",
+        "sentenceLength": 14,
+        "signature": "0c392792e2"
+      }
+    },
+    {
+      "id": "v04-二上-友-30",
+      "targetKanji": "友",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "とも",
+      "sentenceTemplate": "{target}だちと遊んだ。",
+      "displaySentence": "【とも】だちと遊んだ。",
+      "expectedAnswer": "友",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "んだ。",
+        "sentenceLength": 11,
+        "signature": "3d505aceed"
+      }
+    },
+    {
+      "id": "v04-二上-国-31",
+      "targetKanji": "国",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "くに",
+      "sentenceTemplate": "いろいろな{target}の旗を見た。",
+      "displaySentence": "いろいろな【くに】の旗を見た。",
+      "expectedAnswer": "国",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "を見た。",
+        "sentenceLength": 15,
+        "signature": "c745ae9ebb"
+      }
+    },
+    {
+      "id": "v04-二上-声-32",
+      "targetKanji": "声",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "こえ",
+      "sentenceTemplate": "大きな{target}で返事をした。",
+      "displaySentence": "大きな【こえ】で返事をした。",
+      "expectedAnswer": "声",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 14,
+        "signature": "9175963d68"
+      }
+    },
+    {
+      "id": "v04-二上-夜-33",
+      "targetKanji": "夜",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "よる",
+      "sentenceTemplate": "{target}に星を見た。",
+      "displaySentence": "【よる】に星を見た。",
+      "expectedAnswer": "夜",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "を見た。",
+        "sentenceLength": 10,
+        "signature": "d670eb90b4"
+      }
+    },
+    {
+      "id": "v04-二上-家-34",
+      "targetKanji": "家",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "いえ",
+      "sentenceTemplate": "学校から{target}へ帰った。",
+      "displaySentence": "学校から【いえ】へ帰った。",
+      "expectedAnswer": "家",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "b1af41aba8"
+      }
+    },
+    {
+      "id": "v04-二上-心-35",
+      "targetKanji": "心",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "こころ",
+      "sentenceTemplate": "やさしい{target}を大切にしたい。",
+      "displaySentence": "やさしい【こころ】を大切にしたい。",
+      "expectedAnswer": "心",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "い。",
+        "sentenceLength": 17,
+        "signature": "62e49add9a"
+      }
+    },
+    {
+      "id": "v04-二上-明-36",
+      "targetKanji": "明",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "あか",
+      "sentenceTemplate": "部屋が{target}るくなった。",
+      "displaySentence": "部屋が【あか】るくなった。",
+      "expectedAnswer": "明",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "a83e59c5db"
+      }
+    },
+    {
+      "id": "v04-二上-書-37",
+      "targetKanji": "書",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "か",
+      "sentenceTemplate": "日記を{target}いた。",
+      "displaySentence": "日記を【か】いた。",
+      "expectedAnswer": "書",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 9,
+        "signature": "00139f467a"
+      }
+    },
+    {
+      "id": "v04-二上-楽-38",
+      "targetKanji": "楽",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "たの",
+      "sentenceTemplate": "遠足が{target}しかった。",
+      "displaySentence": "遠足が【たの】しかった。",
+      "expectedAnswer": "楽",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "01aec3144c"
+      }
+    },
+    {
+      "id": "v04-二上-歩-39",
+      "targetKanji": "歩",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "ある",
+      "sentenceTemplate": "公園まで{target}いた。",
+      "displaySentence": "公園まで【ある】いた。",
+      "expectedAnswer": "歩",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "b96ec120eb"
+      }
+    },
+    {
+      "id": "v04-二上-知-40",
+      "targetKanji": "知",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "し",
+      "sentenceTemplate": "新しいことを{target}った。",
+      "displaySentence": "新しいことを【し】った。",
+      "expectedAnswer": "知",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "2177a4a14e"
+      }
+    },
+    {
+      "id": "v04-二上-答-41",
+      "targetKanji": "答",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "こた",
+      "sentenceTemplate": "先生の質問に{target}えた。",
+      "displaySentence": "先生の質問に【こた】えた。",
+      "expectedAnswer": "答",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "えた。",
+        "sentenceLength": 13,
+        "signature": "6ba2a78779"
+      }
+    },
+    {
+      "id": "v04-二上-聞-42",
+      "targetKanji": "聞",
+      "allocationGrade": 2,
+      "introVolume": "二上",
+      "mode": "writing",
+      "reading": "き",
+      "sentenceTemplate": "音楽をよく{target}いた。",
+      "displaySentence": "音楽をよく【き】いた。",
+      "expectedAnswer": "聞",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "4a61f5faa2"
+      }
+    },
+    {
+      "id": "v04-二下-冬-43",
+      "targetKanji": "冬",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "ふゆ",
+      "sentenceTemplate": "{target}に雪がふった。",
+      "displaySentence": "【ふゆ】に雪がふった。",
+      "expectedAnswer": "冬",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "9c55534d0b"
+      }
+    },
+    {
+      "id": "v04-二下-南-44",
+      "targetKanji": "南",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "みなみ",
+      "sentenceTemplate": "{target}の空が明るい。",
+      "displaySentence": "【みなみ】の空が明るい。",
+      "expectedAnswer": "南",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "い。",
+        "sentenceLength": 12,
+        "signature": "dbf1a8c3ed"
+      }
+    },
+    {
+      "id": "v04-二下-夏-45",
+      "targetKanji": "夏",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "なつ",
+      "sentenceTemplate": "{target}に海へ行った。",
+      "displaySentence": "【なつ】に海へ行った。",
+      "expectedAnswer": "夏",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "e44274c2a2"
+      }
+    },
+    {
+      "id": "v04-二下-帰-46",
+      "targetKanji": "帰",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "かえ",
+      "sentenceTemplate": "学校から家へ{target}った。",
+      "displaySentence": "学校から家へ【かえ】った。",
+      "expectedAnswer": "帰",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "aa1d374fbd"
+      }
+    },
+    {
+      "id": "v04-二下-店-47",
+      "targetKanji": "店",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "みせ",
+      "sentenceTemplate": "駅前の{target}で買い物をした。",
+      "displaySentence": "駅前の【みせ】で買い物をした。",
+      "expectedAnswer": "店",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "した。",
+        "sentenceLength": 15,
+        "signature": "57bf309115"
+      }
+    },
+    {
+      "id": "v04-二下-新-48",
+      "targetKanji": "新",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "あたら",
+      "sentenceTemplate": "{target}しい本を開いた。",
+      "displaySentence": "【あたら】しい本を開いた。",
+      "expectedAnswer": "新",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 13,
+        "signature": "ed736248ee"
+      }
+    },
+    {
+      "id": "v04-二下-春-49",
+      "targetKanji": "春",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "はる",
+      "sentenceTemplate": "{target}に花がさいた。",
+      "displaySentence": "【はる】に花がさいた。",
+      "expectedAnswer": "春",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "a7362a4fdc"
+      }
+    },
+    {
+      "id": "v04-二下-晴-50",
+      "targetKanji": "晴",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "は",
+      "sentenceTemplate": "空がよく{target}れた。",
+      "displaySentence": "空がよく【は】れた。",
+      "expectedAnswer": "晴",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "れた。",
+        "sentenceLength": 10,
+        "signature": "36db9927e2"
+      }
+    },
+    {
+      "id": "v04-二下-朝-51",
+      "targetKanji": "朝",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "あさ",
+      "sentenceTemplate": "{target}早く起きた。",
+      "displaySentence": "【あさ】早く起きた。",
+      "expectedAnswer": "朝",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "起きた。",
+        "sentenceLength": 10,
+        "signature": "56ff5adc47"
+      }
+    },
+    {
+      "id": "v04-二下-歌-52",
+      "targetKanji": "歌",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "うた",
+      "sentenceTemplate": "みんなで{target}をうたった。",
+      "displaySentence": "みんなで【うた】をうたった。",
+      "expectedAnswer": "歌",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "c7dd6e1d19"
+      }
+    },
+    {
+      "id": "v04-二下-海-53",
+      "targetKanji": "海",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "うみ",
+      "sentenceTemplate": "夏に{target}で泳いだ。",
+      "displaySentence": "夏に【うみ】で泳いだ。",
+      "expectedAnswer": "海",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "泳いだ。",
+        "sentenceLength": 11,
+        "signature": "d3b82f1698"
+      }
+    },
+    {
+      "id": "v04-二下-船-54",
+      "targetKanji": "船",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "ふね",
+      "sentenceTemplate": "大きな{target}に乗った。",
+      "displaySentence": "大きな【ふね】に乗った。",
+      "expectedAnswer": "船",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "4883e2233f"
+      }
+    },
+    {
+      "id": "v04-二下-近-55",
+      "targetKanji": "近",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "ちか",
+      "sentenceTemplate": "家の{target}くに公園がある。",
+      "displaySentence": "家の【ちか】くに公園がある。",
+      "expectedAnswer": "近",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "ある。",
+        "sentenceLength": 14,
+        "signature": "409b671238"
+      }
+    },
+    {
+      "id": "v04-二下-遠-56",
+      "targetKanji": "遠",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "とお",
+      "sentenceTemplate": "{target}くの山が見える。",
+      "displaySentence": "【とお】くの山が見える。",
+      "expectedAnswer": "遠",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "見える。",
+        "sentenceLength": 12,
+        "signature": "db51e8c4aa"
+      }
+    },
+    {
+      "id": "v04-二下-魚-57",
+      "targetKanji": "魚",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "さかな",
+      "sentenceTemplate": "川で{target}を見つけた。",
+      "displaySentence": "川で【さかな】を見つけた。",
+      "expectedAnswer": "魚",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "つけた。",
+        "sentenceLength": 13,
+        "signature": "d2f9dff0d7"
+      }
+    },
+    {
+      "id": "v04-二下-鳥-58",
+      "targetKanji": "鳥",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "とり",
+      "sentenceTemplate": "木の上で{target}が鳴いた。",
+      "displaySentence": "木の上で【とり】が鳴いた。",
+      "expectedAnswer": "鳥",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "いた。",
+        "sentenceLength": 13,
+        "signature": "844f5df0db"
+      }
+    },
+    {
+      "id": "v04-二下-黒-59",
+      "targetKanji": "黒",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "くろ",
+      "sentenceTemplate": "{target}いねこが歩いている。",
+      "displaySentence": "【くろ】いねこが歩いている。",
+      "expectedAnswer": "黒",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "いる。",
+        "sentenceLength": 14,
+        "signature": "c939665117"
+      }
+    },
+    {
+      "id": "v04-二下-強-60",
+      "targetKanji": "強",
+      "allocationGrade": 2,
+      "introVolume": "二下",
+      "mode": "writing",
+      "reading": "つよ",
+      "sentenceTemplate": "風が{target}くふいている。",
+      "displaySentence": "風が【つよ】くふいている。",
+      "expectedAnswer": "強",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いる。",
+        "sentenceLength": 13,
+        "signature": "9a80046df1"
+      }
+    },
+    {
+      "id": "v04-三上-主-61",
+      "targetKanji": "主",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "ぬし",
+      "sentenceTemplate": "池の{target}のような大きな魚がいた。",
+      "displaySentence": "池の【ぬし】のような大きな魚がいた。",
+      "expectedAnswer": "主",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "いた。",
+        "sentenceLength": 18,
+        "signature": "94b2e54ea6"
+      }
+    },
+    {
+      "id": "v04-三上-事-62",
+      "targetKanji": "事",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "こと",
+      "sentenceTemplate": "大切な{target}をノートに書いた。",
+      "displaySentence": "大切な【こと】をノートに書いた。",
+      "expectedAnswer": "事",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 16,
+        "signature": "6f4fb5fcc4"
+      }
+    },
+    {
+      "id": "v04-三上-住-63",
+      "targetKanji": "住",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "す",
+      "sentenceTemplate": "この町に{target}んでいる。",
+      "displaySentence": "この町に【す】んでいる。",
+      "expectedAnswer": "住",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "いる。",
+        "sentenceLength": 12,
+        "signature": "e0a8dfb8d9"
+      }
+    },
+    {
+      "id": "v04-三上-動-64",
+      "targetKanji": "動",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "うご",
+      "sentenceTemplate": "時計の針が{target}いた。",
+      "displaySentence": "時計の針が【うご】いた。",
+      "expectedAnswer": "動",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 12,
+        "signature": "ecf9e90f84"
+      }
+    },
+    {
+      "id": "v04-三上-勝-65",
+      "targetKanji": "勝",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "か",
+      "sentenceTemplate": "試合に{target}った。",
+      "displaySentence": "試合に【か】った。",
+      "expectedAnswer": "勝",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "った。",
+        "sentenceLength": 9,
+        "signature": "fb3b4e8e67"
+      }
+    },
+    {
+      "id": "v04-三上-向-66",
+      "targetKanji": "向",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "む",
+      "sentenceTemplate": "前を{target}いて歩いた。",
+      "displaySentence": "前を【む】いて歩いた。",
+      "expectedAnswer": "向",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "sports",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "f407239f5b"
+      }
+    },
+    {
+      "id": "v04-三上-味-67",
+      "targetKanji": "味",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "あじ",
+      "sentenceTemplate": "スープの{target}をたしかめた。",
+      "displaySentence": "スープの【あじ】をたしかめた。",
+      "expectedAnswer": "味",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "めた。",
+        "sentenceLength": 15,
+        "signature": "f4a105e61d"
+      }
+    },
+    {
+      "id": "v04-三上-品-68",
+      "targetKanji": "品",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "しな",
+      "sentenceTemplate": "店に新しい{target}がならんだ。",
+      "displaySentence": "店に新しい【しな】がならんだ。",
+      "expectedAnswer": "品",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "んだ。",
+        "sentenceLength": 15,
+        "signature": "047670a9d3"
+      }
+    },
+    {
+      "id": "v04-三上-問-69",
+      "targetKanji": "問",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "と",
+      "sentenceTemplate": "先生に{target}い合わせた。",
+      "displaySentence": "先生に【と】い合わせた。",
+      "expectedAnswer": "問",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "わせた。",
+        "sentenceLength": 12,
+        "signature": "f366532f15"
+      }
+    },
+    {
+      "id": "v04-三上-始-70",
+      "targetKanji": "始",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "はじ",
+      "sentenceTemplate": "授業が{target}まった。",
+      "displaySentence": "授業が【はじ】まった。",
+      "expectedAnswer": "始",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "1ee86ee424"
+      }
+    },
+    {
+      "id": "v04-三上-守-71",
+      "targetKanji": "守",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "まも",
+      "sentenceTemplate": "交通ルールを{target}った。",
+      "displaySentence": "交通ルールを【まも】った。",
+      "expectedAnswer": "守",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "ce9207aa65"
+      }
+    },
+    {
+      "id": "v04-三上-寒-72",
+      "targetKanji": "寒",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "さむ",
+      "sentenceTemplate": "朝はとても{target}かった。",
+      "displaySentence": "朝はとても【さむ】かった。",
+      "expectedAnswer": "寒",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "c0ecf7e73e"
+      }
+    },
+    {
+      "id": "v04-三上-急-73",
+      "targetKanji": "急",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "いそ",
+      "sentenceTemplate": "駅まで{target}いだ。",
+      "displaySentence": "駅まで【いそ】いだ。",
+      "expectedAnswer": "急",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "そいだ。",
+        "sentenceLength": 10,
+        "signature": "7bb66f9876"
+      }
+    },
+    {
+      "id": "v04-三上-投-74",
+      "targetKanji": "投",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "な",
+      "sentenceTemplate": "ボールを遠くへ{target}げた。",
+      "displaySentence": "ボールを遠くへ【な】げた。",
+      "expectedAnswer": "投",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "なげた。",
+        "sentenceLength": 13,
+        "signature": "5069d97123"
+      }
+    },
+    {
+      "id": "v04-三上-持-75",
+      "targetKanji": "持",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "も",
+      "sentenceTemplate": "水とうを{target}って出かけた。",
+      "displaySentence": "水とうを【も】って出かけた。",
+      "expectedAnswer": "持",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "かけた。",
+        "sentenceLength": 14,
+        "signature": "5f3df941b8"
+      }
+    },
+    {
+      "id": "v04-三上-暑-76",
+      "targetKanji": "暑",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "あつ",
+      "sentenceTemplate": "今日はとても{target}い。",
+      "displaySentence": "今日はとても【あつ】い。",
+      "expectedAnswer": "暑",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "い。",
+        "sentenceLength": 12,
+        "signature": "376056880e"
+      }
+    },
+    {
+      "id": "v04-三上-橋-77",
+      "targetKanji": "橋",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "はし",
+      "sentenceTemplate": "大きな{target}をわたった。",
+      "displaySentence": "大きな【はし】をわたった。",
+      "expectedAnswer": "橋",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "8105e4f2e0"
+      }
+    },
+    {
+      "id": "v04-三上-泳-78",
+      "targetKanji": "泳",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "およ",
+      "sentenceTemplate": "プールで{target}いだ。",
+      "displaySentence": "プールで【およ】いだ。",
+      "expectedAnswer": "泳",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "よいだ。",
+        "sentenceLength": 11,
+        "signature": "02fd87b6df"
+      }
+    },
+    {
+      "id": "v04-三上-決-79",
+      "targetKanji": "決",
+      "allocationGrade": 3,
+      "introVolume": "三上",
+      "mode": "writing",
+      "reading": "き",
+      "sentenceTemplate": "係をみんなで{target}めた。",
+      "displaySentence": "係をみんなで【き】めた。",
+      "expectedAnswer": "決",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "めた。",
+        "sentenceLength": 12,
+        "signature": "267ce881ab"
+      }
+    },
+    {
+      "id": "v04-三下-旅-80",
+      "targetKanji": "旅",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "たび",
+      "sentenceTemplate": "夏休みに{target}へ出た。",
+      "displaySentence": "夏休みに【たび】へ出た。",
+      "expectedAnswer": "旅",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "へ出た。",
+        "sentenceLength": 12,
+        "signature": "19e3e04152"
+      }
+    },
+    {
+      "id": "v04-三下-宿-81",
+      "targetKanji": "宿",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "やど",
+      "sentenceTemplate": "山の{target}にとまった。",
+      "displaySentence": "山の【やど】にとまった。",
+      "expectedAnswer": "宿",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "2df1d66707"
+      }
+    },
+    {
+      "id": "v04-三下-岸-82",
+      "targetKanji": "岸",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "きし",
+      "sentenceTemplate": "川の{target}で石をひろった。",
+      "displaySentence": "川の【きし】で石をひろった。",
+      "expectedAnswer": "岸",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "1a5181948d"
+      }
+    },
+    {
+      "id": "v04-三下-幸-83",
+      "targetKanji": "幸",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "しあわ",
+      "sentenceTemplate": "家族とすごせて{target}せだ。",
+      "displaySentence": "家族とすごせて【しあわ】せだ。",
+      "expectedAnswer": "幸",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "わせだ。",
+        "sentenceLength": 15,
+        "signature": "f4ca4c4dd5"
+      }
+    },
+    {
+      "id": "v04-三下-待-84",
+      "targetKanji": "待",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "ま",
+      "sentenceTemplate": "駅で電車を{target}った。",
+      "displaySentence": "駅で電車を【ま】った。",
+      "expectedAnswer": "待",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "f34d0e2a36"
+      }
+    },
+    {
+      "id": "v04-三下-悲-85",
+      "targetKanji": "悲",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "かな",
+      "sentenceTemplate": "映画を見て{target}しくなった。",
+      "displaySentence": "映画を見て【かな】しくなった。",
+      "expectedAnswer": "悲",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 15,
+        "signature": "e4a295eaa4"
+      }
+    },
+    {
+      "id": "v04-三下-整-86",
+      "targetKanji": "整",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "ととの",
+      "sentenceTemplate": "机の上を{target}えた。",
+      "displaySentence": "机の上を【ととの】えた。",
+      "expectedAnswer": "整",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "えた。",
+        "sentenceLength": 12,
+        "signature": "d007f8b928"
+      }
+    },
+    {
+      "id": "v04-三下-植-87",
+      "targetKanji": "植",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "う",
+      "sentenceTemplate": "庭に花を{target}えた。",
+      "displaySentence": "庭に花を【う】えた。",
+      "expectedAnswer": "植",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "えた。",
+        "sentenceLength": 10,
+        "signature": "4522e6b132"
+      }
+    },
+    {
+      "id": "v04-三下-歯-88",
+      "targetKanji": "歯",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "は",
+      "sentenceTemplate": "朝と夜に{target}をみがく。",
+      "displaySentence": "朝と夜に【は】をみがく。",
+      "expectedAnswer": "歯",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "みがく。",
+        "sentenceLength": 12,
+        "signature": "823ff8d8a3"
+      }
+    },
+    {
+      "id": "v04-三下-流-89",
+      "targetKanji": "流",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "なが",
+      "sentenceTemplate": "川の水が{target}れている。",
+      "displaySentence": "川の水が【なが】れている。",
+      "expectedAnswer": "流",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "いる。",
+        "sentenceLength": 13,
+        "signature": "91eb0fb06e"
+      }
+    },
+    {
+      "id": "v04-三下-深-90",
+      "targetKanji": "深",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "ふか",
+      "sentenceTemplate": "湖の{target}さを調べた。",
+      "displaySentence": "湖の【ふか】さを調べた。",
+      "expectedAnswer": "深",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "調べた。",
+        "sentenceLength": 12,
+        "signature": "72622dd676"
+      }
+    },
+    {
+      "id": "v04-三下-温-91",
+      "targetKanji": "温",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "あたた",
+      "sentenceTemplate": "{target}かいお茶を飲んだ。",
+      "displaySentence": "【あたた】かいお茶を飲んだ。",
+      "expectedAnswer": "温",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "んだ。",
+        "sentenceLength": 14,
+        "signature": "2d1a00ee32"
+      }
+    },
+    {
+      "id": "v04-三下-港-92",
+      "targetKanji": "港",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "みなと",
+      "sentenceTemplate": "船が{target}に着いた。",
+      "displaySentence": "船が【みなと】に着いた。",
+      "expectedAnswer": "港",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "いた。",
+        "sentenceLength": 12,
+        "signature": "05d2b94954"
+      }
+    },
+    {
+      "id": "v04-三下-湖-93",
+      "targetKanji": "湖",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "みずうみ",
+      "sentenceTemplate": "山の中に大きな{target}がある。",
+      "displaySentence": "山の中に大きな【みずうみ】がある。",
+      "expectedAnswer": "湖",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "ある。",
+        "sentenceLength": 17,
+        "signature": "f4239a2588"
+      }
+    },
+    {
+      "id": "v04-三下-軽-94",
+      "targetKanji": "軽",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "かる",
+      "sentenceTemplate": "{target}い荷物を持った。",
+      "displaySentence": "【かる】い荷物を持った。",
+      "expectedAnswer": "軽",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "48cef21710"
+      }
+    },
+    {
+      "id": "v04-三下-重-95",
+      "targetKanji": "重",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "おも",
+      "sentenceTemplate": "箱はとても{target}かった。",
+      "displaySentence": "箱はとても【おも】かった。",
+      "expectedAnswer": "重",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "16b1d186e1"
+      }
+    },
+    {
+      "id": "v04-三下-薬-96",
+      "targetKanji": "薬",
+      "allocationGrade": 3,
+      "introVolume": "三下",
+      "mode": "writing",
+      "reading": "くすり",
+      "sentenceTemplate": "病院で{target}をもらった。",
+      "displaySentence": "病院で【くすり】をもらった。",
+      "expectedAnswer": "薬",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "b194f990ad"
+      }
+    },
+    {
+      "id": "v04-四上-伝-97",
+      "targetKanji": "伝",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "つた",
+      "sentenceTemplate": "思いを言葉で{target}えた。",
+      "displaySentence": "思いを言葉で【つた】えた。",
+      "expectedAnswer": "伝",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "えた。",
+        "sentenceLength": 13,
+        "signature": "2c97b0f721"
+      }
+    },
+    {
+      "id": "v04-四上-働-98",
+      "targetKanji": "働",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "はたら",
+      "sentenceTemplate": "町で多くの人が{target}いている。",
+      "displaySentence": "町で多くの人が【はたら】いている。",
+      "expectedAnswer": "働",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "travel",
+        "endingTag": "いる。",
+        "sentenceLength": 17,
+        "signature": "15814e41e9"
+      }
+    },
+    {
+      "id": "v04-四上-変-99",
+      "targetKanji": "変",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "か",
+      "sentenceTemplate": "空の色が{target}わった。",
+      "displaySentence": "空の色が【か】わった。",
+      "expectedAnswer": "変",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 11,
+        "signature": "e13051c765"
+      }
+    },
+    {
+      "id": "v04-四上-失-100",
+      "targetKanji": "失",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "うしな",
+      "sentenceTemplate": "大切な物を{target}わないようにする。",
+      "displaySentence": "大切な物を【うしな】わないようにする。",
+      "expectedAnswer": "失",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "する。",
+        "sentenceLength": 19,
+        "signature": "569afb1529"
+      }
+    },
+    {
+      "id": "v04-四上-戦-101",
+      "targetKanji": "戦",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "たたか",
+      "sentenceTemplate": "最後まで{target}った。",
+      "displaySentence": "最後まで【たたか】った。",
+      "expectedAnswer": "戦",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "66f0ba80b0"
+      }
+    },
+    {
+      "id": "v04-四上-散-102",
+      "targetKanji": "散",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "ち",
+      "sentenceTemplate": "花びらが風に{target}った。",
+      "displaySentence": "花びらが風に【ち】った。",
+      "expectedAnswer": "散",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "った。",
+        "sentenceLength": 12,
+        "signature": "f0db0a5a08"
+      }
+    },
+    {
+      "id": "v04-四上-末-103",
+      "targetKanji": "末",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "すえ",
+      "sentenceTemplate": "月の{target}に発表会がある。",
+      "displaySentence": "月の【すえ】に発表会がある。",
+      "expectedAnswer": "末",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "thinking",
+        "endingTag": "ある。",
+        "sentenceLength": 14,
+        "signature": "147cbf9dd2"
+      }
+    },
+    {
+      "id": "v04-四上-求-104",
+      "targetKanji": "求",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "もと",
+      "sentenceTemplate": "答えを{target}めて考えた。",
+      "displaySentence": "答えを【もと】めて考えた。",
+      "expectedAnswer": "求",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "thinking",
+        "endingTag": "えた。",
+        "sentenceLength": 13,
+        "signature": "5fd6beb328"
+      }
+    },
+    {
+      "id": "v04-四上-泣-105",
+      "targetKanji": "泣",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "な",
+      "sentenceTemplate": "うれしくて{target}いた。",
+      "displaySentence": "うれしくて【な】いた。",
+      "expectedAnswer": "泣",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "0553412771"
+      }
+    },
+    {
+      "id": "v04-四上-浅-106",
+      "targetKanji": "浅",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "あさ",
+      "sentenceTemplate": "川の{target}い所を歩いた。",
+      "displaySentence": "川の【あさ】い所を歩いた。",
+      "expectedAnswer": "浅",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "いた。",
+        "sentenceLength": 13,
+        "signature": "1c6d170b0e"
+      }
+    },
+    {
+      "id": "v04-四上-清-107",
+      "targetKanji": "清",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "きよ",
+      "sentenceTemplate": "{target}い水が流れている。",
+      "displaySentence": "【きよ】い水が流れている。",
+      "expectedAnswer": "清",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いる。",
+        "sentenceLength": 13,
+        "signature": "b18e689e05"
+      }
+    },
+    {
+      "id": "v04-四上-焼-108",
+      "targetKanji": "焼",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "や",
+      "sentenceTemplate": "魚を{target}いた。",
+      "displaySentence": "魚を【や】いた。",
+      "expectedAnswer": "焼",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "いた。",
+        "sentenceLength": 8,
+        "signature": "aa89c081f6"
+      }
+    },
+    {
+      "id": "v04-四上-熱-109",
+      "targetKanji": "熱",
+      "allocationGrade": 4,
+      "introVolume": "四上",
+      "mode": "writing",
+      "reading": "あつ",
+      "sentenceTemplate": "スープがまだ{target}い。",
+      "displaySentence": "スープがまだ【あつ】い。",
+      "expectedAnswer": "熱",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "food",
+        "endingTag": "い。",
+        "sentenceLength": 12,
+        "signature": "859e02f6c7"
+      }
+    },
+    {
+      "id": "v04-四下-建-110",
+      "targetKanji": "建",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "た",
+      "sentenceTemplate": "新しい家を{target}てた。",
+      "displaySentence": "新しい家を【た】てた。",
+      "expectedAnswer": "建",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "たてた。",
+        "sentenceLength": 11,
+        "signature": "c090fcc0c4"
+      }
+    },
+    {
+      "id": "v04-四下-改-111",
+      "targetKanji": "改",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "あらた",
+      "sentenceTemplate": "ルールを{target}めた。",
+      "displaySentence": "ルールを【あらた】めた。",
+      "expectedAnswer": "改",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "めた。",
+        "sentenceLength": 12,
+        "signature": "8949a105e6"
+      }
+    },
+    {
+      "id": "v04-四下-松-112",
+      "targetKanji": "松",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "まつ",
+      "sentenceTemplate": "大きな{target}の木がある。",
+      "displaySentence": "大きな【まつ】の木がある。",
+      "expectedAnswer": "松",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "ある。",
+        "sentenceLength": 13,
+        "signature": "2a91777739"
+      }
+    },
+    {
+      "id": "v04-四下-梅-113",
+      "targetKanji": "梅",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "うめ",
+      "sentenceTemplate": "庭の{target}がさいた。",
+      "displaySentence": "庭の【うめ】がさいた。",
+      "expectedAnswer": "梅",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "いた。",
+        "sentenceLength": 11,
+        "signature": "5cc6b5bf41"
+      }
+    },
+    {
+      "id": "v04-四下-残-114",
+      "targetKanji": "残",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "のこ",
+      "sentenceTemplate": "ケーキが一つ{target}った。",
+      "displaySentence": "ケーキが一つ【のこ】った。",
+      "expectedAnswer": "残",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 13,
+        "signature": "59eee3b119"
+      }
+    },
+    {
+      "id": "v04-四下-祝-115",
+      "targetKanji": "祝",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "いわ",
+      "sentenceTemplate": "誕生日をみんなで{target}った。",
+      "displaySentence": "誕生日をみんなで【いわ】った。",
+      "expectedAnswer": "祝",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "った。",
+        "sentenceLength": 15,
+        "signature": "c91ff01856"
+      }
+    },
+    {
+      "id": "v04-四下-静-116",
+      "targetKanji": "静",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "しず",
+      "sentenceTemplate": "図書館では{target}かにする。",
+      "displaySentence": "図書館では【しず】かにする。",
+      "expectedAnswer": "静",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "する。",
+        "sentenceLength": 14,
+        "signature": "ac186ca648"
+      }
+    },
+    {
+      "id": "v04-五-備-117",
+      "targetKanji": "備",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "そな",
+      "sentenceTemplate": "地震に{target}えて水を用意した。",
+      "displaySentence": "地震に【そな】えて水を用意した。",
+      "expectedAnswer": "備",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 16,
+        "signature": "eecfe6480d"
+      }
+    },
+    {
+      "id": "v04-五-厚-118",
+      "targetKanji": "厚",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "あつ",
+      "sentenceTemplate": "{target}い本を読み終えた。",
+      "displaySentence": "【あつ】い本を読み終えた。",
+      "expectedAnswer": "厚",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "えた。",
+        "sentenceLength": 13,
+        "signature": "692ed9a0e5"
+      }
+    },
+    {
+      "id": "v04-五-喜-119",
+      "targetKanji": "喜",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "よろこ",
+      "sentenceTemplate": "合格をみんなで{target}んだ。",
+      "displaySentence": "合格をみんなで【よろこ】んだ。",
+      "expectedAnswer": "喜",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "んだ。",
+        "sentenceLength": 15,
+        "signature": "1cf8341178"
+      }
+    },
+    {
+      "id": "v04-五-増-120",
+      "targetKanji": "増",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "ふ",
+      "sentenceTemplate": "公園の木が{target}えた。",
+      "displaySentence": "公園の木が【ふ】えた。",
+      "expectedAnswer": "増",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "えた。",
+        "sentenceLength": 11,
+        "signature": "4fea91de60"
+      }
+    },
+    {
+      "id": "v04-五-夢-121",
+      "targetKanji": "夢",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "ゆめ",
+      "sentenceTemplate": "将来の{target}について話した。",
+      "displaySentence": "将来の【ゆめ】について話した。",
+      "expectedAnswer": "夢",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 15,
+        "signature": "ba6249aef8"
+      }
+    },
+    {
+      "id": "v04-五-導-122",
+      "targetKanji": "導",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "みちび",
+      "sentenceTemplate": "先生が正しい答えへ{target}いた。",
+      "displaySentence": "先生が正しい答えへ【みちび】いた。",
+      "expectedAnswer": "導",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "いた。",
+        "sentenceLength": 17,
+        "signature": "653cf00461"
+      }
+    },
+    {
+      "id": "v04-五-慣-123",
+      "targetKanji": "慣",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "な",
+      "sentenceTemplate": "新しい生活に{target}れた。",
+      "displaySentence": "新しい生活に【な】れた。",
+      "expectedAnswer": "慣",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "れた。",
+        "sentenceLength": 12,
+        "signature": "bbae0566fb"
+      }
+    },
+    {
+      "id": "v04-五-救-124",
+      "targetKanji": "救",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "すく",
+      "sentenceTemplate": "困っている人を{target}った。",
+      "displaySentence": "困っている人を【すく】った。",
+      "expectedAnswer": "救",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "01eba2a747"
+      }
+    },
+    {
+      "id": "v04-五-豊-125",
+      "targetKanji": "豊",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "ゆた",
+      "sentenceTemplate": "{target}かな自然を守りたい。",
+      "displaySentence": "【ゆた】かな自然を守りたい。",
+      "expectedAnswer": "豊",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "nature",
+        "endingTag": "い。",
+        "sentenceLength": 14,
+        "signature": "1e99dd1fa3"
+      }
+    },
+    {
+      "id": "v04-六-従-126",
+      "targetKanji": "従",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "したが",
+      "sentenceTemplate": "決まりに{target}って行動した。",
+      "displaySentence": "決まりに【したが】って行動した。",
+      "expectedAnswer": "従",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 16,
+        "signature": "9cf6095dc5"
+      }
+    },
+    {
+      "id": "v04-六-探-127",
+      "targetKanji": "探",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "さが",
+      "sentenceTemplate": "なくした鍵を{target}した。",
+      "displaySentence": "なくした鍵を【さが】した。",
+      "expectedAnswer": "探",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 13,
+        "signature": "b1ff602587"
+      }
+    },
+    {
+      "id": "v04-六-認-128",
+      "targetKanji": "認",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "みと",
+      "sentenceTemplate": "努力を{target}めてもらった。",
+      "displaySentence": "努力を【みと】めてもらった。",
+      "expectedAnswer": "認",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "7205f1de0a"
+      }
+    },
+    {
+      "id": "v04-六-暮-129",
+      "targetKanji": "暮",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "く",
+      "sentenceTemplate": "家族と楽しく{target}らした。",
+      "displaySentence": "家族と楽しく【く】らした。",
+      "expectedAnswer": "暮",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "life",
+        "endingTag": "した。",
+        "sentenceLength": 13,
+        "signature": "4d54161b18"
+      }
+    },
+    {
+      "id": "v04-六-厳-130",
+      "targetKanji": "厳",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "きび",
+      "sentenceTemplate": "先生は時に{target}しい。",
+      "displaySentence": "先生は時に【きび】しい。",
+      "expectedAnswer": "厳",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "school",
+        "endingTag": "い。",
+        "sentenceLength": 12,
+        "signature": "2a9d9a6483"
+      }
+    },
+    {
+      "id": "v04-extra-一上-一",
+      "targetKanji": "一",
+      "allocationGrade": 1,
+      "introVolume": "一上",
+      "mode": "writing",
+      "reading": "いち",
+      "sentenceTemplate": "えんぴつを{target}本もった。",
+      "displaySentence": "えんぴつを【いち】本もった。",
+      "expectedAnswer": "一",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 14,
+        "signature": "7834a20b45"
+      }
+    },
+    {
+      "id": "v04-extra-四下-勇",
+      "targetKanji": "勇",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "ゆう",
+      "sentenceTemplate": "{target}気を出して話した。",
+      "displaySentence": "【ゆう】気を出して話した。",
+      "expectedAnswer": "勇",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 13,
+        "signature": "d0a2a3589e"
+      }
+    },
+    {
+      "id": "v04-extra-四下-未",
+      "targetKanji": "未",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "み",
+      "sentenceTemplate": "{target}来の夢を話した。",
+      "displaySentence": "【み】来の夢を話した。",
+      "expectedAnswer": "未",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 11,
+        "signature": "6ed7fcf68c"
+      }
+    },
+    {
+      "id": "v04-extra-四下-照",
+      "targetKanji": "照",
+      "allocationGrade": 4,
+      "introVolume": "四下",
+      "mode": "writing",
+      "reading": "しょう",
+      "sentenceTemplate": "部屋の{target}明をつけた。",
+      "displaySentence": "部屋の【しょう】明をつけた。",
+      "expectedAnswer": "照",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "つけた。",
+        "sentenceLength": 14,
+        "signature": "cb16f37ed4"
+      }
+    },
+    {
+      "id": "v04-extra-五-確",
+      "targetKanji": "確",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "かく",
+      "sentenceTemplate": "出発前に地図を{target}認した。",
+      "displaySentence": "出発前に地図を【かく】認した。",
+      "expectedAnswer": "確",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 15,
+        "signature": "273081c44e"
+      }
+    },
+    {
+      "id": "v04-extra-五-責",
+      "targetKanji": "責",
+      "allocationGrade": 5,
+      "introVolume": "五",
+      "mode": "writing",
+      "reading": "せき",
+      "sentenceTemplate": "自分の{target}任を果たした。",
+      "displaySentence": "自分の【せき】任を果たした。",
+      "expectedAnswer": "責",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 14,
+        "signature": "402d9adec9"
+      }
+    },
+    {
+      "id": "v04-extra-六-優",
+      "targetKanji": "優",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "ゆう",
+      "sentenceTemplate": "{target}勝な作品を見学した。",
+      "displaySentence": "【ゆう】勝な作品を見学した。",
+      "expectedAnswer": "優",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 14,
+        "signature": "e5ab3f802a"
+      }
+    },
+    {
+      "id": "v04-extra-六-創",
+      "targetKanji": "創",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "そう",
+      "sentenceTemplate": "新しい物語を{target}作した。",
+      "displaySentence": "新しい物語を【そう】作した。",
+      "expectedAnswer": "創",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 14,
+        "signature": "fb539d36a9"
+      }
+    },
+    {
+      "id": "v04-extra-六-善",
+      "targetKanji": "善",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "ぜん",
+      "sentenceTemplate": "より{target}い方法を考えた。",
+      "displaySentence": "より【ぜん】い方法を考えた。",
+      "expectedAnswer": "善",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "thinking",
+        "endingTag": "えた。",
+        "sentenceLength": 14,
+        "signature": "13c28436d5"
+      }
+    },
+    {
+      "id": "v04-extra-六-尊",
+      "targetKanji": "尊",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "そん",
+      "sentenceTemplate": "相手を{target}重して話し合った。",
+      "displaySentence": "相手を【そん】重して話し合った。",
+      "expectedAnswer": "尊",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "った。",
+        "sentenceLength": 16,
+        "signature": "ad347cf9a5"
+      }
+    },
+    {
+      "id": "v04-extra-六-難",
+      "targetKanji": "難",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "なん",
+      "sentenceTemplate": "{target}しい問題に挑戦した。",
+      "displaySentence": "【なん】しい問題に挑戦した。",
+      "expectedAnswer": "難",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "した。",
+        "sentenceLength": 14,
+        "signature": "03e4fa306e"
+      }
+    },
+    {
+      "id": "v04-extra-六-簡",
+      "targetKanji": "簡",
+      "allocationGrade": 6,
+      "introVolume": "六",
+      "mode": "writing",
+      "reading": "かん",
+      "sentenceTemplate": "要点を{target}単にまとめた。",
+      "displaySentence": "要点を【かん】単にまとめた。",
+      "expectedAnswer": "簡",
+      "reviewStatus": "reviewed",
+      "quality": {
+        "naturalJapanese": true,
+        "shortEnoughForIPad": true,
+        "singleTarget": true,
+        "runtimeGenerated": false
+      },
+      "diversity": {
+        "contextTag": "general",
+        "endingTag": "めた。",
+        "sentenceLength": 14,
+        "signature": "eadf19490f"
+      }
+    }
+  ]
+}

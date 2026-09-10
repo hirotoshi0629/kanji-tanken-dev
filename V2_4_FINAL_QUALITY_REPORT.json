@@ -1,0 +1,56 @@
+{
+  "version": "2.4 JUKUGO FINAL QUALITY",
+  "status": "PASS",
+  "added": 14,
+  "quarantined": [
+    "丁度",
+    "冷水",
+    "号泣",
+    "姉弟",
+    "拾得",
+    "細長",
+    "鳥巣"
+  ],
+  "totalReviewedJukugo": 942,
+  "coveredKanji": 995,
+  "coveragePct": 97.0,
+  "gradeCoverage": {
+    "1": {
+      "total": 80,
+      "covered": 79,
+      "pct": 98.8
+    },
+    "2": {
+      "total": 160,
+      "covered": 158,
+      "pct": 98.8
+    },
+    "3": {
+      "total": 200,
+      "covered": 197,
+      "pct": 98.5
+    },
+    "4": {
+      "total": 202,
+      "covered": 195,
+      "pct": 96.5
+    },
+    "5": {
+      "total": 193,
+      "covered": 181,
+      "pct": 93.8
+    },
+    "6": {
+      "total": 191,
+      "covered": 185,
+      "pct": 96.9
+    }
+  },
+  "remainingCount": 31,
+  "remainingKanji": "貝引細丁終拾巣泣浅覚飯孫阪停喜営堂救殺毒紀績脈航賞俵届暖暮派訳",
+  "duplicates": [],
+  "integrityErrors": [],
+  "scopeViolations": [],
+  "jsSyntaxOK": true,
+  "policy": "Coverage is not forced to 100%; remaining gaps require lexical/manual review."
+}

@@ -1,0 +1,23 @@
+{
+  "version": "1.1 ANIMAL CARE",
+  "status": "PASS",
+  "features": [
+    "おせわを2種類から8種類へ拡張",
+    "50種類それぞれに好きなおせわを設定",
+    "好きなおせわはなかよし度+2ボーナス",
+    "なかよしLv.1〜10表示",
+    "動物のなかよし度に応じたセリフ変化",
+    "動物ごとのおせわ回数を端末内保存",
+    "学習PTを使う既存ループを維持"
+  ],
+  "checks": {
+    "8 care actions": true,
+    "50 favorites": true,
+    "care persistence": true,
+    "friendship level": true,
+    "favorite bonus": true,
+    "care history": true,
+    "js syntax": true
+  },
+  "qaErrors": 0
+}

@@ -1,0 +1,26 @@
+{
+  "version": "v4.1 DEV ROOM+LEVEL50",
+  "status": "PASS",
+  "room_item_count": 60,
+  "checks": {
+    "syntax:yearly-cleanup.js": true,
+    "syntax:_schoolyear.js": true,
+    "syntax:_common.js": true,
+    "syntax:teacher-login.js": true,
+    "syntax:teacher-dashboard.js": true,
+    "syntax:teachers.js": true,
+    "syntax:teacher-setup.js": true,
+    "syntax:activity.js": true,
+    "syntax:teacher-export.js": true,
+    "syntax:app.js": true,
+    "level50_enabled": true,
+    "reward_lv50": true,
+    "room_item_count_60": true,
+    "room_positions_saved": true,
+    "drag_enabled": true,
+    "12_items_equipped": true,
+    "teacher_sandbox_kept": true,
+    "device_safe_kept": true,
+    "cache_bumped": true
+  }
+}

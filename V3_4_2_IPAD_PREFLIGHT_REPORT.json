@@ -1,0 +1,29 @@
+{
+  "version": "3.4.2 IPAD PREFLIGHT",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "apiSyntax": true,
+    "noDuplicateIds": true,
+    "touchTargets": true,
+    "safeArea": true,
+    "portraitLandscape": true,
+    "quickNavTouchScroll": true,
+    "buildStamp": true,
+    "threeAcross255": true,
+    "repairButtonRetained": true,
+    "threeTryRetained": true,
+    "secondChapterGate": true,
+    "teacherRetained": true,
+    "privacyRetained": true,
+    "serviceWorkerBumped": true
+  },
+  "polish": [
+    "iPad向け44〜48pxタップ領域",
+    "ノッチ/ホームインジケータのsafe-area対応",
+    "縦向き・横向きレイアウト調整",
+    "クイックナビのタッチスクロール改善",
+    "右下にv3.4.2表示を追加してキャッシュ判別を容易化"
+  ],
+  "next": "GitHub公開前に、まずローカル/既存テスト環境でiPad実機チェックを行う。"
+}

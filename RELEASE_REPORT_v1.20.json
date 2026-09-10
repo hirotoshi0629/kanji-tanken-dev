@@ -1,0 +1,21 @@
+{
+  "version": "1.20",
+  "newReviewedQuestions": 89,
+  "totalReviewedProblems": 1323,
+  "coveredReadingTargets": 1253,
+  "remaining": 813,
+  "volumeCoverage": {
+    "一上": "32/32",
+    "一下": "119/119",
+    "二上": "176/176",
+    "二下": "179/179",
+    "三上": "291/291",
+    "三下": "190/191",
+    "四上": "253/253",
+    "四下": "6/175",
+    "五": "3/332",
+    "六": "4/318"
+  },
+  "qaErrors": 0,
+  "milestone": "四上 253/253 complete"
+}

@@ -1,0 +1,28 @@
+{
+  "version": "v4.0 LONG-TERM DEVICE SAFE",
+  "status": "PASS",
+  "checks": {
+    "syntax:teacher-export.js": true,
+    "syntax:teacher-dashboard.js": true,
+    "syntax:teachers.js": true,
+    "syntax:_schoolyear.js": true,
+    "syntax:yearly-cleanup.js": true,
+    "syntax:activity.js": true,
+    "syntax:teacher-login.js": true,
+    "syntax:teacher-setup.js": true,
+    "syntax:_common.js": true,
+    "syntax:app.js": true,
+    "no_hardcoded_main_login": true,
+    "remember_school_after_login": true,
+    "change_school_button": true,
+    "handoff_panel": true,
+    "clear_teacher_device": true,
+    "clear_student_device": true,
+    "clear_all_device": true,
+    "cloud_data_not_deleted_by_reset": true,
+    "student_requires_school": true,
+    "no_student_default_main": true,
+    "teacher_practice_kept": true,
+    "cache_bumped": true
+  }
+}

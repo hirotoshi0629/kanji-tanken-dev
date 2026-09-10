@@ -1,0 +1,31 @@
+{
+  "version": "3.6 NEON SCHOOLYEAR",
+  "status": "PASS",
+  "checks": {
+    "app.jsSyntax": true,
+    "_common.jsSyntax": true,
+    "_schoolyear.jsSyntax": true,
+    "activity.jsSyntax": true,
+    "teacher-login.jsSyntax": true,
+    "teacher-dashboard.jsSyntax": true,
+    "teacher-export.jsSyntax": true,
+    "yearly-cleanup.jsSyntax": true,
+    "yearStamped": true,
+    "currentYearDashboard": true,
+    "csvExport": true,
+    "gracePeriod": true,
+    "cronConfigured": true,
+    "realNameNotStored": true,
+    "gameDataNotCloud": true,
+    "version": true
+  },
+  "implemented": [
+    "4月1日自動年度切替",
+    "現年度だけ教師画面の通常対象",
+    "前年度は4月末まで猶予",
+    "前年度集計CSV保存",
+    "5月1日以降の前年度以前クラウド記録自動削除",
+    "児童iPad内のゲーム進行は削除対象外"
+  ],
+  "note": "Neon実接続とVercel Cronの本番動作確認は、DATABASE_URL等を設定後に行います。"
+}

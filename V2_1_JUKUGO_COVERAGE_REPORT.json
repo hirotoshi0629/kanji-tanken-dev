@@ -1,0 +1,46 @@
+{
+  "version": "2.1 JUKUGO COVERAGE WAVE 2",
+  "status": "PASS",
+  "newQuestions": 155,
+  "totalJukugo": 586,
+  "coveredKanji": 600,
+  "totalKanji": 1026,
+  "coveragePct": 58.5,
+  "gradeCoverage": {
+    "1": {
+      "total": 80,
+      "covered": 64,
+      "pct": 80.0
+    },
+    "2": {
+      "total": 160,
+      "covered": 119,
+      "pct": 74.4
+    },
+    "3": {
+      "total": 200,
+      "covered": 117,
+      "pct": 58.5
+    },
+    "4": {
+      "total": 202,
+      "covered": 84,
+      "pct": 41.6
+    },
+    "5": {
+      "total": 193,
+      "covered": 178,
+      "pct": 92.2
+    },
+    "6": {
+      "total": 191,
+      "covered": 38,
+      "pct": 19.9
+    }
+  },
+  "remainingUncoveredCount": 426,
+  "remainingUncoveredKanji": "上木目円千右左早犬玉王糸耳貝赤雨万丸何回声多夜妹思才毛組絵走門雪頭高黄売姉寺帰弓戸曜汽番矢細羽茶谷買里雲首馬鳴麦黒丁仕使助区取受君央始客寒屋島州急打投持暑板柱様橋次死氷泳申皮皿相終苦血豆負起身返速遊部配両乗他具坂宮宿帳幸庫息悲拾指放暗歯油波深湯炭畑礼神福秒笛第箱羊美薬軽追階飲駅鼻位倉候借働兵典初利刷包博印参司好官巣席帯底愛折散旗景最束標求沖泣浅浴清灯焼特票種競笑管英覚訓貨軍輪辞連達郡隊順願類飯井仲低佐側億兆冷副労勇各周唱城埼塩奈媛季孫岐岡崎希径念改札栃栄梨械極残氏満滋潟照熊牧祝節縄置老臣芸茨試辺鏡阜阪陸静養香鹿停喜営囲型堂得救殺毒紀脈航貯賞並乱乳亡仁供傷冊処券刻割劇勤卵厳収后否吸呼善困垂奏奮姿存孝宅宇宗宙宝宣密寸専射将就尺届展己巻干幼座延従忘忠批担拝拡捨探推揮操敬映暖暮机枚染株棒模樹欲沿泉洗派済潮激灰班疑痛皇盛盟看砂私秘穀穴窓筋策糖系紅納純絹縦縮翌聖肺胃背胸脳腸腹臓至舌若著蔵蚕衆装裏補視覧討訪訳詞誌誕誠誤論諸貴賃遺郷針銭鋼閉降陛除障難革頂骨",
+  "scopeViolations": [],
+  "jsSyntaxOK": true,
+  "note": "Wave 2 uses a curated common-word whitelist; remaining gaps are intentionally left for lexical review rather than inventing uncommon compounds."
+}

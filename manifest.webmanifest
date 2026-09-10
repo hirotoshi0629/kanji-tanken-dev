@@ -1,0 +1,10 @@
+{
+  "name": "かん字たんけん！どうぶつスクール NEW",
+  "short_name": "かん字たんけん",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f7f4ea",
+  "theme_color": "#18864b",
+  "description": "iPadで直接書いて学ぶ、小学生向け漢字書き取りPWA",
+  "icons": []
+}

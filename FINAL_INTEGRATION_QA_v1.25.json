@@ -1,0 +1,95 @@
+{
+  "version": "1.25",
+  "phase": "final integration QA - pass 1",
+  "criticalFix": "送り仮名付き問題が questionIntegrityValid で除外されていた条件を修正",
+  "reviewedProblems": 2136,
+  "runtimeValidProblems": 2136,
+  "runtimeInvalidProblems": 0,
+  "okuriganaProblemsSelectable": 725,
+  "volumeRuntimeCoverage": {
+    "一上": {
+      "questions": 32,
+      "uniqueKanji": 17,
+      "okuriganaQuestions": 9
+    },
+    "一下": {
+      "questions": 119,
+      "uniqueKanji": 73,
+      "okuriganaQuestions": 35
+    },
+    "二上": {
+      "questions": 186,
+      "uniqueKanji": 109,
+      "okuriganaQuestions": 82
+    },
+    "二下": {
+      "questions": 184,
+      "uniqueKanji": 113,
+      "okuriganaQuestions": 54
+    },
+    "三上": {
+      "questions": 305,
+      "uniqueKanji": 149,
+      "okuriganaQuestions": 115
+    },
+    "三下": {
+      "questions": 201,
+      "uniqueKanji": 106,
+      "okuriganaQuestions": 62
+    },
+    "四上": {
+      "questions": 265,
+      "uniqueKanji": 143,
+      "okuriganaQuestions": 102
+    },
+    "四下": {
+      "questions": 179,
+      "uniqueKanji": 110,
+      "okuriganaQuestions": 54
+    },
+    "五": {
+      "questions": 340,
+      "uniqueKanji": 206,
+      "okuriganaQuestions": 111
+    },
+    "六": {
+      "questions": 325,
+      "uniqueKanji": 202,
+      "okuriganaQuestions": 101
+    }
+  },
+  "mixAudit": {
+    "1": {
+      "upperUnique": 17,
+      "lowerUnique": 73,
+      "canPick5And5": true
+    },
+    "2": {
+      "upperUnique": 109,
+      "lowerUnique": 113,
+      "canPick5And5": true
+    },
+    "3": {
+      "upperUnique": 149,
+      "lowerUnique": 106,
+      "canPick5And5": true
+    },
+    "4": {
+      "upperUnique": 143,
+      "lowerUnique": 110,
+      "canPick5And5": true
+    }
+  },
+  "animalCount": 50,
+  "checks": {
+    "readingTargetsComplete": true,
+    "reviewedQuestionsAllRuntimeValid": true,
+    "okuriganaQuestionsNowSelectable": true,
+    "mixGrades1to4Ready": true,
+    "animalCount50": true,
+    "answerRevealFeature": true,
+    "tenQuestionFlow": true,
+    "localPersistence": true
+  },
+  "qaErrors": 0
+}

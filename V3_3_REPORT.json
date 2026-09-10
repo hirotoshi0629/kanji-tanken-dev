@@ -1,0 +1,26 @@
+{
+  "version": "3.3 INTERACTION & MEMORIES",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "furnitureInteraction": true,
+    "personalities": true,
+    "rewardPreview": true,
+    "surpriseRewards": true,
+    "memoryBook": true,
+    "rareCelebration": true,
+    "seasonRetained": true,
+    "animals80": true,
+    "teacherRetained": true,
+    "privacyRetained": true,
+    "threeAcrossRetained": true
+  },
+  "added": [
+    "家具タップで専用リアクション",
+    "性格別ひとこと",
+    "次のごほうびまであと何問表示",
+    "学習マイルストーンのサプライズごほうび",
+    "お手紙＋思い出のおもいでちょう",
+    "ドラゴン・ユニコーン特別登場演出"
+  ]
+}

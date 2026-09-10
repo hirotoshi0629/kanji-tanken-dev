@@ -1,0 +1,99 @@
+{
+  "release": "v1.0 FINAL",
+  "status": "FINAL ACCEPTANCE PASSED",
+  "reviewedProblems": 2136,
+  "readingTargetsComplete": 2066,
+  "duplicateProblemTexts": 0,
+  "volumeReadiness": {
+    "一上": {
+      "questions": 32,
+      "uniqueKanji": 17,
+      "tenQuestionReady": true
+    },
+    "一下": {
+      "questions": 119,
+      "uniqueKanji": 73,
+      "tenQuestionReady": true
+    },
+    "二上": {
+      "questions": 186,
+      "uniqueKanji": 109,
+      "tenQuestionReady": true
+    },
+    "二下": {
+      "questions": 184,
+      "uniqueKanji": 113,
+      "tenQuestionReady": true
+    },
+    "三上": {
+      "questions": 305,
+      "uniqueKanji": 149,
+      "tenQuestionReady": true
+    },
+    "三下": {
+      "questions": 201,
+      "uniqueKanji": 106,
+      "tenQuestionReady": true
+    },
+    "四上": {
+      "questions": 265,
+      "uniqueKanji": 143,
+      "tenQuestionReady": true
+    },
+    "四下": {
+      "questions": 179,
+      "uniqueKanji": 110,
+      "tenQuestionReady": true
+    },
+    "五": {
+      "questions": 340,
+      "uniqueKanji": 206,
+      "tenQuestionReady": true
+    },
+    "六": {
+      "questions": 325,
+      "uniqueKanji": 202,
+      "tenQuestionReady": true
+    }
+  },
+  "mixReadiness": {
+    "1": {
+      "upperUnique": 17,
+      "lowerUnique": 73,
+      "fivePlusFiveReady": true
+    },
+    "2": {
+      "upperUnique": 109,
+      "lowerUnique": 113,
+      "fivePlusFiveReady": true
+    },
+    "3": {
+      "upperUnique": 149,
+      "lowerUnique": 106,
+      "fivePlusFiveReady": true
+    },
+    "4": {
+      "upperUnique": 143,
+      "lowerUnique": 110,
+      "fivePlusFiveReady": true
+    }
+  },
+  "acceptanceChecks": {
+    "2066_readings_complete": true,
+    "2136_reviewed_questions": true,
+    "no_duplicate_problem_text": true,
+    "all_volumes_make_10": true,
+    "grades_1_to_4_mix_5_plus_5": true,
+    "answer_reveal": true,
+    "red_underline_prompt": true,
+    "okurigana_wide_box": true,
+    "ten_question_result": true,
+    "points_persistence": true,
+    "animal_growth": true,
+    "completed_answer_lock": true,
+    "undo_and_clear": true
+  },
+  "javascriptSyntax": "PASS",
+  "qaErrors": 0,
+  "importantNote": "手書き認識は端末・書き方に依存するため、実機上の認識率100%を保証するものではない。アプリ側の構造・出題・UI統合について最終受け入れ監査を通過。"
+}

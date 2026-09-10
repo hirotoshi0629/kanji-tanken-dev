@@ -1,0 +1,23 @@
+{
+  "version": "1.6 ANIMAL RELEASE CANDIDATE 2",
+  "status": "PASS",
+  "importantFix": "8種類のおせわUIへ移行した後も残っていた旧『feedBtn / playBtn』イベント登録を削除。存在しない要素へのアクセスでJavaScript初期化が止まる可能性を解消。",
+  "audit": {
+    "directOnclickReferences": 11,
+    "missingReferencedIds": [],
+    "criticalMissingIds": [],
+    "javascriptSyntax": "PASS"
+  },
+  "retained": [
+    "10問→おせわチケット",
+    "8種類のおせわ",
+    "50種類の動物と個性",
+    "なかよしLv.1〜10",
+    "成長ごほうび",
+    "コレクションと称号",
+    "10問終了→どうぶつのおへや直行",
+    "iPad向けタップ領域"
+  ],
+  "qaErrors": 0,
+  "next": "このRC2を公開前の最終候補としてiPad実機確認"
+}

@@ -1,0 +1,41 @@
+{
+  "version": "3.3.1 TOTAL INSPECTION",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "apiSyntax": true,
+    "noDuplicateIds": true,
+    "animalCount80": true,
+    "rewardUnitsSeparated": true,
+    "allFurnitureRespond": true,
+    "lettersPersistAcrossPets": true,
+    "quickNav": true,
+    "threeAcrossSquare": true,
+    "repairBelowBox": true,
+    "teacherDashboard": true,
+    "privacyRoomLocalOnly": true,
+    "reducedMotion": true,
+    "serviceWorkerBumped": true
+  },
+  "fixed": [
+    "80種類なのに『50種類ぜんぶ』と表示される旧文言を修正",
+    "『あと何問』と『あと何PT』が混ざっていた次のごほうび表示を分離",
+    "専用リアクション未設定の家具もタップ反応するよう修正",
+    "相棒を替えても一度読んだ手紙がおもいでちょうに残るよう修正",
+    "長くなったどうぶつ画面にiPad向けクイックナビを追加"
+  ],
+  "verified": [
+    "3文字は255px正方形・横一列を維持",
+    "この文字だけ消すUIはマスの下",
+    "教師用ダッシュボードを維持",
+    "遊び情報は教師クラウドへ送らない",
+    "動きを減らすOS設定に対応"
+  ],
+  "manual_iPad_checks_needed": [
+    "実機Safariで3文字問題の横幅とスクロール有無",
+    "家具タップ時のアニメーション体感",
+    "縦向き/横向きでクイックナビと家具一覧",
+    "長時間利用時の動作速度",
+    "実際の手書きAI認識精度"
+  ]
+}

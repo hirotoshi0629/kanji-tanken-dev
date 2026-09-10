@@ -1,0 +1,56 @@
+{
+  "version": "1.8",
+  "checks": {
+    "uniqueKanji1026": true,
+    "readingTargets2066": true,
+    "firstVolumeFullCoverage": true,
+    "newQuestionsAdded": 22
+  },
+  "statistics": {
+    "reviewedProblems": 164,
+    "coveredReadingTargets": 94,
+    "remainingReadingTargets": 1972,
+    "coverageByVolume": {
+      "一上": {
+        "total": 32,
+        "covered": 32
+      },
+      "一下": {
+        "total": 119,
+        "covered": 14
+      },
+      "二上": {
+        "total": 176,
+        "covered": 9
+      },
+      "二下": {
+        "total": 179,
+        "covered": 13
+      },
+      "三上": {
+        "total": 291,
+        "covered": 5
+      },
+      "三下": {
+        "total": 191,
+        "covered": 7
+      },
+      "四上": {
+        "total": 253,
+        "covered": 1
+      },
+      "四下": {
+        "total": 175,
+        "covered": 6
+      },
+      "五": {
+        "total": 332,
+        "covered": 3
+      },
+      "六": {
+        "total": 318,
+        "covered": 4
+      }
+    }
+  }
+}

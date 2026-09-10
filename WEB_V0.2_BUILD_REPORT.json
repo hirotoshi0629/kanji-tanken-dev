@@ -1,0 +1,12 @@
+{
+  "version": "web-v0.2",
+  "frontend": "GitHub Pages/PWA",
+  "backend": "Vercel serverless",
+  "ai": "OpenAI Responses API vision",
+  "structuredOutput": true,
+  "storeFalse": true,
+  "apiKeyInFrontend": false,
+  "lowConfidencePolicy": "uncertain",
+  "serverSafetyGuards": true,
+  "status": "code complete; deployment credentials required"
+}

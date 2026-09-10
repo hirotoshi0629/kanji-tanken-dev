@@ -1,0 +1,11 @@
+{
+  "version": "web-v0.3",
+  "status": "deployment-ready",
+  "frontendHosting": "GitHub Pages",
+  "backendHosting": "Vercel",
+  "apiModelDefault": "gpt-5.6-luna",
+  "corsAllowOriginConfig": true,
+  "secretInFrontend": false,
+  "teacherSetupCheck": true,
+  "japaneseDeploymentGuide": true
+}

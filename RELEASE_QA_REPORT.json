@@ -1,0 +1,57 @@
+{
+  "version": "v1.6",
+  "questions": 142,
+  "errors": [],
+  "errorCount": 0,
+  "volumes": {
+    "一上": {
+      "reviewed": 10,
+      "uniqueTargets": 10
+    },
+    "一下": {
+      "reviewed": 14,
+      "uniqueTargets": 14
+    },
+    "二上": {
+      "reviewed": 19,
+      "uniqueTargets": 19
+    },
+    "二下": {
+      "reviewed": 18,
+      "uniqueTargets": 18
+    },
+    "三上": {
+      "reviewed": 19,
+      "uniqueTargets": 19
+    },
+    "三下": {
+      "reviewed": 17,
+      "uniqueTargets": 17
+    },
+    "四上": {
+      "reviewed": 13,
+      "uniqueTargets": 13
+    },
+    "四下": {
+      "reviewed": 10,
+      "uniqueTargets": 10
+    },
+    "五": {
+      "reviewed": 11,
+      "uniqueTargets": 11
+    },
+    "六": {
+      "reviewed": 11,
+      "uniqueTargets": 11
+    }
+  },
+  "checks": [
+    "single target marker",
+    "expected answer equals target kanji",
+    "handwriting answer begins with target",
+    "no extra kanji in okurigana tail",
+    "at least 10 unique reviewed targets per volume",
+    "JS syntax check",
+    "JSON parse check"
+  ]
+}

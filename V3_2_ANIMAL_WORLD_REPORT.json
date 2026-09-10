@@ -1,0 +1,26 @@
+{
+  "version": "3.2 ANIMAL WORLD",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "animals80": true,
+    "dynamicAnimalCount": true,
+    "moreFurniture": true,
+    "animalMotion": true,
+    "reducedMotion": true,
+    "fourSeasons": true,
+    "letters": true,
+    "teacherRetained": true,
+    "privacyRetained": true,
+    "threeAcrossRetained": true
+  },
+  "added": [
+    "どうぶつ50→80種類",
+    "動物5種類のアニメーション",
+    "家具8→20種類",
+    "春夏秋冬イベント",
+    "どうぶつからのお手紙",
+    "75匹解放バッジ",
+    "遊び情報は端末内保存"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "version": "v3.8.1 TEACHER SANDBOX",
+  "status": "PASS",
+  "checks": {
+    "syntax:teacher-export.js": true,
+    "syntax:teacher-dashboard.js": true,
+    "syntax:teachers.js": true,
+    "syntax:_schoolyear.js": true,
+    "syntax:yearly-cleanup.js": true,
+    "syntax:activity.js": true,
+    "syntax:teacher-login.js": true,
+    "syntax:teacher-setup.js": true,
+    "syntax:_common.js": true,
+    "syntax:app.js": true,
+    "frontend_no_activity_write": true,
+    "no_real_student_profile": true,
+    "student_setup_blocked": true,
+    "sandbox_storage": true,
+    "api_rejects_teacher_practice": true,
+    "identity_hidden": true,
+    "animal_hidden": true
+  }
+}

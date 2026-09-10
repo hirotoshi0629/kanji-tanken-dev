@@ -1,0 +1,22 @@
+{
+  "version": "v3.8",
+  "status": "PASS",
+  "checks": {
+    "teacher-export.js": true,
+    "teacher-dashboard.js": true,
+    "teachers.js": true,
+    "_schoolyear.js": true,
+    "yearly-cleanup.js": true,
+    "activity.js": true,
+    "teacher-login.js": true,
+    "teacher-setup.js": true,
+    "_common.js": true,
+    "app.js": true,
+    "teacher.html": true,
+    "teacher-setup.html": true,
+    "schema_school_code": true,
+    "practice_no_cloud": true,
+    "dashboard_school_scope": true,
+    "teacher_list_school_scope": true
+  }
+}

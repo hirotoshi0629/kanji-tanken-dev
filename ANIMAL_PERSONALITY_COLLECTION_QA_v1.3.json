@@ -1,0 +1,21 @@
+{
+  "version": "1.3 ANIMAL PERSONALITY + COLLECTION",
+  "status": "PASS",
+  "newFeatures": [
+    "50種類すべてに性格と個性称号を設定",
+    "どうぶつコレクション進捗を表示",
+    "仲間数・Lv.3以上・Lv.5以上・Lv.10の頭数を表示",
+    "育成実績に応じて称号が6段階でランクアップ",
+    "v1.2の成長ごほうび・8種類のおせわを維持"
+  ],
+  "checks": {
+    "50 personalities": true,
+    "collection 50 target": true,
+    "5 title tiers": true,
+    "individual level stats": true,
+    "v1.2 growth retained": true,
+    "8 care retained": true,
+    "js syntax": true
+  },
+  "qaErrors": 0
+}

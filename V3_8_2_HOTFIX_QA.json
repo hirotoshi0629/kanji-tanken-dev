@@ -1,0 +1,27 @@
+{
+  "version": "v3.8.2 TEACHER SANDBOX HOTFIX",
+  "status": "PASS",
+  "checks": {
+    "syntax:teacher-export.js": true,
+    "syntax:teacher-dashboard.js": true,
+    "syntax:teachers.js": true,
+    "syntax:_schoolyear.js": true,
+    "syntax:yearly-cleanup.js": true,
+    "syntax:activity.js": true,
+    "syntax:teacher-login.js": true,
+    "syntax:teacher-setup.js": true,
+    "syntax:_common.js": true,
+    "syntax:app.js": true,
+    "immediate_identity_removal": true,
+    "immediate_back_link": true,
+    "app_back_link": true,
+    "student_profile_never_used_in_practice": true,
+    "cloud_write_blocked_front": true,
+    "cloud_write_blocked_api": true,
+    "sandbox_storage": true,
+    "teacher_link_cache_bust": true,
+    "app_cache_bust": true,
+    "sw_cache_bump": true,
+    "build_stamp": true
+  }
+}

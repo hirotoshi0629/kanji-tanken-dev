@@ -1,0 +1,42 @@
+{
+  "version": "1.9 COMPOUND + RECOGNITION OVERHAUL",
+  "status": "PASS",
+  "compoundQuestionsAdded": 89,
+  "compoundDistribution": {
+    "一下": 4,
+    "二上": 16,
+    "三上": 15,
+    "二下": 12,
+    "四上": 12,
+    "三下": 5,
+    "五": 14,
+    "六": 9,
+    "四下": 2
+  },
+  "rejected": [
+    [
+      "環境",
+      "unknown-kanji"
+    ]
+  ],
+  "majorChanges": [
+    "二字熟語問題を追加し、学習済み漢字だけで構成されるようマスターで自動検証",
+    "通常10問のうち原則3問を二字熟語にする",
+    "上下ミックスでも両巻から熟語を混ぜる",
+    "熟語は2字なら2マスを自動生成し、答えの字数とマス数を一致",
+    "認識不能は誤答にせず『判定保留』にして、子どもが正答と見比べて確認できる",
+    "v1.8の複数正規化認識と動物育成を維持"
+  ],
+  "checks": {
+    "JS syntax": true,
+    "compound questions >=60": true,
+    "no future-kanji compounds": true,
+    "compound integrity support": true,
+    "balanced normal set": true,
+    "balanced mix set": true,
+    "uncertain confirmation": true,
+    "v1.8 recognition retained": true,
+    "animal systems retained": true
+  },
+  "qaErrors": 0
+}

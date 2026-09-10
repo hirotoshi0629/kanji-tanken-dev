@@ -1,0 +1,23 @@
+{
+  "version": "2.8 THREE-TRY CONFIRM",
+  "status": "PASS",
+  "checks": {
+    "javascriptSyntax": true,
+    "versionBumped": true,
+    "threeTryGate": true,
+    "noImmediateUnknownConfirm": true,
+    "childConfirmButton": true,
+    "retryButton": true,
+    "manualConfirmRecorded": true,
+    "cacheBumped": true
+  },
+  "behavior": [
+    "1回目・2回目の不正解判定では、子どもに書き直しを案内する",
+    "3回目も判定を通らなかったときだけ自己確認を表示する",
+    "正解を見せ、自分の字と本当に合っているか確認してもらう",
+    "「合っている（正解にする）」なら正解扱いにして次の問題へ進める",
+    "「もう一度書く」なら練習を続けられる",
+    "送りがな問題でも同じ3回ルールを適用する"
+  ],
+  "recording": "自己確認による正解は manualConfirm=true / threeTryConfirm=true として記録する。"
+}

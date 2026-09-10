@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#18864b">
+<title>かん字たんけん！どうぶつスクール NEW</title>
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="stylesheet" href="./styles.css?v=4.3">
+</head>
+<body>
+<script>
+(function(){
+  const p=new URLSearchParams(location.search);
+  if(p.get("teacherPractice")!=="1") return;
+  document.documentElement.classList.add("teacher-practice-mode");
+  window.addEventListener("DOMContentLoaded",()=>{
+    const identity=document.querySelector(".studentIdentityCard");
+    if(identity) identity.remove();
+    const animal=document.querySelector("#animalRoomBtn");
+    if(animal) animal.remove();
+    const points=document.querySelector("#points")?.closest(".pill");
+    if(points) points.style.display="none";
+    if(!document.querySelector("#teacherPracticeBanner")){
+      const bar=document.createElement("div");
+      bar.id="teacherPracticeBanner";
+      bar.style.cssText="position:sticky;top:0;z-index:10000;background:#fff4cc;border-bottom:2px solid #d6a900;padding:12px 16px;text-align:center;font-weight:800";
+      bar.innerHTML='👩‍🏫 先生のおためしモード　<span style="font-weight:600">児童コード・学習履歴・PT・どうぶつの進行には保存されません。</span>　<a href="./teacher.html" style="display:inline-block;padding:8px 12px;border-radius:10px;background:#fff;border:1px solid #b78b00;color:#222;text-decoration:none">← 教師管理画面に戻る</a>';
+      document.body.prepend(bar);
+    }
+  });
+})();
+</script>
+<main class="shell">
+  <section id="homeView"><div class="studentIdentityCard"><div><b>🏫 学習記録</b><br><span id="studentCodeStatus">児童コード：未登録</span></div><button id="studentSetupBtn" type="button" class="secondary">児童コードを登録・変更</button></div>
+    <div class="topbar">
+      <div class="brand">🐾 かん字たんけん！</div><div class="spacer"></div>
+      <div id="aiConnPill" class="pill">無料・端末内判定</div><button id="animalRoomBtn" class="roomTopBtn">🐾 どうぶつのおへや</button><div class="pill"><span id="points">0</span> PT</div>
+    </div>
+
+    <div class="card hero" style="margin-top:16px">
+      <div class="animal" id="partnerEmoji">🦊</div>
+      <div>
+        <h1 style="margin:0">漢字の森を たんけんしよう！</h1>
+        <p class="muted">iPadに直接書く → 端末内でやさしく判定 → 直す → できるようになる。</p>
+        <div class="progress"><div id="growthBar"></div></div>
+        <p class="small">相棒 Lv.<span id="level">1</span> ・ <span id="stage">たまご</span></p>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:18px">
+      <div class="card">
+        <h2>学年</h2><div id="gradeRow" class="row"></div>
+        <h2>巻</h2><div id="volumeRow" class="row"></div>
+      </div>
+      <div class="card">
+        <h2>🌞 今日のチャレンジ</h2><div id="dailyChallenge" class="dailyChallenge"></div><h2 class="studySubhead">今日の学習</h2>
+        <p id="readyText" class="status-warn">教材を読み込んでいます…</p>
+        <p class="muted small">未レビュー問題は出しません。10問には、一字・送りがな・二字熟語をバランスよく入れます。</p>
+        <button id="startBtn" class="primary" disabled>漢字の森へ出発！</button>
+      </div>
+    </div>
+
+    <div class="grid2" style="margin-top:18px">
+      <div class="card"><h2>📊 学習きろく</h2><div class="recordGrid"><div><b id="todayQuestions">0</b><span>今日の問題</span></div><div><b id="totalQuestions">0</b><span>累計問題</span></div><div><b id="totalCorrect">0</b><span>自力正解</span></div><div><b id="streakDays">0</b><span>日れんぞく</span></div></div><p class="small">出会った漢字 <b id="discoverCount">0</b>字 ・ 学習セット <b id="sessionCount">0</b>回</p><button id="weakRetryBtn" class="secondary">🔁 にがて漢字に再ちょうせん</button><p id="weakCountText" class="muted small"></p></div>
+      <div class="card"><h2>🏅 もらったバッジ</h2><div id="badgeList" class="badgeList"></div><p class="small muted">勉強やどうぶつ集めを続けると、バッジが増えるよ。</p><hr><h2>🔒 データ保護</h2><p class="small">手書き画像・氏名・位置情報・音声は保存しません。学習履歴はこの端末内だけに保存します。</p></div>
+    </div>
+  </section>
+
+  <section id="animalView" class="hidden">
+    <div class="topbar"><button id="animalHomeBtn" class="secondary">← ホーム</button><div class="spacer"></div><div class="pill"><span id="animalPoints">0</span> PT</div></div>
+    <div class="card animalRoomCard" style="margin-top:16px">
+      <div class="petHeroWrap"><div id="petAccessory" class="petAccessory"></div><div id="petBig" class="petBig">🦊</div><div id="bestPartnerBadge" class="bestPartnerBadge hidden">👑 さいこうの相棒</div></div>
+      <div class="petInfo"><h1 id="petName">きつね</h1><div id="petPersonality" class="petPersonality">—</div><p id="petStageText" class="muted"></p><div class="progress"><div id="petGrowthBar"></div></div><p class="small">なかよし <b id="petFriendship">0</b> / 100 ・ おせわLv.<b id="petHeroLevel">1</b></p><p id="nextGrowthText" class="nextGrowthText"></p><div class="progress nextRewardProgress"><div id="nextRewardBar"></div></div></div>
+    </div>
+    <nav class="animalQuickNav" aria-label="どうぶつのおへやメニュー">
+<a href="#roomWorld">🏠 おへや</a><a href="#roomMissionCard">🎯 ミッション</a><a href="#roomFurnitureCard">🧸 家具</a><a href="#memoryBookCard">📖 思い出</a><a href="#careCard">🍙 おせわ</a><a href="#secondChapter">✨ 第二章</a><a href="#petBookCard">📚 ずかん</a>
+</nav><p class="animalRoomGuide">まずは「おへや・ミッション・おせわ」を楽しもう。ずかんや第二章は、ゆっくり育てていけばOK！</p>
+<div id="roomWorld" class="card roomWorldCard" style="margin-top:18px">
+  <div class="row" style="justify-content:space-between;align-items:center"><h2>🏠 わたしのどうぶつのおへや</h2><b>累計 <span id="roomStudyQuestions">0</span>問</b></div>
+  <div id="roomScene" class="roomScene"></div>
+  <p class="muted small">勉強するほど家具や遊びが増えるよ。勉強しない日があっても、どうぶつが弱ったり家具がなくなったりはしないよ。</p>
+</div>
+<div class="card rewardPreviewCard" style="margin-top:18px"><h2>🔭 つぎのお楽しみ</h2><div id="nextRewardPreview" class="nextRewardPreview"></div></div>
+<div class="card personalityCard" style="margin-top:18px"><h2>💬 きょうのひとこと</h2><div id="personalityRoomTalk" class="personalityTalk"></div><p class="muted small">どうぶつの性格によって、おしゃべりも少し変わるよ。</p></div>
+<div class="card seasonCard" style="margin-top:18px"><h2>🎊 きせつのイベント</h2><div id="seasonEvent"></div></div>
+<div class="card letterCard" style="margin-top:18px"><h2>💌 どうぶつからのおてがみ</h2><p class="muted small">学習したり、なかよくなったりすると新しいおてがみが届くよ。</p><div id="petLetters" class="petLetters"></div></div>
+<div id="memoryBookCard" class="card memoryBookCard" style="margin-top:18px"><h2>📖 おもいでちょう</h2><p class="muted small">届いたおてがみや、どうぶつとの思い出をいつでも見返せるよ。</p><div id="memoryBook" class="memoryBook"></div></div>
+<div id="roomMissionCard" class="card roomMissionCard" style="margin-top:18px">
+  <div class="row" style="justify-content:space-between"><h2>🎯 きょうのお楽しみミッション</h2><b>きょう <span id="todayStudyQuestions">0</span>問</b></div>
+  <div id="roomMissions" class="roomMissions"></div>
+</div>
+<div id="roomFurnitureCard" class="card roomFurnitureCard" style="margin-top:18px">
+  <h2>🧸 おへやの家具・おもちゃ</h2><p class="muted small">問題をたくさん解くと少しずつ増えるよ。好きなものをタップしておへやにかざろう。</p>
+  <div id="roomInventory" class="roomInventory"></div>
+</div>
+<div class="card roomAlbumCard" style="margin-top:18px"><h2>📸 せいちょうアルバム</h2><div id="growthAlbum" class="growthAlbum"></div></div>
+<div id="secondChapter" class="card secondChapterCard" style="margin-top:18px"></div>
+<div class="card collectionCard" style="margin-top:18px"><div class="row" style="justify-content:space-between;align-items:center"><h2>🏅 どうぶつコレクション</h2><b id="collectionTitle">🌱 新人おせわ係</b></div><div class="progress collectionProgress"><div id="collectionBar"></div></div><div id="collectionStats" class="collectionStats"></div><p class="muted small">仲間をふやして、いろいろな子と仲よくなると称号がランクアップするよ。</p></div>
+    <div class="card growthCard" style="margin-top:18px"><div class="row" style="justify-content:space-between"><h2>🌱 せいちょうのごほうび</h2><span class="muted small">育てるほど変化するよ！</span></div><div id="growthRewards" class="growthRewards"></div></div>
+    <div class="grid2" style="margin-top:18px">
+      <div id="careCard" class="card careCard"><div class="row" style="justify-content:space-between;align-items:center"><h2>🍙 おせわ</h2><span class="careLevel">なかよし Lv.<b id="petFriendLevel">1</b></span></div><p class="muted small">漢字を10問クリア → 🎟️チケットをもらう → おせわ → なかよしアップ！ チケットがあるとPTを使わずおせわできるよ。💖はこの子の大好きなおせわ。</p><div class="careSummary"><span>💖 すき：<b id="favoriteCareText">—</b></span><span>✨ おせわ：<b id="careCount">0</b>回</span><span class="ticketPill">🎟️ チケット：<b id="careTicketCount">0</b>まい</span></div><div id="careModeGuide" class="careModeGuide"></div><div id="petReaction" class="petReaction"></div><div id="careGrid" class="careGrid careGridMany"></div><p id="careMessage" class="careMessage"></p></div>
+      <div id="petBookCard" class="card"><div class="row" style="justify-content:space-between"><h2>📖 どうぶつずかん</h2><b id="collectionCount">1 / 80 なかま</b></div><p class="muted small">学習でためた累計PTで仲間が増えるよ。お世話でPTを使っても仲間は減らないよ。累計 <b id="totalEarned">0</b> PT</p><div id="nextAnimal" class="nextAnimal"></div><div id="petCollection" class="petCollection"></div></div>
+    </div>
+  </section>
+
+  <section id="practiceView" class="hidden">
+    <div class="topbar">
+      <button id="homeBtn" class="secondary">← ホーム</button>
+      <div class="spacer"></div>
+      <b><span id="qIndex">1</span> / 10</b>
+    </div>
+    <div class="progress" style="margin:12px 0 18px"><div id="qProgress"></div></div>
+
+    <div class="practice">
+      <div class="card questionCard">
+        <div id="questionText" class="questionText"></div>
+        <p class="muted small questionHint">赤い線のことばを、漢字と送りがなまで書こう。</p>
+        <div class="answerHelp">
+          <button id="revealBtn" class="secondary revealBtn">💡 答えを見る</button>
+          <span class="muted small">どうしても分からないときに使おう</span>
+        </div>
+        <div id="revealedAnswer" class="revealedAnswer hidden"></div>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <b id="writeGuide">1マスに1文字書こう</b>
+          <div class="row">
+            <button id="undoBtn" class="secondary">1画もどす</button>
+            <button id="clearBtn" class="secondary">全部消す</button>
+          </div>
+        </div>
+        <div id="canvasWrap" class="canvasWrap multiCanvasWrap"></div>
+      </div>
+    </div>
+
+    <div id="feedback" class="feedback hidden" style="margin-top:14px"></div>
+    <div class="row" style="margin-top:14px">
+      <button id="checkBtn" class="primary" disabled>✨ 答え合わせ</button>
+      <button id="nextBtn" class="orange hidden">次へ進む →</button>
+    </div>
+  </section>
+
+  <section id="resultView" class="hidden">
+    <div class="card resultCard">
+      <div class="resultAnimal">🦊</div>
+      <h1>たんけん おつかれさま！</h1>
+      <p class="resultScore"><span id="resultCorrect">0</span><small> / 10 問</small></p>
+      <p id="resultMessage" class="resultMessage"></p><div class="earnedPoints">⭐ 今回 <b id="resultPoints">0</b> PT ゲット！</div>
+      <div class="resultStats">
+        <div class="stat"><b id="resultNoHelp">0</b><span>自分で正解</span></div>
+        <div class="stat"><b id="resultHelp">0</b><span>答えを見て練習</span></div>
+        <div class="stat"><b id="resultRetry">0</b><span>書き直した問題</span></div>
+      </div>
+      <div id="dailyResult" class="dailyResult"></div>
+<div id="careRewardResult" class="careRewardResult"></div><div class="row resultActions">
+        <button id="retrySetBtn" class="primary">もう10問やる</button>
+        <button id="resultAnimalBtn" class="primary resultAnimalBtn">🐾 チケットでおせわする</button>
+        <button id="resultHomeBtn" class="secondary">ホームへ戻る</button>
+      </div>
+    </div>
+  </section>
+<div class="buildTag">v3.8.1 TEACHER SANDBOX</div>
+</main>
+
+<div id="unlockModal" class="modal hidden"><div class="card unlockCard"><div class="unlockTitle">🎉 あたらしい仲間！</div><div id="unlockBody" class="unlockBody"></div><p>漢字をがんばったから、新しいどうぶつと出会えたよ！</p><button id="unlockCloseBtn" class="primary" onclick="document.querySelector('#unlockModal').classList.add('hidden')">やった！</button></div></div>
+<div id="aiModal" class="modal hidden"><div class="card"><h2>字を見ています…</h2><p class="muted">このiPadの中で判定しています。</p></div></div>
+<script src="https://cdn.jsdelivr.net/gh/asdfjkl/kanjicanvas@master/docs/resources/javascript/kanji-canvas.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/asdfjkl/kanjicanvas@master/docs/resources/javascript/ref-patterns.js"></script>
+<script src="./app.js?v=4.3" type="module"></script>
+<div id="buildStamp" class="buildStamp" aria-hidden="true">v4.3 DEV PINPOINT-FEEDBACK</div>
+</body>
+</html>

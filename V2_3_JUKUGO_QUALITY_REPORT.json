@@ -1,0 +1,50 @@
+{
+  "version": "2.3 JUKUGO QUALITY + COVERAGE",
+  "status": "PASS",
+  "added": 116,
+  "removedAwkward": [
+    "孫子",
+    "届け",
+    "派手"
+  ],
+  "totalJukugo": 935,
+  "coveredKanji": 985,
+  "coveragePct": 96.0,
+  "gradeCoverage": {
+    "1": {
+      "total": 80,
+      "covered": 79,
+      "pct": 98.8
+    },
+    "2": {
+      "total": 160,
+      "covered": 159,
+      "pct": 99.4
+    },
+    "3": {
+      "total": 200,
+      "covered": 199,
+      "pct": 99.5
+    },
+    "4": {
+      "total": 202,
+      "covered": 182,
+      "pct": 90.1
+    },
+    "5": {
+      "total": 193,
+      "covered": 181,
+      "pct": 93.8
+    },
+    "6": {
+      "total": 191,
+      "covered": 185,
+      "pct": 96.9
+    }
+  },
+  "remainingCount": 41,
+  "remainingKanji": "貝引終浅覚飯井埼奈媛孫岐岡崎栃梨滋潟熊茨阜阪鹿停喜営堂救殺毒紀績脈航賞俵届暖暮派訳",
+  "duplicateAnswers": [],
+  "integrityErrors": [],
+  "jsSyntaxOK": true
+}

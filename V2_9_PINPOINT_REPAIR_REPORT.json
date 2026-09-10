@@ -1,0 +1,25 @@
+{
+  "version": "2.9 PINPOINT REPAIR",
+  "status": "PASS",
+  "checks": {
+    "javascriptSyntax": true,
+    "versionBumped": true,
+    "perBoxClearButton": true,
+    "okuriClearButton": true,
+    "allWrongBoxesMarked": true,
+    "wrongVisualStyle": true,
+    "correctVisualStyle": true,
+    "positionFeedback": true,
+    "threeTryStillPresent": true,
+    "cacheBumped": true
+  },
+  "behavior": [
+    "二字以上の問題で各マスを個別に判定し、直す必要のあるマスを赤く強調する",
+    "正しく判定されたマスは緑で「この字はOK」と示す",
+    "誤判定マスには「この字を直そう」と表示する",
+    "各誤判定マスに「この字だけ消す」ボタンを出し、そのマスだけ消去できる",
+    "送りがなの場合は「この送りがなだけ消す」を表示する",
+    "複数の字が誤判定なら該当する全マスを同時に示す",
+    "v2.8の3回失敗後の自己確認機能はそのまま維持する"
+  ]
+}

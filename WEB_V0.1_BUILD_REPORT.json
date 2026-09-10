@@ -1,0 +1,11 @@
+{
+  "version": "web-v0.1",
+  "masterKanji": 1026,
+  "reviewedProblems": 142,
+  "allVolumesReady": true,
+  "pwa": true,
+  "githubPagesWorkflow": true,
+  "aiFrontendAdapter": true,
+  "aiBackendConnected": false,
+  "reason": "Static GitHub Pages must not contain secret API credentials."
+}

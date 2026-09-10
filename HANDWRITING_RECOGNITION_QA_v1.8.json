@@ -1,0 +1,22 @@
+{
+  "version": "1.8 HANDWRITING RECOGNITION FIX",
+  "status": "PASS",
+  "fixes": [
+    "漢字認識を1回判定から3パス判定へ変更し、指書きの大きさ・縦横比の差を吸収",
+    "正解漢字が3パスのどこかで候補に入れば正解として採用",
+    "『申』が候補0件になる場合、画数・中央の長い縦線・横線構造を満たす時のみ救済",
+    "既存の『守』誤認識救済を維持",
+    "認識不能時の文言を『字が間違い』と断定しない表現へ変更"
+  ],
+  "checks": {
+    "3-pass recognition": true,
+    "申 structural fallback": true,
+    "守 fallback preserved": true,
+    "unknown remains possible": true,
+    "child-friendly retry message": true,
+    "animal v1.7 features preserved": true,
+    "JS syntax": true
+  },
+  "qaErrors": 0,
+  "testTarget": "iPadで『名前をもうす』→『申す』を再確認し、その後2〜3種類の別漢字でも誤って○にならないか確認"
+}

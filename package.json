@@ -1,0 +1,8 @@
+{
+  "name": "kanji-tanken",
+  "private": true,
+  "version": "3.7.0",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "version": "3.4.3 RELEASE CANDIDATE",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "apiSyntax": true,
+    "noDuplicateIds": true,
+    "versionVisible": true,
+    "cacheBumped": true,
+    "threeAcross255": true,
+    "pinpointErase": true,
+    "threeTrySelfConfirm": true,
+    "secondChapterGate": true,
+    "teacherPage": true,
+    "teacherApi": true,
+    "activityApi": true,
+    "gamePrivacy": true,
+    "ipadSafeArea": true,
+    "reducedMotion": true
+  },
+  "critical_file_hashes": {
+    "index.html": "3830f0001dbaa5b5",
+    "app.js": "c258b46371ad23a7",
+    "styles.css": "ff5b0ee5833924df",
+    "service-worker.js": "8be5fc2ba5ddff7c",
+    "teacher.html": "99263877829c2127"
+  },
+  "decision": "No new features added. This package is frozen as the iPad/Vercel final-test candidate."
+}

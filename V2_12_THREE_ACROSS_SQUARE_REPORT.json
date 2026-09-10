@@ -1,0 +1,22 @@
+{
+  "version": "2.12 THREE-ACROSS SQUARE",
+  "status": "PASS",
+  "checks": {
+    "javascriptSyntax": true,
+    "versionBumped": true,
+    "threeAcross255": true,
+    "squarePreserved": true,
+    "noWrapOnIPad": true,
+    "repairAreaSeparate": true,
+    "v210SeparationRetained": true,
+    "v29PinpointRetained": true,
+    "v28ThreeTryRetained": true,
+    "cacheBumped": true
+  },
+  "changes": [
+    "1字300px、2字280px、3字255pxの正方形に調整",
+    "3字熟語はiPad上で横3マスを優先",
+    "修正ボタンは各マスの真下に固定し重なりを防止",
+    "4字以上も正方形を維持しつつ220pxで横並びを優先"
+  ]
+}

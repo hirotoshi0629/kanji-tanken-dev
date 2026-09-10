@@ -1,0 +1,25 @@
+{
+  "version": "3.1 ANIMAL ROOM PLUS",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "moreCareActions": true,
+    "missions": true,
+    "furniture": true,
+    "album": true,
+    "noPenalty": true,
+    "localOnlyRoom": true,
+    "teacherDashboardRetained": true,
+    "v212WritingLayoutRetained": true,
+    "threeTryRetained": true
+  },
+  "features": [
+    "おせわ15種類",
+    "10/20/30/50問ミッション",
+    "累計問題数で家具8種を解放",
+    "家具の飾り替え",
+    "成長アルバム",
+    "学習しない日のペナルティなし",
+    "遊び情報は端末内だけに保存"
+  ]
+}

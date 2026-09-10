@@ -1,0 +1,97 @@
+{
+  "version": "3.3.2 REWARD BALANCE",
+  "status": "PASS",
+  "assumption": "シミュレーションは、通常の正解を1問2PT、1日30問程度、各日の最初の10問セットで+5PTとして概算。答えを見る等ではPT進行が遅くなる場合があります。",
+  "findings": [
+    "どうぶつは序盤10問前後ごと、その後もおおむね20〜30問程度ごとに増え、短期の目標として機能する。",
+    "旧v3.3.1では家具の後半が1800→2200→2600→3000→3500問と間隔が大きく、家具だけを見ると達成感が薄くなる区間があった。",
+    "どうぶつ・家具・サプライズ・手紙を合算すると報酬は継続するが、部屋そのものの変化をもう少し早める方が育成感が保ちやすい。"
+  ],
+  "adjustments": [
+    "後半家具を 1250/1500/1800/2200/2600/3000/3500問 から 1150/1300/1500/1700/1900/2150/2400問 に再配置。",
+    "1000問達成のお手紙を追加。",
+    "10/20/30/50問の毎日ミッション、サプライズ報酬、80種類のどうぶつ解放条件は維持。"
+  ],
+  "snapshots": [
+    {
+      "questions": 10,
+      "animals": 2,
+      "furniture": 1,
+      "approx_pt": 25
+    },
+    {
+      "questions": 20,
+      "animals": 3,
+      "furniture": 2,
+      "approx_pt": 45
+    },
+    {
+      "questions": 30,
+      "animals": 4,
+      "furniture": 2,
+      "approx_pt": 65
+    },
+    {
+      "questions": 50,
+      "animals": 6,
+      "furniture": 3,
+      "approx_pt": 110
+    },
+    {
+      "questions": 100,
+      "animals": 10,
+      "furniture": 5,
+      "approx_pt": 220
+    },
+    {
+      "questions": 200,
+      "animals": 17,
+      "furniture": 7,
+      "approx_pt": 435
+    },
+    {
+      "questions": 500,
+      "animals": 33,
+      "furniture": 10,
+      "approx_pt": 1085
+    },
+    {
+      "questions": 1000,
+      "animals": 55,
+      "furniture": 13,
+      "approx_pt": 2170
+    },
+    {
+      "questions": 1500,
+      "animals": 77,
+      "furniture": 16,
+      "approx_pt": 3250
+    },
+    {
+      "questions": 2000,
+      "animals": 80,
+      "furniture": 18,
+      "approx_pt": 4335
+    },
+    {
+      "questions": 2400,
+      "animals": 80,
+      "furniture": 20,
+      "approx_pt": 5200
+    }
+  ],
+  "max_combined_reward_gap_questions": 500,
+  "max_gap_interval": [
+    2475,
+    2975
+  ],
+  "checks": {
+    "appSyntax": true,
+    "animals80": true,
+    "furniture20": true,
+    "dailyMissions": true,
+    "letter1000": true,
+    "teacherRetained": true,
+    "threeAcrossRetained": true
+  }
+}

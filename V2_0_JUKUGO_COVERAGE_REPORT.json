@@ -1,0 +1,107 @@
+{
+  "version": "2.0 JUKUGO BANK EXPANSION",
+  "status": "PASS",
+  "newJukugoQuestions": 342,
+  "totalReviewedJukugoQuestions": 431,
+  "lengthDistribution": {
+    "2": 354,
+    "3": 44,
+    "4": 31,
+    "5": 2
+  },
+  "volumeDistribution": {
+    "一下": 30,
+    "二上": 47,
+    "三上": 80,
+    "二下": 57,
+    "四上": 52,
+    "三下": 54,
+    "五": 45,
+    "六": 34,
+    "四下": 19,
+    "一上": 13
+  },
+  "elementaryKanjiCoveredByJukugo": 421,
+  "elementaryKanjiTotal": 1026,
+  "coveragePct": 41.0,
+  "gradeCoverage": {
+    "1": {
+      "totalKanji": 80,
+      "coveredByJukugo": 59,
+      "coveragePct": 73.8
+    },
+    "2": {
+      "totalKanji": 160,
+      "coveredByJukugo": 110,
+      "coveragePct": 68.8
+    },
+    "3": {
+      "totalKanji": 200,
+      "coveredByJukugo": 108,
+      "coveragePct": 54.0
+    },
+    "4": {
+      "totalKanji": 202,
+      "coveredByJukugo": 68,
+      "coveragePct": 33.7
+    },
+    "5": {
+      "totalKanji": 193,
+      "coveredByJukugo": 47,
+      "coveragePct": 24.4
+    },
+    "6": {
+      "totalKanji": 191,
+      "coveredByJukugo": 29,
+      "coveragePct": 15.2
+    }
+  },
+  "rejectedCandidates": [
+    {
+      "word": "答え",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "速さ",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "昆虫",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "江戸",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "喜怒哀楽",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "試行錯誤",
+      "reason": "outside-elementary-kanji-or-length"
+    },
+    {
+      "word": "切磋琢磨",
+      "reason": "outside-elementary-kanji-or-length"
+    }
+  ],
+  "scopeViolations": [],
+  "checks": {
+    "JS syntax": true,
+    "new jukugo >=200": true,
+    "2-kanji present": true,
+    "3-kanji present": true,
+    "4+-kanji present": true,
+    "no unlearned-kanji scope violations": true,
+    "grade-aware set balance": true,
+    "recognition confirmation retained": true,
+    "animal systems retained": true
+  },
+  "design": [
+    "二字だけでなく三字・四字以上を正式サポート",
+    "低学年は二字中心、中学年は三字、高学年は四字以上も出題",
+    "語を構成する全漢字がその巻までに学習済みの場合だけ出題可能",
+    "熟語カバレッジを1,026字基準で数値化"
+  ]
+}

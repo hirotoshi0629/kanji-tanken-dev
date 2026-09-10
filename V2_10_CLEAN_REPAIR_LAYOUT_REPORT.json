@@ -1,0 +1,30 @@
+{
+  "version": "2.10 CLEAN REPAIR LAYOUT",
+  "status": "PASS",
+  "checks": {
+    "javascriptSyntax": true,
+    "versionBumped": true,
+    "separateWriteArea": true,
+    "separateRepairArea": true,
+    "controlsOutsideCanvas": true,
+    "wrongHighlightOnlyWriteArea": true,
+    "correctHighlightOnlyWriteArea": true,
+    "staticClearButton": true,
+    "noCellPadding": true,
+    "v29FeaturesRetained": true,
+    "v28ThreeTryRetained": true,
+    "cacheBumped": true
+  },
+  "changes": [
+    "書字キャンバスと修正UIをDOM上でも完全に分離",
+    "判定表示と『この字だけ消す』を漢字マスの外側・真下へ配置",
+    "漢字マス内部は100%書字専用にし、下部をボタンがふさがない",
+    "赤/緑の判定枠は書字エリアだけに表示",
+    "二字・三字・四字問題でも各マスごとに独立した修正エリアを持つ",
+    "v2.9の個別消去とv2.8の3回後自己確認を維持"
+  ],
+  "targetRegression": [
+    "想の『心』など下部の画がボタンに隠れない",
+    "然・無・点など下側まで使う漢字も全面に書ける"
+  ]
+}

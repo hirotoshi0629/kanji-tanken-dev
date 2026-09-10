@@ -1,0 +1,10 @@
+{
+  "version": "1.10",
+  "newFeature": "1〜4年に『上下ミックス』を追加。原則5問ずつ、重複漢字なしで10問を構成。",
+  "newReviewedQuestions": 24,
+  "totalReviewedProblems": 236,
+  "coveredReadingTargets": 166,
+  "remainingReadingTargets": 1900,
+  "ichigeCoverage": "86/119",
+  "qaErrors": 0
+}

@@ -1,0 +1,25 @@
+{
+  "version": "1.17",
+  "newReviewedQuestions": 71,
+  "totalReviewedProblems": 888,
+  "coveredReadingTargets": 818,
+  "remaining": 1248,
+  "volumeCoverage": {
+    "一上": "32/32",
+    "一下": "119/119",
+    "二上": "176/176",
+    "二下": "179/179",
+    "三上": "291/291",
+    "三下": "7/191",
+    "四上": "1/253",
+    "四下": "6/175",
+    "五": "3/332",
+    "六": "4/318"
+  },
+  "qaErrors": 0,
+  "milestone": "三上 291/291 complete",
+  "rendakuSurfaceVariants": [
+    "筆 ヒツ→ぴつ（えんぴつ）",
+    "負 フ→ぶ（勝負）"
+  ]
+}

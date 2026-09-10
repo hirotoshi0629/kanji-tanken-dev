@@ -1,0 +1,23 @@
+{
+  "version": "2.6 REPAIR + FLOW QA",
+  "status": "PASS",
+  "repairedV25Mismatches": 72,
+  "unresolvedRepairs": 0,
+  "postRepairIntegrityIssues": [],
+  "reviewedAvailable": 3078,
+  "needsReview": 7,
+  "jsSyntaxOK": true,
+  "flowCheckPage": "flow-check.html",
+  "manualIPadFlow": [
+    "ホーム表示",
+    "学年・巻選択",
+    "10問表示",
+    "紙に解答",
+    "答え表示",
+    "自己採点",
+    "答案撮影/アップロード",
+    "AI確認",
+    "ポイント付与",
+    "おせわ画面反映"
+  ]
+}

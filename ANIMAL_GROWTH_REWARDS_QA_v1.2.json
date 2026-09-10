@@ -1,0 +1,25 @@
+{
+  "version": "1.2 ANIMAL GROWTH + REWARDS",
+  "status": "PASS",
+  "newFeatures": [
+    "Lv.3 なかよしトーク解放",
+    "Lv.5 アクセサリー（リボン）解放",
+    "Lv.8 キラキラ特別リアクション解放",
+    "Lv.10 最高の相棒・王冠演出",
+    "次のごほうびまでの必要なかよし度表示",
+    "なかよし度に応じて相棒のセリフが変化",
+    "50種類の動物すべてで育成状態を個別保存"
+  ],
+  "checks": {
+    "growth rewards 4": true,
+    "level 1-10": true,
+    "lv5 accessory": true,
+    "lv8 reaction": true,
+    "lv10 crown": true,
+    "next goal": true,
+    "50 animal care preserved": true,
+    "8 care actions preserved": true,
+    "js syntax": true
+  },
+  "qaErrors": 0
+}

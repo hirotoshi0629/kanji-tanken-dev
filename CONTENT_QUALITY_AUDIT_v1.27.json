@@ -1,0 +1,78 @@
+{
+  "version": "1.27",
+  "phase": "content quality audit - pass 1",
+  "reviewedProblemsAudited": 2136,
+  "readingTargetsStillComplete": true,
+  "clearContentFixesApplied": 11,
+  "fixes": [
+    {
+      "id": "v121-四下-金-005",
+      "before": "【こん】色の紙を使う。",
+      "after": "【こん】色の紙を使う。"
+    },
+    {
+      "id": "v121-四下-思-009",
+      "before": "【し】考を深める。",
+      "after": "よく【し】考して答える。"
+    },
+    {
+      "id": "v121-四下-毛-011",
+      "before": "【もう】筆で字を書く。",
+      "after": "【もう】筆で字を書く。"
+    },
+    {
+      "id": "v121-四下-晴-021",
+      "before": "快【せい】な空だ。",
+      "after": "快【せい】の空だ。"
+    },
+    {
+      "id": "v121-四下-無-116",
+      "before": "【ぶ】事をいのる。",
+      "after": "【ぶ】事を願う。"
+    },
+    {
+      "id": "v123-五-造-068",
+      "before": "【ぞう】船について学ぶ。",
+      "after": "【ぞう】船所について調べる。"
+    },
+    {
+      "id": "v123-五-酸-074",
+      "before": "【さん】素について学ぶ。",
+      "after": "【さん】素の性質を学ぶ。"
+    },
+    {
+      "id": "v123-五-非-086",
+      "before": "【ひ】常口を確認する。",
+      "after": "【ひ】常口の場所を確認する。"
+    },
+    {
+      "id": "v124-六-皇-054",
+      "before": "【こう】室について学ぶ。",
+      "after": "【こう】室について知る。"
+    },
+    {
+      "id": "v124-六-秘-065",
+      "before": "【ひ】密を守る。",
+      "after": "【ひ】密を守る。"
+    },
+    {
+      "id": "v124-六-骨-173",
+      "before": "【こっ】折に気をつける。",
+      "after": "【こっ】折を防ぐ。"
+    }
+  ],
+  "structuralErrors": 0,
+  "warnings": 0,
+  "duplicateDisplaySentenceGroupsBefore": 12,
+  "duplicateDisplaySentenceGroupsAfter": 12,
+  "repetitiveEndingCounts": {
+    "について学ぶ。$": 58,
+    "を考える。$": 17,
+    "を調べる。$": 76,
+    "について知る。$": 4,
+    "について調べる。$": 13,
+    "を確認する。$": 5
+  },
+  "note": "定型文の多さは即エラーではないため、自動置換せず可視化。意味・読みを壊す危険のある一括言い換えは行っていない。",
+  "qaErrors": 0
+}

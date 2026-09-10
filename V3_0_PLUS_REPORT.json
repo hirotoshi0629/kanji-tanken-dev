@@ -1,0 +1,25 @@
+{
+  "version": "3.0 TEACHER DASHBOARD PLUS",
+  "status": "PASS",
+  "checks": {
+    "appSyntax": true,
+    "dashboardApiSyntax": true,
+    "sevenDayHistory": true,
+    "thirtyDayWindow": true,
+    "dailyDrilldown": true,
+    "classSummary": true,
+    "attention": true,
+    "aiReview": true,
+    "noRealNames": true
+  },
+  "added": [
+    "過去7日/30日切替",
+    "直近7日カレンダー",
+    "日別問題詳細",
+    "クラスの今",
+    "利用なし児童",
+    "書き直しが多い児童",
+    "苦手TOP10",
+    "AI自己確認TOP10"
+  ]
+}

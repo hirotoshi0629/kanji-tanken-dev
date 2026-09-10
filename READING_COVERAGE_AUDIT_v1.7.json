@@ -1,0 +1,61 @@
+{
+  "version": "1.7",
+  "sourceMaster": "202607e101(1).xlsx",
+  "checks": {
+    "uniqueKanji1026": true,
+    "readingTargets2066": true,
+    "allTargetsHaveReading": true,
+    "allTargetsHaveVolume": true,
+    "noDuplicateTargetIds": true,
+    "studentQuestionsRemainReviewedOnly": true
+  },
+  "statistics": {
+    "uniqueKanji": 1026,
+    "readingTargets": 2066,
+    "readingChangeTargets": 338,
+    "currentReviewedProblems": 142,
+    "currentlyCoveredReadingTargets": 62,
+    "readingTargetsStillNeedingQuestions": 2004,
+    "targetsByFirstVolume": {
+      "一上": 32,
+      "五": 332,
+      "一下": 119,
+      "六": 318,
+      "二上": 176,
+      "二下": 179,
+      "四上": 253,
+      "三上": 291,
+      "三下": 191,
+      "四下": 175
+    },
+    "coveredTargetsByFirstVolume": {
+      "一上": 9,
+      "一下": 14,
+      "二上": 9,
+      "二下": 13,
+      "三上": 5,
+      "三下": 7,
+      "四上": 1,
+      "四下": 3,
+      "五": 1
+    },
+    "kanjiByAllocationGrade": {
+      "1": 244,
+      "2": 401,
+      "3": 424,
+      "4": 372,
+      "5": 319,
+      "6": 306
+    }
+  },
+  "releaseGate": {
+    "requiredBeforeFullCoverageClaim": {
+      "uniqueKanji": 1026,
+      "readingTargets": 2066,
+      "reviewedReadingTargets": 2066,
+      "futureGradeLeakage": 0,
+      "invalidAnswerScope": 0
+    },
+    "fullCoverageReady": false
+  }
+}
