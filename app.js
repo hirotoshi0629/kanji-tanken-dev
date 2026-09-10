@@ -909,6 +909,25 @@ function recognizeWithNormalization(expected,strokes,size,boxSize,preserveAspect
   c.remove();
   return [...raw.replace(/\s+/g,"")];
 }
+
+function schoolStrictShapeAudit(strokes){
+  const clean=(strokes||[]).filter(st=>st&&st.length>1),pts=clean.flat();
+  if(!pts.length)return{pass:false,reason:"no-ink"};
+  const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY),span=Math.max(w,h);
+  if(w/h<0.42||w/h>2.35)return{pass:false,reason:"balance"};
+  const ms=clean.map(strokeMetrics).filter(Boolean);
+  const tiny=ms.filter(m=>m.len<span*.105).length;
+  const wild=ms.filter(m=>m.len>span*2.15).length;
+  if(tiny>Math.max(1,Math.floor(clean.length*.18))||wild>0)return{pass:false,reason:"stroke-length"};
+  if(clean.length>=6){
+    const verticals=ms.filter(m=>m.vertical).length,horizontals=ms.filter(m=>m.horizontal).length;
+    if(verticals===0||horizontals===0)return{pass:false,reason:"stroke-direction"};
+  }
+  return{pass:true,reason:"ok"};
+}
+
 function recognizeSingle(expected,strokes,canvasHint){
   if(!window.KanjiCanvas||!Array.isArray(KanjiCanvas.refPatterns)||!KanjiCanvas.refPatterns.length)return{ok:false,unknown:true,got:null};
   if(!strokes.flat().length)return{ok:false,unknown:true,got:null};
@@ -917,23 +936,28 @@ function recognizeSingle(expected,strokes,canvasHint){
   // 「候補のどこかに正解字が入った」だけでは正解にしない。
   // 3通りの正規化のうち、正解字が1位になった回数を数え、
   // 2回以上一致したときだけ自動正解にする。
+  // v4.7 SCHOOL STRICT: 5種類すべての認識で第1候補が一致し、
+  // さらに字形の基本構造監査にも合格した場合だけ自動正解。
   const passes=[
+    recognizeWithNormalization(expected,strokes,320,230,false),
     recognizeWithNormalization(expected,strokes,320,250,false),
     recognizeWithNormalization(expected,strokes,320,275,false),
+    recognizeWithNormalization(expected,strokes,320,295,false),
     recognizeWithNormalization(expected,strokes,320,250,true)
   ];
   const tops=passes.map(p=>p[0]||null);
   const topExactCount=tops.filter(ch=>ch===expected).length;
+  const shapeAudit=schoolStrictShapeAudit(strokes);
 
   const candidates=[];
   for(const pass of passes)for(const ch of pass)if(!candidates.includes(ch))candidates.push(ch);
 
   const got=tops.find(Boolean)||candidates[0]||null;
-  const ok=topExactCount===3;
-  const excellent=topExactCount===3;
+  const ok=topExactCount===5 && shapeAudit.pass;
+  const excellent=ok;
 
   // 認識結果が割れた場合は、誤って「せいかい！」にせず確認扱いにする。
-  const unknown=!ok && (candidates.length===0 || new Set(tops.filter(Boolean)).size>1 || candidates.includes(expected));
+  const unknown=!ok && (candidates.length===0 || new Set(tops.filter(Boolean)).size>1 || candidates.includes(expected) || !shapeAudit.pass);
 
   return{
     ok,
@@ -945,7 +969,8 @@ function recognizeSingle(expected,strokes,canvasHint){
     candidates,
     tops,
     topExactCount,
-    mode:ok?"hard-strict-exact":(unknown?"uncertain":"wrong")
+    shapeAudit,
+    mode:ok?"v47-school-strict":(unknown?"uncertain":"wrong")
   };
 }
 function splitStrokesForExpected(strokes,n){
@@ -1085,6 +1110,8 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v4.6 IN-BOX FEEDBACK";
+  badge.textContent="v4.7 SCHOOL STRICT";
   document.body.appendChild(badge);
 });
+
+/* v4.7 acceptance: malformed-but-recognizable kanji must not auto-pass; 5/5 top-1 + structural audit required. */
