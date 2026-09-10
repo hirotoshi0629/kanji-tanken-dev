@@ -752,3 +752,14 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
 .schoolSetup{display:flex;align-items:end;gap:8px;flex-wrap:wrap;margin:0 0 12px;padding:10px 12px;border:1px solid #dce8df;border-radius:14px;background:#f7fbf8}
 .schoolSetup label{font-size:11px;font-weight:800}.schoolSetup input{display:block;width:100px;min-height:38px;margin-top:3px;padding:6px 8px;border:1px solid #ccd8cf;border-radius:9px;font-size:15px}
 .schoolSetup button{min-height:40px;padding:7px 14px;border-radius:10px}.schoolSetup span{font-size:11px;font-weight:800}
+
+.teacherEntry{display:block;margin:10px auto 0;min-height:42px;padding:7px 16px;border-radius:12px;background:#fff;border:1px solid #ccd8cf;font-weight:800}
+.teacherModal{position:fixed;inset:0;z-index:10000;background:rgba(18,32,23,.55);display:flex;align-items:center;justify-content:center;padding:16px}
+.teacherPanel{width:min(960px,97vw);max-height:92dvh;overflow:auto;background:#fff;border-radius:22px;padding:20px;box-shadow:0 20px 70px rgba(0,0,0,.28)}
+.teacherHead,.teacherToolbar{display:flex;align-items:center;justify-content:space-between;gap:12px}.teacherHead h2{margin:2px 0 12px}
+.teacherBody>label,.teacherToolbar label{display:block;font-size:12px;font-weight:800;margin:8px 0}.teacherBody input,.teacherToolbar select{display:block;min-height:42px;padding:7px 10px;border:1px solid #cbd8cf;border-radius:10px;min-width:240px}
+.teacherCards{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:14px 0}.teacherCards div{background:#f4f8f5;border-radius:14px;padding:13px;text-align:center}.teacherCards b{display:block;font-size:25px}.teacherCards span{font-size:11px}
+.classWeak{padding:12px;border-radius:12px;background:#f7faf8;margin-bottom:12px}.classWeak span{display:inline-block;margin:4px;padding:5px 8px;border-radius:9px;background:#fff;border:1px solid #dde7e0}
+.teacherTableWrap{overflow:auto}.teacherPanel table{width:100%;border-collapse:collapse;font-size:13px}.teacherPanel th,.teacherPanel td{padding:9px;border-bottom:1px solid #e5ebe7;text-align:center}.weakCell{font-size:18px}
+#teacherMsg{font-size:12px;font-weight:800;margin-top:8px}
+@media(max-width:700px){.teacherCards{grid-template-columns:repeat(2,1fr)}.teacherToolbar{align-items:flex-start;flex-direction:column}}

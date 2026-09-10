@@ -1338,7 +1338,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v7.0 SCHOOL CLOUD";
+  badge.textContent="v8.0 SCHOOL RC";
   document.body.appendChild(badge);
 });
 
@@ -1398,4 +1398,74 @@ function installSchoolSetup(){
  }clearInterval(t)},200)
 }
 installSchoolSetup();
+
+
+
+// v8.0 — teacher authentication + class aggregation.
+// Teacher access is granted only when auth.uid() exists in public.teacher_accounts.
+async function teacherLogin(email,password){
+  const r=await fetch(SCHOOL_CLOUD.url+"/auth/v1/token?grant_type=password",{
+    method:"POST",headers:cloudHeaders(),body:JSON.stringify({email,password})
+  });
+  if(!r.ok)throw new Error("メールアドレスまたはパスワードを確認してください");
+  const j=await r.json();localStorage.setItem("kq.teacherToken",j.access_token);return j.access_token;
+}
+async function teacherRpc(token,fn,body={}){
+  const r=await fetch(SCHOOL_CLOUD.url+"/rest/v1/rpc/"+fn,{
+    method:"POST",headers:cloudHeaders({Authorization:"Bearer "+token}),
+    body:JSON.stringify(body)
+  });
+  if(!r.ok)throw new Error(await r.text());return await r.json();
+}
+function closeTeacher(){document.querySelector("#teacherModal")?.remove()}
+async function renderTeacherDashboard(token){
+  const data=await teacherRpc(token,"teacher_dashboard",{});
+  const rows=Array.isArray(data)?data:[];
+  const classes=[...new Set(rows.map(x=>x.class_code))].sort();
+  const modal=document.querySelector("#teacherModal");
+  const body=modal.querySelector(".teacherBody");
+  body.innerHTML=`
+    <div class="teacherToolbar"><label>クラス<select id="teacherClass"><option value="">すべて</option>${classes.map(c=>`<option>${c}</option>`).join("")}</select></label>
+    <button id="teacherLogout" type="button">ログアウト</button></div>
+    <div id="teacherSummary"></div><div id="teacherRows"></div>`;
+  const draw=()=>{
+    const c=document.querySelector("#teacherClass").value;
+    const r=c?rows.filter(x=>x.class_code===c):rows;
+    const students=r.length;
+    const sessions=r.reduce((s,x)=>s+Number(x.sessions||0),0);
+    const points=r.reduce((s,x)=>s+Number(x.points||0),0);
+    const weakCount={};
+    r.forEach(x=>Object.entries(x.weak||{}).forEach(([k,v])=>weakCount[k]=(weakCount[k]||0)+Number(v||0)));
+    const top=Object.entries(weakCount).sort((a,b)=>b[1]-a[1]).slice(0,10);
+    document.querySelector("#teacherSummary").innerHTML=`<div class="teacherCards">
+      <div><b>${students}</b><span>児童</span></div><div><b>${sessions}</b><span>学習回数</span></div>
+      <div><b>${points}</b><span>合計ポイント</span></div><div><b>${top[0]?.[0]||"—"}</b><span>最も苦手</span></div></div>
+      <div class="classWeak"><b>クラスの苦手漢字</b> ${top.length?top.map(([k,v])=>`<span>${k} ${v}</span>`).join(""):"まだ記録なし"}</div>`;
+    document.querySelector("#teacherRows").innerHTML=`<div class="teacherTableWrap"><table><thead><tr><th>クラス</th><th>番号</th><th>学習回数</th><th>ポイント</th><th>苦手漢字</th><th>最終学習</th></tr></thead><tbody>${
+      r.map(x=>`<tr><td>${x.class_code}</td><td>${x.student_no}</td><td>${x.sessions||0}</td><td>${x.points||0}</td>
+      <td class="weakCell">${Object.entries(x.weak||{}).sort((a,b)=>b[1]-a[1]).slice(0,5).map(([k,v])=>`${k}(${v})`).join(" ")||"—"}</td>
+      <td>${x.last_study?new Date(x.last_study).toLocaleString("ja-JP"):"—"}</td></tr>`).join("")
+    }</tbody></table></div>`;
+  };
+  document.querySelector("#teacherClass").onchange=draw;
+  document.querySelector("#teacherLogout").onclick=()=>{localStorage.removeItem("kq.teacherToken");closeTeacher()};
+  draw();
+}
+function openTeacher(){
+  closeTeacher();const m=document.createElement("div");m.id="teacherModal";m.className="teacherModal";
+  m.innerHTML=`<section class="teacherPanel"><div class="teacherHead"><div><small>先生専用</small><h2>クラス学習状況</h2></div><button id="teacherX" type="button">閉じる</button></div>
+  <div class="teacherBody"><p>先生のメールアドレスとパスワードでログインしてください。</p>
+  <label>メールアドレス<input id="teacherEmail" type="email" autocomplete="username"></label>
+  <label>パスワード<input id="teacherPassword" type="password" autocomplete="current-password"></label>
+  <button id="teacherLogin" type="button">ログイン</button><div id="teacherMsg"></div></div></section>`;
+  document.body.appendChild(m);document.querySelector("#teacherX").onclick=closeTeacher;
+  const saved=localStorage.getItem("kq.teacherToken");if(saved){renderTeacherDashboard(saved).catch(()=>localStorage.removeItem("kq.teacherToken"))}
+  document.querySelector("#teacherLogin").onclick=async()=>{const msg=document.querySelector("#teacherMsg");msg.textContent="確認中…";try{
+    const token=await teacherLogin(document.querySelector("#teacherEmail").value,document.querySelector("#teacherPassword").value);
+    await renderTeacherDashboard(token);
+  }catch(e){msg.textContent="ログインできませんでした。先生アカウントを確認してください。"}};
+}
+(function installTeacherEntry(){const t=setInterval(()=>{const home=document.querySelector("#homeView");if(!home)return;
+ if(!document.querySelector("#teacherEntry")){const b=document.createElement("button");b.id="teacherEntry";b.className="teacherEntry";b.type="button";b.textContent="先生用";b.onclick=openTeacher;home.appendChild(b)}
+ clearInterval(t)},250)})();
 
