@@ -749,121 +749,13 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
   box-shadow:0 4px 16px rgba(140,0,0,.20)!important;
 }
 
-.adaptiveNote{
-  margin:14px auto 0;
-  max-width:760px;
-  padding:10px 14px;
-  border-radius:14px;
-  background:rgba(255,255,255,.82);
-  border:1px solid rgba(51,120,75,.18);
-  font-size:12px;
-  color:#41614b;
-  text-align:center;
-}
-
-
-/* v5.4 — iPad / Apple Pencil usability pass */
-html{
-  -webkit-text-size-adjust:100%;
-  text-size-adjust:100%;
-}
-body{
-  min-height:100dvh;
-  overscroll-behavior-y:none;
-}
-.shell{
-  padding-top:max(18px,env(safe-area-inset-top));
-  padding-left:max(16px,env(safe-area-inset-left));
-  padding-right:max(16px,env(safe-area-inset-right));
-  padding-bottom:max(18px,env(safe-area-inset-bottom));
-}
-button,.gradeBtn,.volBtn,.clearOneBtn{
-  -webkit-tap-highlight-color:transparent;
-}
-.inkCanvas{
-  touch-action:none!important;
-  -webkit-user-select:none!important;
-  user-select:none!important;
-  -webkit-touch-callout:none!important;
-}
-.writeArea,.canvasWrap{
-  -webkit-user-select:none!important;
-  user-select:none!important;
-}
-.lockedCanvas{pointer-events:none!important}
-
-@media (hover:none) and (pointer:coarse){
-  button,.gradeBtn,.volBtn,.clearOneBtn{
-    min-height:52px!important;
-  }
-  .small{font-size:14px}
-  .boxStatus{font-size:15px}
-}
-
-@media (min-width:768px) and (max-width:1180px) and (orientation:portrait){
-  .practice{
-    grid-template-columns:1fr!important;
-    gap:14px;
-  }
-  .questionCard{
-    min-height:auto!important;
-  }
-  .questionText{
-    font-size:clamp(27px,3.6vw,34px)!important;
-  }
-  .multiCanvasWrap{
-    justify-content:center;
-  }
-  #canvasWrap .kanjiCell{
-    width:min(42vw,330px)!important;
-    flex-basis:min(42vw,330px)!important;
-  }
-}
-
-@media (min-width:900px) and (max-width:1400px) and (orientation:landscape){
-  .practice{
-    grid-template-columns:minmax(245px,.50fr) minmax(610px,1.50fr)!important;
-  }
-  .questionCard{
-    position:sticky;
-    top:max(12px,env(safe-area-inset-top));
-  }
-  #canvasWrap .kanjiCell{
-    max-width:300px;
-  }
-}
-
-@media (max-width:900px){
-  #checkBtn,#nextBtn{
-    width:100%;
-  }
-  .row.practiceActions{
-    gap:8px;
-  }
-}
-
-/* Keep feedback overlays visible above Apple Pencil ink */
-.mistakeGuideDot{z-index:120!important}
-.mistakeGuideLabel{z-index:121!important}
-
-/* v6.0 Release Candidate */
-.rcTools{
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:8px;
-  margin:12px auto 4px;
-}
-.rcTools .ghostBtn{
-  min-height:44px;
-  padding:8px 14px;
-  border-radius:12px;
-  font-size:12px;
-}
-button:disabled{
-  opacity:.58;
-  cursor:not-allowed;
-}
-button[aria-busy="true"]{
-  pointer-events:none;
-}
+/* v6.1 DEV teacher dashboard */
+.teacherOpenBtn{position:absolute;right:18px;top:16px;z-index:20;min-height:40px;padding:7px 13px;border-radius:12px;border:1px solid rgba(26,92,55,.25);background:#fff;font-weight:800;font-size:12px}
+#homeView{position:relative}
+.teacherOverlay{position:fixed;inset:0;z-index:9999;background:rgba(20,35,27,.48);display:flex;align-items:center;justify-content:center;padding:18px}
+.teacherPanel{width:min(820px,96vw);max-height:88dvh;overflow:auto;background:#fff;border-radius:22px;padding:20px;box-shadow:0 18px 60px rgba(0,0,0,.25)}
+.teacherHead{display:flex;align-items:center;justify-content:space-between;gap:12px}.teacherHead h2{margin:2px 0 0}.teacherEyebrow{font-size:12px;font-weight:900;opacity:.65}
+.teacherHead button{min-height:44px;padding:8px 16px;border-radius:12px}.teacherNotice,.teacherFoot{margin:12px 0;padding:10px 12px;border-radius:12px;background:#f4f8f5;font-size:12px}
+.teacherStats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin:14px 0}.teacherStats div{padding:12px 8px;border-radius:14px;background:#f5f8f6;text-align:center}.teacherStats b{display:block;font-size:22px}.teacherStats span{font-size:11px}
+.teacherTableWrap{overflow:auto}.teacherPanel table{width:100%;border-collapse:collapse;font-size:13px}.teacherPanel th,.teacherPanel td{padding:9px;border-bottom:1px solid #e7ece8;text-align:center}.teacherKanji{font-size:24px;font-weight:900}.teacherEmpty{text-align:center;padding:28px;opacity:.65}
+@media(max-width:700px){.teacherStats{grid-template-columns:repeat(2,1fr)}.teacherOpenBtn{right:10px;top:10px}}
