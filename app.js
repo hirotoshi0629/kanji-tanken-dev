@@ -273,44 +273,43 @@ function strokeAngleInfo(st){
 }
 function suspectGuidesForBox(box,result){
   if(!box||box.type!=="kanji")return[];
+
+  // v4.9: まず「本当に足りない画」を最優先で示す。
+  if(Array.isArray(result?.feedbackGuides) && result.feedbackGuides.length){
+    const r=box.canvas.getBoundingClientRect();
+    return result.feedbackGuides.map(g=>({
+      x:g.normalized ? g.x*r.width : g.x,
+      y:g.normalized ? g.y*r.height : g.y,
+      msg:g.msg,
+      strokeNo:g.strokeNo
+    }));
+  }
+
   const strokes=(box.strokes||[]).filter(st=>st&&st.length>1);
   if(!strokes.length)return[];
-
   const all=strokes.flat(),xs=all.map(p=>p.x),ys=all.map(p=>p.y);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
   const w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY),span=Math.max(w,h);
+
+  // 不足画が特定できないときだけ、補助的な形チェックを出す。
   const metrics=strokes.map((st,index)=>{
-    const m=strokeMetrics(st),a=strokeAngleInfo(st);
+    const m=strokeMetrics(st);
     const rel=m.len/span;
     const edge=Math.hypot((m.cx-(minX+w/2))/w,(m.cy-(minY+h/2))/h);
-    let score=edge*.38;
-    let issue="";
-    if(rel<.13){score+=1.2;issue="短すぎる可能性があります";}
-    else if(rel>1.25){score+=1.0;issue="長すぎる可能性があります";}
-    else if(m.vertical && Math.abs(a.dx)>Math.abs(a.dy)*.38){score+=.72;issue="たて線の傾きを見直そう";}
-    else if(m.horizontal && Math.abs(a.dy)>Math.abs(a.dx)*.38){score+=.72;issue="横線の傾きを見直そう";}
-    else if(edge>.42){score+=.46;issue="位置と長さをお手本とくらべよう";}
-    else {score+=.18;issue="線の向きと長さをお手本とくらべよう";}
+    let score=edge*.25, issue="";
+    if(rel<.10){score+=1.0;issue="この線が短すぎないか、お手本とくらべよう";}
+    else if(rel>1.35){score+=.8;issue="この線が長すぎないか、お手本とくらべよう";}
+    else {score+=.05;issue="この線の形を、お手本とくらべよう";}
     return{...m,index,score,issue};
   }).sort((a,b)=>b.score-a.score);
 
-  const guides=[];
-  for(const m of metrics){
-    if(guides.length>=2)break;
-    if(guides.some(g=>Math.hypot(g.x-m.cx,g.y-m.cy)<span*.16))continue;
-    const region=regionName(m.cx-minX,m.cy-minY,w,h);
-    guides.push({
-      x:m.cx,y:m.cy,
-      msg:`${region}の線：${m.issue}`,
-      strokeIndex:m.index
-    });
+  if(metrics[0] && metrics[0].score>=.6){
+    const m=metrics[0];
+    return [{x:m.cx,y:m.cy,msg:m.issue,strokeIndex:m.index}];
   }
-  // 誤判定時は最低1か所、必ず具体的な見直し場所を示す。
-  if(!guides.length && metrics[0]){
-    const m=metrics[0],region=regionName(m.cx-minX,m.cy-minY,w,h);
-    guides.push({x:m.cx,y:m.cy,msg:`${region}の線の形を、お手本とくらべよう`,strokeIndex:m.index});
-  }
-  return guides;
+
+  // 根拠が弱い場所を無理に赤丸で指摘しない。
+  return [];
 }
 function showMistakeGuides(box,result){
   clearMistakeGuides(box);
@@ -332,7 +331,7 @@ function markBoxResults(results){
     if(!r)return;
     if(r.ok){
       box.cell?.classList.add("boxCorrect");box.writeArea?.classList.add("writeCorrect");
-      if(box.status){box.status.textContent="✓ この字はOK";box.status.className="boxStatus boxStatusOk"}
+      if(box.status){box.status.textContent=box.type==="okuri"?"✓ 送りがなは合っています":"✓ この漢字はOK";box.status.className="boxStatus boxStatusOk"}
     }else{
       box.cell?.classList.add("boxWrong");box.writeArea?.classList.add("writeWrong");
       const circled=showMistakeGuides(box,r);
@@ -940,6 +939,78 @@ function recognizeWithNormalization(expected,strokes,size,boxSize,preserveAspect
   return [...raw.replace(/\s+/g,"")];
 }
 
+
+// v4.9 — 学校向け「不足画」優先判定。
+// 認識候補の形が似ているかより先に、必要な画が足りているかを確認する。
+// まず、今回の検証で問題になった「負」を正式ルール化する。
+// 今後は同じ形式で他の漢字にも個別ルーブリックを追加できる。
+const KANJI_STROKE_RUBRICS = Object.freeze({
+  "負": {
+    count: 9,
+    missingGuides: {
+      8: {x:.39,y:.84,msg:"8画目：左下の「はらい」がありません。左下へはらおう。"},
+      9: {x:.66,y:.84,msg:"9画目：右下の最後の線がありません。右下へ書こう。"}
+    }
+  },
+  "物": { count: 8 }
+});
+
+function getKanjiStrokeRubric(ch){
+  return KANJI_STROKE_RUBRICS[ch] || null;
+}
+
+function inspectRequiredStrokes(expected, strokes){
+  const rubric=getKanjiStrokeRubric(expected);
+  if(!rubric)return {known:false, expectedCount:null, actualCount:(strokes||[]).filter(s=>s&&s.length>1).length, missingCount:0, extraCount:0, missingGuides:[]};
+  const actual=(strokes||[]).filter(s=>s&&s.length>1).length;
+  const missing=Math.max(0,rubric.count-actual);
+  const extra=Math.max(0,actual-rubric.count);
+  const guides=[];
+  if(missing>0 && rubric.missingGuides){
+    for(let n=actual+1;n<=rubric.count;n++){
+      if(rubric.missingGuides[n])guides.push({...rubric.missingGuides[n], strokeNo:n, normalized:true});
+    }
+  }
+  return {known:true, expectedCount:rubric.count, actualCount:actual, missingCount:missing, extraCount:extra, missingGuides:guides};
+}
+
+function kanaShapeResult(expected, strokes, canvas){
+  const clean=(strokes||[]).filter(st=>st&&st.length>1);
+  if(!clean.length)return {ok:false,excellent:false,unknown:true,got:null,mode:"kana-empty"};
+
+  const pts=clean.flat();
+  const xs=pts.map(p=>p.x), ys=pts.map(p=>p.y);
+  const minX=Math.min(...xs), maxX=Math.max(...xs), minY=Math.min(...ys), maxY=Math.max(...ys);
+  const w=Math.max(1,maxX-minX), h=Math.max(1,maxY-minY);
+
+  // 「う」は、上の短い点/線 + 下の大きな曲線の2画を基本形として判定。
+  // 画像のような自然な手書き「う」は正解にする一方、単なる1本線などは通さない。
+  if(expected==="う"){
+    if(clean.length<2 || clean.length>3)return {ok:false,excellent:false,unknown:false,got:null,mode:"kana-u-stroke-count"};
+    const mets=clean.map((st,i)=>{
+      const m=strokeMetrics(st);
+      return {...m,index:i,first:st[0],last:st[st.length-1]};
+    }).sort((a,b)=>a.cy-b.cy);
+    const top=mets[0], bottom=mets[mets.length-1];
+    const topShort=top.len < Math.max(w,h)*.48;
+    const verticalSeparation=(bottom.cy-top.cy) > h*.18;
+    const bottomLong=bottom.len > top.len*1.7;
+    const bottomBelow=bottom.cy > minY+h*.48;
+    const plausibleWidth=w > 22 && h > 35;
+    const ok=topShort && verticalSeparation && bottomLong && bottomBelow && plausibleWidth;
+    return {
+      ok, excellent:ok, unknown:!ok, got:ok?"う":null,
+      mode:ok?"kana-u-geometry":"kana-u-review",
+      kanaAudit:{topShort,verticalSeparation,bottomLong,bottomBelow,plausibleWidth}
+    };
+  }
+
+  // その他の送り仮名は、漢字用認識器で誤判定しないよう「確認扱い」を基本にする。
+  const st=okuriInkStats({strokes:clean,canvas});
+  const plausible=st.hasInk && st.coverage>=.08;
+  return {ok:false,excellent:false,unknown:plausible,got:null,mode:"kana-review"};
+}
+
 function schoolStrictShapeAudit(strokes){
   const clean=(strokes||[]).filter(st=>st&&st.length>1),pts=clean.flat();
   if(!pts.length)return{pass:false,reason:"no-ink",details:[]};
@@ -966,12 +1037,27 @@ function recognizeSingle(expected,strokes,canvasHint){
   if(!window.KanjiCanvas||!Array.isArray(KanjiCanvas.refPatterns)||!KanjiCanvas.refPatterns.length)return{ok:false,unknown:true,got:null};
   if(!strokes.flat().length)return{ok:false,unknown:true,got:null};
 
-  // v4.4 STRICT:
-  // 「候補のどこかに正解字が入った」だけでは正解にしない。
-  // 3通りの正規化のうち、正解字が1位になった回数を数え、
-  // 2回以上一致したときだけ自動正解にする。
-  // v4.8 PINPOINT STRICT: 5種類すべての認識で第1候補が一致し、
-  // さらに字形の基本構造監査にも合格した場合だけ自動正解。
+  const strokeAudit=inspectRequiredStrokes(expected,strokes);
+
+  // 必要な画が不足している場合は、認識候補が正解字に見えても絶対に○にしない。
+  if(strokeAudit.known && strokeAudit.missingCount>0){
+    return{
+      ok:false,excellent:false,unknown:false,got:null,
+      mode:"missing-required-strokes",
+      strokeAudit,
+      feedbackGuides:strokeAudit.missingGuides
+    };
+  }
+  // 個別ルーブリックがある漢字で余分な画がある場合も○にしない。
+  if(strokeAudit.known && strokeAudit.extraCount>0){
+    return{
+      ok:false,excellent:false,unknown:false,got:null,
+      mode:"extra-strokes",
+      strokeAudit,
+      feedbackGuides:[{x:.50,y:.50,msg:`線が${strokeAudit.extraCount}画多いです。お手本とくらべて余分な線を消そう。`,normalized:true}]
+    };
+  }
+
   const passes=[
     recognizeWithNormalization(expected,strokes,320,230,false),
     recognizeWithNormalization(expected,strokes,320,250,false),
@@ -989,22 +1075,13 @@ function recognizeSingle(expected,strokes,canvasHint){
   const got=tops.find(Boolean)||candidates[0]||null;
   const ok=topExactCount===5 && shapeAudit.pass;
   const excellent=ok;
-
-  // 認識結果が割れた場合は、誤って「せいかい！」にせず確認扱いにする。
   const unknown=!ok && (candidates.length===0 || new Set(tops.filter(Boolean)).size>1 || candidates.includes(expected) || !shapeAudit.pass);
 
   return{
-    ok,
-    excellent,
-    unknown,
-    got,
+    ok,excellent,unknown,got,
     rank:candidates.indexOf(expected),
-    fallback:false,
-    candidates,
-    tops,
-    topExactCount,
-    shapeAudit,
-    mode:ok?"v47-school-strict":(unknown?"uncertain":"wrong")
+    fallback:false,candidates,tops,topExactCount,shapeAudit,strokeAudit,
+    mode:ok?"v49-school-strict":(unknown?"uncertain":"wrong")
   };
 }
 function splitStrokesForExpected(strokes,n){
@@ -1030,26 +1107,21 @@ function okuriInkStats(box){
 }
 function recognizeBox(box){
   if(box.type==="kanji")return recognizeSingle(box.expected,box.strokes,box.canvas);
-  const chars=[...box.expected],groups=splitStrokesForExpected(box.strokes,chars.length),parts=chars.map((ch,i)=>recognizeSingle(ch,groups[i]||[],box.canvas));
-  const bad=parts.findIndex(r=>!r.ok);
-  if(bad<0)return{ok:true,excellent:parts.every(r=>r.excellent),unknown:false,got:parts.map(r=>r.got||"?").join(""),parts,bad:-1,mode:"exact"};
 
-  // KanjiCanvas is built for kanji and can be unreliable for handwritten kana.
-  // For okurigana, never reject a plausible answer solely because the kana recognizer
-  // produced a kanji candidate. Use the exact match when available, otherwise a
-  // conservative ink/spacing check so correctly handwritten kana are not falsely marked wrong.
-  const st=okuriInkStats(box);
-  const enoughInk=st.hasInk&&box.strokes.length>=Math.max(1,Math.ceil(chars.length*.7));
-  const wideEnough=chars.length===1?st.coverage>=.08:st.coverage>=.22;
-  // 文字数は画面には見せないが、内部では横方向のまとまり数を使い、
-  // 1文字しか書いていないのに3文字分の送りがなを正解扱いする等を減らす。
-  const groupCountOK=chars.length===1
-    ? st.clusters>=1
-    : st.clusters>=Math.max(1,chars.length-1)&&st.clusters<=chars.length+1;
-  const plausible=enoughInk&&wideEnough&&groupCountOK;
-  // 形がそれらしくても、文字認識が一致していないものは自動正解にしない。
-  // plausible は「書いてあることは分かるが判定に自信がない」という確認扱い。
-  return{ok:false,excellent:false,unknown:plausible||parts.some(r=>r.unknown),got:parts.map(r=>r.got||"?").join(""),parts,bad,mode:plausible?"kana-uncertain":"wrong"};
+  const chars=[...box.expected];
+  if(chars.length===1){
+    return kanaShapeResult(chars[0],box.strokes,box.canvas);
+  }
+
+  // 複数文字の送り仮名は、文字ごとに分けて判定。
+  const groups=splitStrokesForExpected(box.strokes,chars.length);
+  const parts=chars.map((ch,i)=>kanaShapeResult(ch,groups[i]||[],box.canvas));
+  const bad=parts.findIndex(r=>!r.ok);
+  if(bad<0)return{ok:true,excellent:parts.every(r=>r.excellent),unknown:false,got:chars.join(""),parts,bad:-1,mode:"kana-exact"};
+  return{
+    ok:false,excellent:false,unknown:parts.some(r=>r.unknown),
+    got:parts.map(r=>r.got||"?").join(""),parts,bad,mode:"kana-review"
+  };
 }
 
 $("#revealBtn").onclick=()=>{
@@ -1108,10 +1180,16 @@ $("#checkBtn").onclick=async()=>{
       markBoxResults(results);
       state.activeBox=bad;const r=results[bad],box=state.boxes[bad];
       const badPositions=results.map((x,i)=>!x.ok?`${i+1}字目`:null).filter(Boolean).join("・");
+      const missingResult=results.find(r=>r?.strokeAudit?.missingCount>0);
+      const missingText=missingResult
+        ? `必要な線が${missingResult.strokeAudit.missingCount}画足りません。赤い○の場所に、足りない線を書こう。`
+        : "";
       if(state.questionRetries>=3){
         showThreeTryConfirmation(q,results,bad);
       }else if(box.type==="okuri"){
-        showFeedback(r.unknown?"unknown":"retry",`${state.questionRetries}回目：${badPositions}を直そう`,"赤く光っているマスを直そう。「この送りがなだけ消す」も使えるよ。");
+        showFeedback(r.unknown?"unknown":"retry",`${state.questionRetries}回目：${badPositions}を直そう`,"赤く光っている送りがなだけを見直そう。");
+      }else if(missingText){
+        showFeedback("retry",`${state.questionRetries}回目：足りない線を書こう`,missingText);
       }else if(r.unknown){
         showFeedback("unknown",`${state.questionRetries}回目：${badPositions}を見てみよう`,"正解にはしていません。赤い○と説明が出ている線を、お手本とくらべて直そう。");
       }else{
@@ -1144,10 +1222,12 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v4.8 PINPOINT STRICT";
+  badge.textContent="v4.9 MISSING-STROKE + KANA FIX";
   document.body.appendChild(badge);
 });
 
 /* v4.7 acceptance: malformed-but-recognizable kanji must not auto-pass; 5/5 top-1 + structural audit required. */
 
 /* v4.8: every rejected kanji shows concrete pinpoint feedback; okurigana frame corners are continuous. */
+
+/* v4.9 acceptance: 負 with only 7 strokes => specifically flag missing 8th/9th strokes; handwritten う geometry => correct. */

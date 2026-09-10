@@ -715,3 +715,20 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
   font-size:14px !important;
   line-height:1.4 !important;
 }
+
+
+/* v4.9 — correct okurigana remains clearly green even when kanji is wrong */
+.okuriCell.boxCorrect .writeArea::after{
+  border-color:#15914f !important;
+  box-shadow:0 0 0 4px rgba(21,145,79,.10);
+}
+.okuriCell.boxCorrect .boxStatus{
+  color:#08783d !important;
+  font-weight:900;
+}
+
+/* missing-stroke callouts */
+.mistakeGuideLabel{
+  white-space:normal;
+  font-weight:900 !important;
+}
