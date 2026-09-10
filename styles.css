@@ -678,3 +678,40 @@ button,.animalQuickNav a,.tripCard,.memoryEntry,.petLetter,.decorItem{min-height
 .mistakeGuideLabel{position:absolute;transform:translate(-50%,-100%);z-index:21;max-width:72%;min-width:150px;padding:7px 10px;border-radius:12px;background:rgba(229,57,53,.96);color:#fff;font-size:13px;font-weight:800;line-height:1.35;text-align:left;pointer-events:none;box-shadow:0 4px 12px rgba(120,0,0,.20)}
 .mistakeGuideLabel::after{content:"";position:absolute;left:50%;bottom:-7px;transform:translateX(-50%);border:7px solid transparent;border-top-color:rgba(229,57,53,.96);border-bottom:0}
 @media(max-width:760px){.mistakeGuideDot{font-size:36px}.mistakeGuideLabel{font-size:12px;min-width:132px;max-width:78%;padding:6px 8px}}
+
+
+/* v4.8 — okurigana frame: continuous rounded corners, never hidden by canvas */
+.okuriCell .writeArea{
+  position:relative !important;
+  border:0 !important;
+  border-radius:18px !important;
+  overflow:hidden !important;
+  background:#fff !important;
+}
+.okuriCell .writeArea::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  box-sizing:border-box;
+  border:3px solid #15914f;
+  border-radius:18px;
+  pointer-events:none;
+  z-index:40;
+}
+.okuriCell .writeArea.writeWrong::after{border-color:#d83b37}
+.okuriCell .writeArea.writeCorrect::after{border-color:#2e9d57}
+.okuriCell .inkCanvas{position:relative;z-index:1}
+.charNo{z-index:45 !important}
+
+/* v4.8 — pinpoint correction labels */
+.mistakeGuideDot{
+  z-index:50 !important;
+  font-size:46px !important;
+  color:#d92525 !important;
+}
+.mistakeGuideLabel{
+  z-index:51 !important;
+  max-width:82% !important;
+  font-size:14px !important;
+  line-height:1.4 !important;
+}

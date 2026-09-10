@@ -258,27 +258,57 @@ function strokeMetrics(st){
   return{cx:(minX+maxX)/2,cy:(minY+maxY)/2,w:Math.max(1,maxX-minX),h:Math.max(1,maxY-minY),len,
     horizontal:(maxX-minX)>(maxY-minY)*1.35,vertical:(maxY-minY)>(maxX-minX)*1.35};
 }
+function regionName(x,y,w,h){
+  const hx=x < w*.36 ? "左" : x > w*.64 ? "右" : "中央";
+  const vy=y < h*.34 ? "上" : y > h*.66 ? "下" : "中央";
+  if(hx==="中央"&&vy==="中央")return "中央";
+  if(hx==="中央")return vy;
+  if(vy==="中央")return hx;
+  return hx+vy;
+}
+function strokeAngleInfo(st){
+  if(!st||st.length<2)return{dx:0,dy:0,angle:0};
+  const a=st[0],b=st[st.length-1],dx=b.x-a.x,dy=b.y-a.y;
+  return{dx,dy,angle:Math.atan2(dy,dx)*180/Math.PI};
+}
 function suspectGuidesForBox(box,result){
-  if(!box||box.type!=="kanji"||result?.unknown||!result?.got)return[];
-  const strokes=(box.strokes||[]).filter(st=>st&&st.length>1); if(!strokes.length)return[];
+  if(!box||box.type!=="kanji")return[];
+  const strokes=(box.strokes||[]).filter(st=>st&&st.length>1);
+  if(!strokes.length)return[];
+
   const all=strokes.flat(),xs=all.map(p=>p.x),ys=all.map(p=>p.y);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
-  const cx=(minX+maxX)/2,cy=(minY+maxY)/2,w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY);
-  const scored=strokes.map(strokeMetrics).filter(Boolean).map(m=>{
-    const edge=Math.hypot((m.cx-cx)/w,(m.cy-cy)/h);
-    const rel=m.len/Math.max(w,h);
-    const score=edge*.58+Math.max(0,.24-rel)*2.2+Math.max(0,rel-1.25)*.75;
-    return{m,score};
+  const w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY),span=Math.max(w,h);
+  const metrics=strokes.map((st,index)=>{
+    const m=strokeMetrics(st),a=strokeAngleInfo(st);
+    const rel=m.len/span;
+    const edge=Math.hypot((m.cx-(minX+w/2))/w,(m.cy-(minY+h/2))/h);
+    let score=edge*.38;
+    let issue="";
+    if(rel<.13){score+=1.2;issue="短すぎる可能性があります";}
+    else if(rel>1.25){score+=1.0;issue="長すぎる可能性があります";}
+    else if(m.vertical && Math.abs(a.dx)>Math.abs(a.dy)*.38){score+=.72;issue="たて線の傾きを見直そう";}
+    else if(m.horizontal && Math.abs(a.dy)>Math.abs(a.dx)*.38){score+=.72;issue="横線の傾きを見直そう";}
+    else if(edge>.42){score+=.46;issue="位置と長さをお手本とくらべよう";}
+    else {score+=.18;issue="線の向きと長さをお手本とくらべよう";}
+    return{...m,index,score,issue};
   }).sort((a,b)=>b.score-a.score);
+
   const guides=[];
-  for(const it of scored){
+  for(const m of metrics){
     if(guides.length>=2)break;
-    if(it.score<.33)continue;
-    if(guides.some(g=>Math.hypot(g.x-it.m.cx,g.y-it.m.cy)<Math.max(w,h)*.18))continue;
-    let msg="このあたりを、お手本とくらべてみよう";
-    if(it.m.vertical&&it.m.len<Math.max(w,h)*.42)msg="このたて線の長さを、お手本とくらべよう";
-    else if(it.m.horizontal&&it.m.len>Math.max(w,h)*.92)msg="この横線の長さを、見直してみよう";
-    guides.push({x:it.m.cx,y:it.m.cy,msg});
+    if(guides.some(g=>Math.hypot(g.x-m.cx,g.y-m.cy)<span*.16))continue;
+    const region=regionName(m.cx-minX,m.cy-minY,w,h);
+    guides.push({
+      x:m.cx,y:m.cy,
+      msg:`${region}の線：${m.issue}`,
+      strokeIndex:m.index
+    });
+  }
+  // 誤判定時は最低1か所、必ず具体的な見直し場所を示す。
+  if(!guides.length && metrics[0]){
+    const m=metrics[0],region=regionName(m.cx-minX,m.cy-minY,w,h);
+    guides.push({x:m.cx,y:m.cy,msg:`${region}の線の形を、お手本とくらべよう`,strokeIndex:m.index});
   }
   return guides;
 }
@@ -307,7 +337,7 @@ function markBoxResults(results){
       box.cell?.classList.add("boxWrong");box.writeArea?.classList.add("writeWrong");
       const circled=showMistakeGuides(box,r);
       if(box.status){
-        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":(circled?"○のところを、お手本とくらべて直そう":"↑ この字全体を、お手本とくらべてみよう");
+        box.status.textContent=box.type==="okuri"?"↑ この送りがなを直そう":(circled?"赤い○と説明のところを直そう":"赤く示した線を、お手本とくらべて直そう");
         box.status.className="boxStatus boxStatusWrong";
       }
       box.clearOne?.classList.remove("hidden");
@@ -912,20 +942,24 @@ function recognizeWithNormalization(expected,strokes,size,boxSize,preserveAspect
 
 function schoolStrictShapeAudit(strokes){
   const clean=(strokes||[]).filter(st=>st&&st.length>1),pts=clean.flat();
-  if(!pts.length)return{pass:false,reason:"no-ink"};
+  if(!pts.length)return{pass:false,reason:"no-ink",details:[]};
   const xs=pts.map(p=>p.x),ys=pts.map(p=>p.y);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
   const w=Math.max(1,maxX-minX),h=Math.max(1,maxY-minY),span=Math.max(w,h);
-  if(w/h<0.42||w/h>2.35)return{pass:false,reason:"balance"};
-  const ms=clean.map(strokeMetrics).filter(Boolean);
-  const tiny=ms.filter(m=>m.len<span*.105).length;
-  const wild=ms.filter(m=>m.len>span*2.15).length;
-  if(tiny>Math.max(1,Math.floor(clean.length*.18))||wild>0)return{pass:false,reason:"stroke-length"};
+  const details=[];
+  const ratio=w/h;
+  if(ratio<0.42||ratio>2.35)details.push("balance");
+  const ms=clean.map((st,i)=>({...strokeMetrics(st),index:i})).filter(Boolean);
+  ms.forEach(m=>{
+    const rel=m.len/span;
+    if(rel<.105)details.push(`tiny:${m.index}`);
+    if(rel>2.15)details.push(`wild:${m.index}`);
+  });
   if(clean.length>=6){
     const verticals=ms.filter(m=>m.vertical).length,horizontals=ms.filter(m=>m.horizontal).length;
-    if(verticals===0||horizontals===0)return{pass:false,reason:"stroke-direction"};
+    if(verticals===0||horizontals===0)details.push("stroke-direction");
   }
-  return{pass:true,reason:"ok"};
+  return{pass:details.length===0,reason:details[0]||"ok",details,ratio};
 }
 
 function recognizeSingle(expected,strokes,canvasHint){
@@ -936,7 +970,7 @@ function recognizeSingle(expected,strokes,canvasHint){
   // 「候補のどこかに正解字が入った」だけでは正解にしない。
   // 3通りの正規化のうち、正解字が1位になった回数を数え、
   // 2回以上一致したときだけ自動正解にする。
-  // v4.7 SCHOOL STRICT: 5種類すべての認識で第1候補が一致し、
+  // v4.8 PINPOINT STRICT: 5種類すべての認識で第1候補が一致し、
   // さらに字形の基本構造監査にも合格した場合だけ自動正解。
   const passes=[
     recognizeWithNormalization(expected,strokes,320,230,false),
@@ -1079,9 +1113,9 @@ $("#checkBtn").onclick=async()=>{
       }else if(box.type==="okuri"){
         showFeedback(r.unknown?"unknown":"retry",`${state.questionRetries}回目：${badPositions}を直そう`,"赤く光っているマスを直そう。「この送りがなだけ消す」も使えるよ。");
       }else if(r.unknown){
-        showFeedback("unknown",`${state.questionRetries}回目：${badPositions}を見てみよう`,"AIの判定に自信がないので、正解にはしていません。赤く光っている漢字全体を、お手本とくらべてみよう。");
+        showFeedback("unknown",`${state.questionRetries}回目：${badPositions}を見てみよう`,"正解にはしていません。赤い○と説明が出ている線を、お手本とくらべて直そう。");
       }else{
-        showFeedback("retry",`${state.questionRetries}回目：${badPositions}を直そう`,`赤く光っているマスを直そう。○が出たら、そこはAIの「見直しポイント」のめやすだよ。お手本とくらべてみよう。`);
+        showFeedback("retry",`${state.questionRetries}回目：${badPositions}を直そう`,`赤い○と説明が出ている場所を直そう。線の長さ・向き・位置を、お手本とくらべてみよう。`);
       }
     }
   }catch(e){console.error(e);showFeedback("unknown","判定できませんでした","もう一度ためしてね。")}finally{state.checking=false;$("#aiModal").classList.add("hidden");renderHomeStats();if(!state.questionCompleted)updateCheckButton()}
@@ -1110,8 +1144,10 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v4.7 SCHOOL STRICT";
+  badge.textContent="v4.8 PINPOINT STRICT";
   document.body.appendChild(badge);
 });
 
 /* v4.7 acceptance: malformed-but-recognizable kanji must not auto-pass; 5/5 top-1 + structural audit required. */
+
+/* v4.8: every rejected kanji shows concrete pinpoint feedback; okurigana frame corners are continuous. */
