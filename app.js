@@ -375,9 +375,85 @@ function buildBoxes(segments){
   wrap.classList.toggle("hasOkuri",segments.some(s=>s.type==="okuri"));
   state.activeBox=0;requestAnimationFrame(()=>state.boxes.forEach(resizeBox));
 }
-function bindCanvas(box,i){const c=box.canvas;function pos(ev){const r=c.getBoundingClientRect();return{x:ev.clientX-r.left,y:ev.clientY-r.top,t:Date.now()}}c.addEventListener("pointerdown",ev=>{ev.preventDefault();state.activeBox=i;c.setPointerCapture(ev.pointerId);box.current=[pos(ev)];box.strokes.push(box.current);redrawBox(box)});c.addEventListener("pointermove",ev=>{if(!box.current)return;box.current.push(pos(ev));redrawBox(box)});c.addEventListener("pointerup",ev=>{if(box.current)box.current.push(pos(ev));box.current=null;redrawBox(box);updateCheckButton()});c.addEventListener("pointercancel",()=>{box.current=null});new ResizeObserver(()=>resizeBox(box)).observe(c)}
-function resizeBox(box){const r=box.canvas.getBoundingClientRect(),dpr=devicePixelRatio||1;if(r.width<1||r.height<1)return;box.canvas.width=Math.round(r.width*dpr);box.canvas.height=Math.round(r.height*dpr);box.ctx.setTransform(dpr,0,0,dpr,0,0);redrawBox(box)}
-function redrawBox(box){const r=box.canvas.getBoundingClientRect(),ctx=box.ctx;ctx.clearRect(0,0,r.width,r.height);ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=7;ctx.strokeStyle="#17251e";for(const s of box.strokes){if(!s.length)continue;ctx.beginPath();ctx.moveTo(s[0].x,s[0].y);for(let i=1;i<s.length;i++)ctx.lineTo(s[i].x,s[i].y);ctx.stroke()}}
+function bindCanvas(box,i){
+  const c=box.canvas;
+  box.activePointerId=null;
+  box.activePointerType=null;
+  box.lastCssSize=null;
+
+  function pos(ev){
+    const r=c.getBoundingClientRect();
+    return{x:ev.clientX-r.left,y:ev.clientY-r.top,t:Date.now(),pressure:Number(ev.pressure||0)};
+  }
+
+  c.addEventListener("contextmenu",ev=>ev.preventDefault());
+
+  c.addEventListener("pointerdown",ev=>{
+    // iPad: Apple Pencil is "pen". While pen is active, ignore touch/palm contacts.
+    if(box.activePointerId!==null)return;
+    if(ev.pointerType==="touch" && state.boxes.some(b=>b.activePointerType==="pen"))return;
+
+    ev.preventDefault();
+    state.activeBox=i;
+    box.activePointerId=ev.pointerId;
+    box.activePointerType=ev.pointerType||"unknown";
+    try{c.setPointerCapture(ev.pointerId)}catch(e){}
+    box.current=[pos(ev)];
+    box.strokes.push(box.current);
+    redrawBox(box);
+  },{passive:false});
+
+  c.addEventListener("pointermove",ev=>{
+    if(box.activePointerId!==ev.pointerId || !box.current)return;
+    ev.preventDefault();
+    box.current.push(pos(ev));
+    redrawBox(box);
+  },{passive:false});
+
+  function finish(ev){
+    if(box.activePointerId!==ev.pointerId)return;
+    if(box.current)box.current.push(pos(ev));
+    box.current=null;
+    try{c.releasePointerCapture(ev.pointerId)}catch(e){}
+    box.activePointerId=null;
+    box.activePointerType=null;
+    redrawBox(box);
+    updateCheckButton();
+  }
+  c.addEventListener("pointerup",finish,{passive:false});
+  c.addEventListener("pointercancel",ev=>{
+    if(box.activePointerId!==ev.pointerId)return;
+    box.current=null;
+    box.activePointerId=null;
+    box.activePointerType=null;
+    redrawBox(box);
+  },{passive:false});
+
+  new ResizeObserver(()=>resizeBox(box)).observe(c);
+}
+function resizeBoxfunction resizeBox(box){
+  const r=box.canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,3);
+  if(r.width<1||r.height<1)return;
+
+  const prev=box.lastCssSize;
+  if(prev && prev.w>0 && prev.h>0 && (Math.abs(prev.w-r.width)>.5 || Math.abs(prev.h-r.height)>.5)){
+    const sx=r.width/prev.w, sy=r.height/prev.h;
+    for(const st of box.strokes||[]){
+      for(const p of st){
+        p.x*=sx; p.y*=sy;
+      }
+    }
+  }
+  box.lastCssSize={w:r.width,h:r.height};
+
+  const pxW=Math.max(1,Math.round(r.width*dpr));
+  const pxH=Math.max(1,Math.round(r.height*dpr));
+  if(box.canvas.width!==pxW)box.canvas.width=pxW;
+  if(box.canvas.height!==pxH)box.canvas.height=pxH;
+  box.ctx.setTransform(dpr,0,0,dpr,0,0);
+  redrawBox(box);
+}
+function redrawBoxfunction redrawBox(box){const r=box.canvas.getBoundingClientRect(),ctx=box.ctx;ctx.clearRect(0,0,r.width,r.height);ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=7;ctx.strokeStyle="#17251e";for(const s of box.strokes){if(!s.length)continue;ctx.beginPath();ctx.moveTo(s[0].x,s[0].y);for(let i=1;i<s.length;i++)ctx.lineTo(s[i].x,s[i].y);ctx.stroke()}}
 function updateCheckButton(){$("#checkBtn").disabled=!state.boxes.length||state.boxes.some(b=>b.strokes.length===0)}
 function resetBoxRepairUI(box){
   if(!box)return;
@@ -1462,7 +1538,14 @@ $("#checkBtn").onclick=async()=>{
     }
   }catch(e){console.error(e);showFeedback("unknown","判定できませんでした","もう一度ためしてね。")}finally{state.checking=false;$("#aiModal").classList.add("hidden");renderHomeStats();if(!state.questionCompleted)updateCheckButton()}
 };
-addEventListener("resize",()=>state.boxes.forEach(resizeBox));init();
+function refreshAllCanvases(){
+  requestAnimationFrame(()=>state.boxes.forEach(resizeBox));
+}
+addEventListener("resize",refreshAllCanvases,{passive:true});
+addEventListener("orientationchange",()=>setTimeout(refreshAllCanvases,180),{passive:true});
+if(window.visualViewport)visualViewport.addEventListener("resize",refreshAllCanvases,{passive:true});
+document.addEventListener("visibilitychange",()=>{if(!document.hidden)refreshAllCanvases()});
+init();
 
 onIf("#studentSetupBtn","click",openStudentSetup);renderStudentProfile();syncLearningEvent("login");
 
@@ -1486,7 +1569,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v5.3 ADAPTIVE 10Q";
+  badge.textContent="v5.4 IPAD PRECHECK";
   document.body.appendChild(badge);
 });
 
@@ -1518,3 +1601,5 @@ window.addEventListener("DOMContentLoaded",()=>{
 })();
 
 /* v5.3: adaptive 10-question selection using weakness, recent mistakes/corrections, spacing, difficulty, and anti-repetition rules. */
+
+/* v5.4: iPad/Apple Pencil palm rejection, single-pointer writing, resize/orientation-safe ink, touch ergonomics, safe-area support. */
