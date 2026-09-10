@@ -845,3 +845,25 @@ button,.gradeBtn,.volBtn,.clearOneBtn{
 /* Keep feedback overlays visible above Apple Pencil ink */
 .mistakeGuideDot{z-index:120!important}
 .mistakeGuideLabel{z-index:121!important}
+
+/* v6.0 Release Candidate */
+.rcTools{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:8px;
+  margin:12px auto 4px;
+}
+.rcTools .ghostBtn{
+  min-height:44px;
+  padding:8px 14px;
+  border-radius:12px;
+  font-size:12px;
+}
+button:disabled{
+  opacity:.58;
+  cursor:not-allowed;
+}
+button[aria-busy="true"]{
+  pointer-events:none;
+}

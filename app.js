@@ -192,6 +192,37 @@ function rememberQuestionExposure(q){
   state.recentKanji.push(q.targetKanji);
   if(state.recentKanji.length>40)state.recentKanji=state.recentKanji.slice(-40);
 }
+
+function exportLearningBackup(){
+  const payload={
+    format:"kanji-tanken-backup",
+    version:"6.0",
+    exportedAt:new Date().toISOString(),
+    weak:state.weak||{},
+    weakDetail:state.weakDetail||{},
+    recentKanji:state.recentKanji||[],
+    room:state.room||{},
+    points:state.points||0
+  };
+  const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob),a=document.createElement("a");
+  a.href=url;a.download=`kanji-tanken-backup-${new Date().toISOString().slice(0,10)}.json`;
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+async function importLearningBackup(file){
+  if(!file)return false;
+  try{
+    const data=JSON.parse(await file.text());
+    if(data?.format!=="kanji-tanken-backup")throw new Error("backup-format");
+    if(data.weak&&typeof data.weak==="object")state.weak=data.weak;
+    if(data.weakDetail&&typeof data.weakDetail==="object")state.weakDetail=data.weakDetail;
+    if(Array.isArray(data.recentKanji))state.recentKanji=data.recentKanji.slice(-40);
+    if(data.room&&typeof data.room==="object")state.room=data.room;
+    if(Number.isFinite(Number(data.points)))state.points=Number(data.points);
+    persist();return true;
+  }catch(e){console.warn("バックアップ読込失敗",e);return false;}
+}
+
 function startAdaptive10(){
   const pool=state.bank.questions.filter(q=>q.reviewStatus==="reviewed"&&questionIntegrityValid(q));
   const next=optimizeNext10(pool);
@@ -431,7 +462,7 @@ function bindCanvas(box,i){
 
   new ResizeObserver(()=>resizeBox(box)).observe(c);
 }
-function resizeBoxfunction resizeBox(box){
+function resizeBox(box){
   const r=box.canvas.getBoundingClientRect(),dpr=Math.min(devicePixelRatio||1,3);
   if(r.width<1||r.height<1)return;
 
@@ -453,7 +484,7 @@ function resizeBoxfunction resizeBox(box){
   box.ctx.setTransform(dpr,0,0,dpr,0,0);
   redrawBox(box);
 }
-function redrawBoxfunction redrawBox(box){const r=box.canvas.getBoundingClientRect(),ctx=box.ctx;ctx.clearRect(0,0,r.width,r.height);ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=7;ctx.strokeStyle="#17251e";for(const s of box.strokes){if(!s.length)continue;ctx.beginPath();ctx.moveTo(s[0].x,s[0].y);for(let i=1;i<s.length;i++)ctx.lineTo(s[i].x,s[i].y);ctx.stroke()}}
+function redrawBox(box){const r=box.canvas.getBoundingClientRect(),ctx=box.ctx;ctx.clearRect(0,0,r.width,r.height);ctx.lineCap="round";ctx.lineJoin="round";ctx.lineWidth=7;ctx.strokeStyle="#17251e";for(const s of box.strokes){if(!s.length)continue;ctx.beginPath();ctx.moveTo(s[0].x,s[0].y);for(let i=1;i<s.length;i++)ctx.lineTo(s[i].x,s[i].y);ctx.stroke()}}
 function updateCheckButton(){$("#checkBtn").disabled=!state.boxes.length||state.boxes.some(b=>b.strokes.length===0)}
 function resetBoxRepairUI(box){
   if(!box)return;
@@ -546,38 +577,26 @@ function markBoxResults(results){
 function clearAll(){for(const b of state.boxes){b.strokes=[];b.current=null;redrawBox(b);resetBoxRepairUI(b)}updateCheckButton()}
 $("#clearBtn").onclick=clearAll;
 $("#undoBtn").onclick=()=>{const b=state.boxes[state.activeBox]||state.boxes.findLast?.(x=>x.strokes.length)||state.boxes[0];if(b){b.strokes.pop();redrawBox(b)}updateCheckButton()};
-function persist(){storage.setItem("kq.points",state.points);storage.setItem("kq.totalEarned",state.totalEarned);storage.setItem("kq.exp",state.experience);storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));storage.setItem("kq.sessions",state.sessions);storage.setItem("kq.petId",state.petId);storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));storage.setItem("kq.petCare",JSON.stringify(state.petCare));storage.setItem("kq.careTickets",state.careTickets);storage.setItem("kq.daily",JSON.stringify(state.daily));storage.setItem("kq.records",JSON.stringify(state.records));storage.setItem("kq.weak",JSON.stringify(state.weak));storage.setItem("kq.weakDetail",JSON.stringify(state.weakDetail));storage.setItem("kq.recentKanji",JSON.stringify(state.recentKanji));storage.setItem("kq.room",JSON.stringify(state.room))}
-
-const careActions=[
-{id:"feed",icon:"🍎",label:"ごはん",cost:5,gain:5,msg:"おいしそうに食べた！"},
-{id:"water",icon:"🥤",label:"お水",cost:3,gain:3,msg:"ごくごく飲んで元気いっぱい！"},
-{id:"pet",icon:"🖐️",label:"なでる",cost:2,gain:3,msg:"うれしそうにしている！"},
-{id:"play",icon:"⚽",label:"あそぶ",cost:8,gain:7,msg:"いっしょに遊んで大よろこび！"},
-{id:"brush",icon:"🪮",label:"ブラッシング",cost:6,gain:5,msg:"毛なみがピカピカになった！"},
-{id:"clean",icon:"🧹",label:"おそうじ",cost:4,gain:4,msg:"おへやがきれいになった！"},
-{id:"walk",icon:"🌳",label:"おさんぽ",cost:7,gain:6,msg:"いっしょにおさんぽして楽しかった！"},
-{id:"sleep",icon:"🌙",label:"おひるね",cost:3,gain:3,msg:"すやすや休んで元気になった！"},
-{id:"snack",icon:"🍪",label:"おやつ",cost:4,gain:4,msg:"おやつを食べてにっこり！"},
-{id:"bath",icon:"🛁",label:"おふろ",cost:6,gain:5,msg:"さっぱりして気持ちよさそう！"},
-{id:"ball",icon:"🥎",label:"ボールあそび",cost:7,gain:6,msg:"ボールを追いかけて大はしゃぎ！"},
-{id:"talk",icon:"💬",label:"おはなし",cost:3,gain:4,msg:"いっしょにお話してうれしそう！"},
-{id:"hide",icon:"📦",label:"かくれんぼ",cost:6,gain:6,msg:"見つけてもらって大よろこび！"},
-{id:"music",icon:"🎵",label:"おんがく",cost:5,gain:5,msg:"リズムにのって楽しそう！"}
-];
-const careFavorites={dog:"walk",cat:"pet",rabbit:"brush",hamster:"feed",mouse:"feed",squirrel:"play",hedgehog:"pet",otter:"play",raccoon:"clean",panda:"feed",koala:"sleep",bear:"feed",polar:"play",monkey:"play",gorilla:"feed",sloth:"sleep",deer:"walk",boar:"feed",pig:"clean",cow:"brush",horse:"walk",goat:"feed",sheep:"brush",alpaca:"brush",camel:"water",elephant:"water",giraffe:"feed",zebra:"walk",hippo:"water",rhino:"clean",kangaroo:"play",lion:"play",tiger:"play",leopard:"walk",wolf:"walk",eagle:"play",owl:"sleep",penguin:"play",flamingo:"water",duck:"water",chick:"feed",parrot:"play",turtle:"sleep",frog:"water",crocodile:"feed",dolphin:"play",whale:"water",seal:"play",octopus:"play",fox:"walk"};
-const MAX_FRIENDSHIP=500;
-function friendshipLevel(f=currentFriendship()){return Math.min(50,1+Math.floor(f/10))}
-function careData(){if(!state.petCare[state.petId])state.petCare[state.petId]={count:0,actions:{}};return state.petCare[state.petId]}
-function favoriteCare(){return careFavorites[state.petId]||"play"}
-function careReaction(){const f=currentFriendship();return f>=100?"ずっといっしょだよ！":f>=85?"きみは最高の相棒！":f>=55?"もっといっしょに遊びたいな！":f>=25?"会えるとうれしいな！":"これから仲よくなろうね！"}
-function doCare(actionId){
- const a=careActions.find(x=>x.id===actionId);if(!a||state.points<a.cost)return;
- const fav=actionId===favoriteCare(),gain=a.gain+(fav?2:0),before=currentFriendship();
- state.points-=a.cost;state.petFriendships[state.petId]=Math.min(MAX_FRIENDSHIP,before+gain);state.experience+=gain;
- const cd=careData();cd.count=(cd.count||0)+1;cd.actions[actionId]=(cd.actions[actionId]||0)+1;persist();
- const extra=fav?" 💖 大好きなおせわ！ なかよしボーナス +2":"";
- $("#careMessage").textContent=`${currentPet().emoji} ${a.msg}${extra}`;
- renderAnimalRoom();renderHomeStats();
+function persist(){
+  try{
+    storage.setItem("kq.points",state.points);
+    storage.setItem("kq.totalEarned",state.totalEarned);
+    storage.setItem("kq.exp",state.experience);
+    storage.setItem("kq.discovered",JSON.stringify([...state.discovered]));
+    storage.setItem("kq.sessions",state.sessions);
+    storage.setItem("kq.petId",state.petId);
+    storage.setItem("kq.petFriendships",JSON.stringify(state.petFriendships));
+    storage.setItem("kq.petCare",JSON.stringify(state.petCare));
+    storage.setItem("kq.careTickets",state.careTickets);
+    storage.setItem("kq.daily",JSON.stringify(state.daily));
+    storage.setItem("kq.records",JSON.stringify(state.records));
+    storage.setItem("kq.weak",JSON.stringify(state.weak));
+    storage.setItem("kq.weakDetail",JSON.stringify(state.weakDetail));
+    storage.setItem("kq.recentKanji",JSON.stringify(state.recentKanji));
+    storage.setItem("kq.room",JSON.stringify(state.room));
+  }catch(e){
+    console.warn("保存できませんでした",e);
+  }
 }
 function renderCareButtons(){
  const wrap=$("#careGrid");if(!wrap)return;wrap.innerHTML="";
@@ -1569,7 +1588,7 @@ window.addEventListener("DOMContentLoaded",initTeacherPracticeUI);
 window.addEventListener("DOMContentLoaded",()=>{
   const badge=document.createElement("div");
   badge.id="strictVersionBadge";
-  badge.textContent="v5.4 IPAD PRECHECK";
+  badge.textContent="v6.0 RELEASE CANDIDATE";
   document.body.appendChild(badge);
 });
 
@@ -1603,3 +1622,51 @@ window.addEventListener("DOMContentLoaded",()=>{
 /* v5.3: adaptive 10-question selection using weakness, recent mistakes/corrections, spacing, difficulty, and anti-repetition rules. */
 
 /* v5.4: iPad/Apple Pencil palm rejection, single-pointer writing, resize/orientation-safe ink, touch ergonomics, safe-area support. */
+
+(function releaseCandidateControls(){
+  const t=setInterval(()=>{
+    const home=document.querySelector("#homeView"); if(!home)return;
+    if(!home.querySelector(".rcTools")){
+      const wrap=document.createElement("div");wrap.className="rcTools";
+      const save=document.createElement("button");save.type="button";save.className="ghostBtn";save.textContent="学習データを保存";
+      save.addEventListener("click",exportLearningBackup);
+      const load=document.createElement("button");load.type="button";load.className="ghostBtn";load.textContent="学習データを復元";
+      const input=document.createElement("input");input.type="file";input.accept="application/json";input.hidden=true;
+      load.addEventListener("click",()=>input.click());
+      input.addEventListener("change",async()=>{
+        const ok=await importLearningBackup(input.files?.[0]);
+        alert(ok?"学習データを復元しました。":"このバックアップは読み込めませんでした。");
+        if(ok)location.reload();
+      });
+      wrap.append(save,load,input);home.appendChild(wrap);
+    }
+    clearInterval(t);
+  },350);
+})();
+
+window.addEventListener("error",ev=>{
+  console.error("Kanji Tanken error",ev.error||ev.message);
+});
+window.addEventListener("unhandledrejection",ev=>{
+  console.error("Kanji Tanken async error",ev.reason);
+});
+
+/* v6.0 RC: freezes v5.4 learning core; adds double-submit guard, resilient persistence, backup/restore, PWA release hardening. */
+
+
+// v6.0 RC: prevent double answer-check taps before async recognition finishes.
+let rcCheckLock=false;
+document.addEventListener("click",ev=>{
+  const btn=ev.target?.closest?.("#checkBtn");
+  if(!btn)return;
+  if(rcCheckLock){
+    ev.preventDefault();ev.stopImmediatePropagation();return;
+  }
+  rcCheckLock=true;
+  btn.disabled=true;btn.setAttribute("aria-busy","true");
+  setTimeout(()=>{
+    rcCheckLock=false;
+    btn.disabled=false;
+    btn.removeAttribute("aria-busy");
+  },1800);
+},true);
