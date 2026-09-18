@@ -159,7 +159,7 @@ $("#addTeacher").onclick=async()=>{let role=$("#newRole").value,r=await fetch("/
      const r=await fetch("/api/teacher-dashboard",{headers:{Authorization:"Bearer "+token}});
      if(!r.ok)return;
      const d=await r.json();
-     notice.textContent=`現在は ${d.schoolYear}年度。${d.previousSchoolYear}年度の記録は4月末まで保存され、その後自動整理されます。`;
+     notice.textContent=`現在は ${d.schoolYear}年度。児童の学習履歴は直近6学年度分を保持し、それより古い年度だけを自動整理します。`;
      btn.onclick=async()=>{
        const x=await fetch(`/api/teacher-export?year=${d.previousSchoolYear}`,{headers:{Authorization:"Bearer "+token}});
        if(!x.ok){alert("CSVを作れませんでした。");return}
