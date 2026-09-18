@@ -31,10 +31,9 @@ body{background:#f4f7f5}.T{max-width:1180px;margin:auto;padding:20px}.card{backg
 <p>この端末を別の先生が使うときに使います。Neon上の学校・児童の学習履歴は消さず、この端末内だけを初期化します。</p>
 <div class="controls">
 <button id="clearTeacherDevice" type="button">教師情報だけ消す</button>
-<button id="clearStudentDevice" type="button">児童用の端末データだけ消す</button>
-<button id="clearAllDevice" type="button">この端末を全部初期化</button>
+<p class="muted"><b>児童のPT・どうぶつ・苦手情報・累計学習などは、進級後も引き継ぐため、この画面から削除できません。</b></p>
 </div>
-<p class="muted">「全部初期化」は、教師ログイン情報・記憶した学校コード・児童コード・PT・どうぶつ・苦手情報など、このブラウザ内の「かん字たんけん！」データを消します。クラウドの年度内学習履歴は残ります。</p>
+<p class="muted">端末の引き継ぎでは教師情報だけを消します。児童の学習成果は消しません。</p>
 </section>
 </div></main><script>
 let token=sessionStorage.getItem("kq.teacherToken")||"",data=null;const $=s=>document.querySelector(s),fmt=s=>s?new Date(s).toLocaleString("ja-JP",{timeZone:"Asia/Tokyo"}):"記録なし";
@@ -147,21 +146,6 @@ $("#clearTeacherDevice").onclick=async()=>{
   await clearKanjiCaches();
   location.href="./teacher.html";
 };
-$("#clearStudentDevice").onclick=async()=>{
-  if(!confirm("この端末の児童コード・PT・どうぶつ・苦手情報など児童用の端末データを消します。クラウドの学習履歴は消えません。よろしいですか？"))return;
-  removeKeys(localStorage,k=>k.startsWith("kq.")&&!k.startsWith("kq.teacher"));
-  removeKeys(sessionStorage,k=>k.startsWith("kq.teacherSandbox."));
-  await clearKanjiCaches();
-  alert("児童用の端末データを初期化しました。");
-};
-$("#clearAllDevice").onclick=async()=>{
-  if(!confirm("この端末の「かん字たんけん！」の教師用・児童用データをすべて初期化します。Neon上の年度内学習履歴は消えません。よろしいですか？"))return;
-  removeKeys(localStorage,k=>k.startsWith("kq."));
-  removeKeys(sessionStorage,k=>k.startsWith("kq."));
-  token="";data=null;
-  await clearKanjiCaches();
-  location.href="./teacher.html";
-};
 fillRememberedSchool();
 
 $("#addTeacher").onclick=async()=>{let role=$("#newRole").value,r=await fetch("/api/teachers",{method:"POST",headers:{"Content-Type":"application/json",Authorization:"Bearer "+token},body:JSON.stringify({teacherId:$("#newTid").value,password:$("#newTpw").value,role,grade:$("#newGrade").value,classNo:$("#newClass").value})});let d=await r.json();if(!r.ok){alert(d.error||"追加できませんでした");return}$("#newTid").value="";$("#newTpw").value="";loadTeachers()};$("#reload").onclick=load;$("#logout").onclick=logout;$("#period").onchange=render;$("#g").onchange=render;$("#c").onchange=render;for(let i=1;i<=10;i++)$("#c").insertAdjacentHTML("beforeend",`<option>${i}</option>`);if(token)load();
@@ -175,7 +159,7 @@ $("#addTeacher").onclick=async()=>{let role=$("#newRole").value,r=await fetch("/
      const r=await fetch("/api/teacher-dashboard",{headers:{Authorization:"Bearer "+token}});
      if(!r.ok)return;
      const d=await r.json();
-     notice.textContent=`現在は ${d.schoolYear}年度。${d.previousSchoolYear}年度の記録は4月末まで保存され、その後自動整理されます。`;
+     notice.textContent=`現在は ${d.schoolYear}年度。児童の学習履歴は直近6学年度分を保持し、それより古い年度だけを自動整理します。`;
      btn.onclick=async()=>{
        const x=await fetch(`/api/teacher-export?year=${d.previousSchoolYear}`,{headers:{Authorization:"Bearer "+token}});
        if(!x.ok){alert("CSVを作れませんでした。");return}
